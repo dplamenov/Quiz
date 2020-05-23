@@ -5,5 +5,5 @@ Features
 - Users can add a questions
 
 Technologies 
-- Node.JS & express
+- Node.JS & Express
 - React
