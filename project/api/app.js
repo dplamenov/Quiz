@@ -11,7 +11,7 @@ const app = express();
 const session = require('express-session');
 
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'session',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', webRouter);
+app.use('/api', webRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
