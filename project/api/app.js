@@ -8,14 +8,6 @@ const webRouter = require('./routes/web.js');
 
 const cors = require('cors');
 const app = express();
-const session = require('express-session');
-
-app.use(session({
-  secret: 'session',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
-}));
 
 app.use(cors({
   origin: 'http://localhost:3001'
