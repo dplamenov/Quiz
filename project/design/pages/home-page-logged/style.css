@@ -64,8 +64,7 @@ main {
 .quiz-theme {
     margin-top: 40px;
     margin-right: 10px;
-    /* border: 1px solid black; */
-    flex-basis: 23%;
+    flex-basis: 24.3%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,6 +103,12 @@ main {
     }
     .quiz-theme {
         margin-left: 10px;
+    }
+    .stats {
+        position: static;
+        display: block;
+        border-bottom-right-radius: 25px;
+        text-align: center;
     }
 }
 
