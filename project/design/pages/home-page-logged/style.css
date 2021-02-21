@@ -54,6 +54,10 @@ main {
     position: relative;
 }
 
+main h1 {
+    text-align: center;
+}
+
 .quiz-themes {
     display: flex;
     max-width: 1500px;
@@ -91,7 +95,7 @@ main {
     display: inline-block;
     position: absolute;
     right: 0;
-    top: -50px;
+    top: -21.5px;
     background-color: lightblue;
     padding: 2px 15px;
     border-bottom-left-radius: 25px;
@@ -117,4 +121,13 @@ main {
 
 footer {
     background-color: #f7931a;
+}
+
+.quiz {
+    position: absolute;
+    font-size: 600px;
+    top: 100px;
+    margin: 0;
+    transform: rotate(12deg);
+    color: rgba(0, 0, 0, 0.04)
 }
