@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Question;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    session(['isloggedin' => true]);
-    return response()->json(["isloggedin" => session('isloggedin', false)]);
+//    session(['isloggedin' => true]);
+    return response()->json(["debug" => true]);
 });
+
+Route::resource('/question', Question::class);
