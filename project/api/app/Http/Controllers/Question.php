@@ -14,8 +14,15 @@ class Question extends Controller
      */
     public function index(Request $request)
     {
+        $catId = $request->get('cat');
+
+        if (!isset($catId)) {
+            return response()->json(['error' => 'specify category id']);
+        }
+
         $result = DB::select('SELECT * FROM `questions` WHERE `category` = ?', [$request->get('cat')]);
-        return response()->json($result);
+        $key = random_int(0, count($result) - 1);
+        return response()->json($result[$key]);
     }
 
     /**
@@ -31,7 +38,7 @@ class Question extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,18 +49,24 @@ class Question extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
-        //
+        $question = DB::select('SELECT * FROM `questions` WHERE `id` = ?', [$id]);
+
+        if (count($question) != 1) {
+            return response()->json(['error' => 'no question with that id']);
+        }
+
+        return response()->json($question[0]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -64,8 +77,8 @@ class Question extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -76,7 +89,7 @@ class Question extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
