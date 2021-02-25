@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Question extends Controller
 {
@@ -11,9 +12,10 @@ class Question extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(['index' => '1']);
+        $result = DB::select('SELECT * FROM `questions` WHERE `category` = ?', [$request->get('cat')]);
+        return response()->json($result);
     }
 
     /**
