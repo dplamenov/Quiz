@@ -20,7 +20,7 @@ class Question extends Controller
             return response()->json(['error' => 'specify category id']);
         }
 
-        $result = DB::select('SELECT * FROM `questions` WHERE `category` = ?', [$request->get('cat')]);
+        $result = DB::select('SELECT * FROM `questions` WHERE `category` = ?', [$catId]);
         $key = random_int(0, count($result) - 1);
         return response()->json($result[$key]);
     }
