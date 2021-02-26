@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('real_name');
             $table->integer('level');
             $table->string('access');
-            $table->boolean('isActive');
+            $table->boolean('isOnline');
         });
     }
 
