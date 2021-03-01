@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Question;
+use App\Http\Controllers\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/question', Question::class);
+Route::resource('/user', User::class);
