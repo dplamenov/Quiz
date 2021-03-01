@@ -12,15 +12,14 @@ class Question extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index(Request $request)
+    public function all(Request $request)
     {
         $catId = $request->get('cat');
 
         if (!isset($catId)) {
             return response()->json(['error' => 'specify category id']);
         }
-
-        $result = DB::select('SELECT * FROM `questions` WHERE `category` = ?', [$catId]);
+        $result = \App\Models\Question::where('category', $catId)->get();
         $key = random_int(0, count($result) - 1);
         return response()->json($result[$key]);
     }

@@ -20,5 +20,9 @@ Route::get('/', function () {
     return response()->json(["debug" => true]);
 });
 
-Route::resource('/question', Question::class);
-Route::resource('/user', User::class);
+//Route::resource('/question', Question::class);
+
+Route::get('/question', [Question::class, 'all']);
+Route::get('/question/{question}', [Question::class, 'show']);
+Route::post('/user/login', [User::class, 'login']);
+Route::post('/user/register', [User::class, 'register']);
