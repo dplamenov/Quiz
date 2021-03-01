@@ -19,6 +19,7 @@ class Question extends Controller
         if (!isset($catId)) {
             return response()->json(['error' => 'specify category id']);
         }
+
         $result = \App\Models\Question::where('category', $catId)->get();
         $key = random_int(0, count($result) - 1);
         return response()->json($result[$key]);
@@ -53,7 +54,7 @@ class Question extends Controller
      */
     public function show($id)
     {
-        $question = DB::select('SELECT * FROM `questions` WHERE `id` = ?', [$id]);
+        $question = \App\Models\Question::where('id', $id)->get();
 
         if (count($question) != 1) {
             return response()->json(['error' => 'no question with that id']);
