@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
+import Header from './Components/Header/Header';
 
 class App extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class App extends React.Component {
     }
 
     render() {
-        return <p>hi</p>;
+        return <Header/>;
     }
 }
 
