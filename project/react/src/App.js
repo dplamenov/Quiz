@@ -21,7 +21,7 @@ class App extends React.Component {
     }
 
     render() {
-        return <p>{this.state.response}</p>;
+        return <p>hi</p>;
     }
 }
 
