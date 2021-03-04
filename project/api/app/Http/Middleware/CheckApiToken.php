@@ -16,6 +16,14 @@ class CheckApiToken
      */
     public function handle(Request $request, Closure $next)
     {
+        $authToken = $request->header('auth-token');
+
+        if(!$authToken) {
+            return response()->json(['error' => 'no token'], 400);
+        }
+
+
+
         return $next($request);
     }
 }

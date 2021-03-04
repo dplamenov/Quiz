@@ -31,5 +31,5 @@ Route::post('/user/register', [User::class, 'register']);
 Route::get('/user/auth', [User::class, 'auth']);
 Route::get('/user/logout', function (){
     return 'logout';
-})->middleware('auth:api');
+})->middleware('auth.api.token');
 
