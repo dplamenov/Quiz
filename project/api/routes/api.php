@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Question;
+use App\Http\Controllers\User;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,3 +15,16 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+Route::get('/', function () {
+//    session(['isloggedin' => true]);
+    return response()->json(["debug" => true]);
+});
+
+//Route::resource('/question', Question::class);
+
+Route::get('/question', [Question::class, 'all']);
+Route::get('/question/{question}', [Question::class, 'show']);
+Route::post('/user/login', [User::class, 'login']);
+Route::post('/user/register', [User::class, 'register']);
