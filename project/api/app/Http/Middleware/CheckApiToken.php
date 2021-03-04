@@ -26,9 +26,9 @@ class CheckApiToken
             return response()->json(['error' => 'no token'], 400);
         }
 
-        $user = User::where('api_token', $authToken)->get();
+        $user = User::where('auth_token', $authToken)->get();
 
-        var_dump(DB::select('SELECT * FROM `users` WHERE `api_token` = ?', [$authToken]));
+        var_dump(DB::select('SELECT * FROM `users` WHERE `auth_token` = ?', [$authToken]));
 
         return $next($request);
     }
