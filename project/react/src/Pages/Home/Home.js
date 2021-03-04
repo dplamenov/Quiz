@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import './Home.css';
+import {Link} from "react-router-dom";
 
-class Home extends React.Component{
+export default class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -19,6 +21,9 @@ class Home extends React.Component{
     }
 
     render() {
-        return <p>{this.state.response}</p>;
+        return <React.Fragment>
+            <h1>Welcome to best quiz game</h1>
+            <p><Link to="user/login">Login</Link> | <Link to="user/register">Register</Link></p>
+        </React.Fragment>
     }
 }

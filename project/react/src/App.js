@@ -2,15 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import Header from './Components/Header/Header';
+import Home from './Pages/Home/Home';
 import {
     BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom";
-
-function Home() {
-    return <h2>Home</h2>;
-}
 
 function About() {
     return <h2>About</h2>;
