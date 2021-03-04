@@ -18,9 +18,7 @@ class CheckApiToken
      */
     public function handle(Request $request, Closure $next)
     {
-        $authToken = $request->header('auth_token');
-
-        var_dump($request->header('auth'));
+        $authToken = $request->header('auth-token');
 
         if(!$authToken) {
             return response()->json(['error' => 'no token'], 400);
@@ -28,7 +26,7 @@ class CheckApiToken
 
         $user = User::where('auth_token', $authToken)->get();
 
-        var_dump(DB::select('SELECT * FROM `users` WHERE `auth_token` = ?', [$authToken]));
+        var_dump($user);
 
         return $next($request);
     }
