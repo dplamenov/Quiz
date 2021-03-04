@@ -9,13 +9,13 @@ import {
     Route
 } from "react-router-dom";
 
-function About() {
-    return <h2>About</h2>;
-}
-
-function Contact() {
-    return <h2>Contact</h2>;
-}
+// function About() {
+//     return <h2>About</h2>;
+// }
+//
+// function Contact() {
+//     return <h2>Contact</h2>;
+// }
 
 
 class App extends React.Component {
@@ -43,11 +43,11 @@ class App extends React.Component {
                     <Route path="/" exact={true}>
                         <Home/>
                     </Route>
-                    <Route path="/about">
-                        <About/>
+                    <Route path="/user/login">
+                        <p>Login</p>
                     </Route>
-                    <Route path="/contact">
-                        <Contact/>
+                    <Route path="/user/register">
+                        <p>Register</p>
                     </Route>
                 </Switch>
             </Router>
