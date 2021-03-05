@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Question;
 use App\Http\Controllers\User;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,11 +27,11 @@ Route::get('/', function () {
 
 Route::get('/question', [Question::class, 'all']);
 Route::get('/question/{question}', [Question::class, 'show']);
-Route::post('/user/login', [User::class, 'login']);
+Route::post('/user/login', [User::class, 'login'])
+    ->middleware('not.auth');
 Route::post('/user/register', [User::class, 'register']);
-Route::get('/user/auth', [User::class, 'auth'])
-    ->middleware('auth.api.token');
+Route::get('/user/auth', [User::class, 'auth']);
 Route::get('/user/logout', function () {
-    return 'logout';
-});
+    return response()->json(['logout' => true])->withCookie('auth-token');
+})->middleware('auth');
 

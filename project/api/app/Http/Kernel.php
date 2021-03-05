@@ -2,8 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\auth;
 use App\Http\Middleware\CheckApiToken;
 use App\Http\Middleware\cors;
+use App\Http\Middleware\NotAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -57,7 +59,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
+//        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth' => Auth::class,
+        'not.auth' => NotAuth::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

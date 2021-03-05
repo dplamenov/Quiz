@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class auth
+class NotAuth
 {
     /**
      * Handle an incoming request.
@@ -16,6 +16,10 @@ class auth
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(!$request->user){
+            return $next($request);
+        }
+
+        return response()->json(['error' => 'user already logged'], 401);
     }
 }

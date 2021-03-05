@@ -21,9 +21,9 @@ class CheckApiToken
     {
         $authToken = $request->cookie('auth-token');
 
-
         $user = User::where('auth_token', $authToken)->get();
-        $request->user = $user[0];
+        $request->user = count($user) == 1 ? $user[0] : [];
+
         return $next($request);
     }
 }
