@@ -12,17 +12,15 @@ class CheckApiToken
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
+
     public function handle(Request $request, Closure $next)
     {
-        $authToken = $request->header('auth-token');
+        $authToken = $request->cookie('auth-token');
 
-        if(!$authToken) {
-            return response()->json(['error' => 'no token'], 400);
-        }
 
         $user = User::where('auth_token', $authToken)->get();
         $request->user = $user[0];

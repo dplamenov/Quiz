@@ -33,7 +33,7 @@ class User extends Controller
             'auth_token' => hash('sha256', $token),
         ])->save();
 
-        return response()->json(['auth' => $request->user()]);
+        return response()->json($request->user())->cookie('auth-token', $request->user()->auth_token);
     }
 
     public function register(Request $request): \Illuminate\Http\JsonResponse

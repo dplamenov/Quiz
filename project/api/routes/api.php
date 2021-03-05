@@ -28,8 +28,9 @@ Route::get('/question', [Question::class, 'all']);
 Route::get('/question/{question}', [Question::class, 'show']);
 Route::post('/user/login', [User::class, 'login']);
 Route::post('/user/register', [User::class, 'register']);
-Route::get('/user/auth', [User::class, 'auth']);
-Route::get('/user/logout', function (){
+Route::get('/user/auth', [User::class, 'auth'])
+    ->middleware('auth.api.token');
+Route::get('/user/logout', function () {
     return 'logout';
-})->middleware('auth.api.token');
+});
 
