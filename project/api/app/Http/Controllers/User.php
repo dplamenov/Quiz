@@ -58,6 +58,6 @@ class User extends Controller
 
     public function auth(Request $request)
     {
-        return response()->json(['a' => $request->cookies]);
+        return response()->json($request->user);
     }
 }

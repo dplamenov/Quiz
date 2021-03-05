@@ -25,9 +25,7 @@ class CheckApiToken
         }
 
         $user = User::where('auth_token', $authToken)->get();
-
-        var_dump($user);
-
+        $request->user = $user[0];
         return $next($request);
     }
 }
