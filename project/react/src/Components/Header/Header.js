@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import {Link} from "react-router-dom";
 
-export default class Header extends React.Component {
+class Header extends React.Component {
     render() {
         return <header>
             <article className="logo-wrapper">
@@ -18,3 +18,5 @@ export default class Header extends React.Component {
         </header>;
     }
 }
+
+export default Header;

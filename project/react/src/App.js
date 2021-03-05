@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Header from './Components/Header/Header';
 import Home from './Pages/Home/Home';
+import Login from './Pages/Login/Login';
 import {
     BrowserRouter as Router,
     Switch,
@@ -44,7 +45,7 @@ class App extends React.Component {
                         <Home/>
                     </Route>
                     <Route path="/user/login">
-                        <p>Login</p>
+                        <Login/>
                     </Route>
                     <Route path="/user/register">
                         <p>Register</p>
