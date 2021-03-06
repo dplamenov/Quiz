@@ -26,6 +26,9 @@ class User extends Controller
             'auth_token' => hash('sha256', $token),
         ])->save();
 
+        $request->user()->isOnline = 1;
+        $request->user()->save();
+
         return response()->json($request->user())->cookie('auth-token', $request->user()->auth_token, 'session', null, 'sharkdev.eu', 'none');
     }
 
@@ -47,8 +50,9 @@ class User extends Controller
     public function logout(Request $request)
     {
         $request->user->auth_token = '';
+        $request->user->isOnline = 0;
         $request->user->save();
-        
+
         return response()->json(['logout' => true])->withCookie('auth-token');
     }
 
