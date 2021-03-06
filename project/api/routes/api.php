@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Question;
 use App\Http\Controllers\User;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 

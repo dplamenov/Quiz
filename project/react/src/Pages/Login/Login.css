@@ -1,0 +1,18 @@
+.login-page input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.login-button {
+    padding: 12px 25px;
+    background: #f7931a;
+    border: 0;
+    border-radius: 8px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
