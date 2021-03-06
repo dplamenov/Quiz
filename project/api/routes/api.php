@@ -29,11 +29,10 @@ Route::options('{any?}', function ($any = null) {
 
 Route::get('/question', [Question::class, 'all']);
 Route::get('/question/{question}', [Question::class, 'show']);
+
 Route::post('/user/login', [User::class, 'login'])
     ->middleware('not.auth');
 Route::post('/user/register', [User::class, 'register']);
 Route::get('/user/auth', [User::class, 'auth']);
-Route::get('/user/logout', function () {
-    return response()->json(['logout' => true])->withCookie('auth-token');
-})->middleware('auth');
+Route::get('/user/logout', [User::class, 'logout'])->middleware('auth');
 

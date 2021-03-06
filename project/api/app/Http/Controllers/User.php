@@ -9,17 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class User extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $users = Models\User::all();
-        return response()->json($users);
-    }
-
     public function login(Request $request)
     {
         $email = $request->get('email');
@@ -55,9 +44,12 @@ class User extends Controller
         return response()->json($request->all());
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-
+        $request->user->auth_token = '';
+        $request->user->save();
+        
+        return response()->json(['logout' => true])->withCookie('auth-token');
     }
 
     public function auth(Request $request)
