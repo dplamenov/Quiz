@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://quiz.sharkdev.eu', 'https://quiz.sharkdev.eu'],
+    'allowed_origins' => ['http://quiz.sharkdev.eu', 'https://quiz.sharkdev.eu', 'http://192.168.1.141:3000'],
 
     'allowed_origins_patterns' => [],
 
