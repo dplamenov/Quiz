@@ -6,7 +6,7 @@ const userService = {
     },
 
     login: function () {
-        fetch(`${config.apiUrl}user/register`)
+        return fetch(`${config.apiUrl}user/login`, {method: 'post'})
             .then(res => res.json())
             .then(res => {
                 console.log(res);

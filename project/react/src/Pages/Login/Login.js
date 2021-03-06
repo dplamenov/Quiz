@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './Login.css';
+import userService from "../../services/user";
 
 class Login extends Component {
     constructor(props) {
@@ -11,12 +12,15 @@ class Login extends Component {
         };
     }
 
-    changeHandler(event) {
+    changeHandler = (event) => {
         this.setState({[event.target.id]: event.target.value});
     }
 
-    submitHandler(e) {
+    submitHandler = (e) => {
         e.preventDefault();
+        console.log(this.state);
+        userService.login()
+            .then();
     }
 
     render() {
@@ -27,9 +31,9 @@ class Login extends Component {
                 <h1>Login</h1>
                 <form className="login-form" onSubmit={this.submitHandler}>
                     <input type="text" name="email" id="email" placeholder="EMAIL" value={email}
-                           onChange={this.changeHandler.bind(this)}/>
+                           onChange={this.changeHandler}/>
                     <input type="password" name="password" id="password" placeholder="PASSWORD" value={password}
-                           onChange={this.changeHandler.bind(this)}/>
+                           onChange={this.changeHandler}/>
                     <button className="btn login-button">Login</button>
                 </form>
             </div>
