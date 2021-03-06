@@ -25,15 +25,19 @@ class User extends Controller
         $email = $request->get('email');
         $password = $request->get('password');
 
-        $attempt = Auth::attempt(['email' => $email, 'password' => $password]);
+        Auth::attempt(['email' => $email, 'password' => $password]);
 
         $token = Str::random(60);
+
+        if (!$request->user()) {
+            return response()->json(['error' => 'no user'], 401);
+        }
 
         $request->user()->forceFill([
             'auth_token' => hash('sha256', $token),
         ])->save();
 
-        return response()->json($request->user())->cookie('auth-token', $request->user()->auth_token);
+        return response()->json($request->user())->cookie('auth-token', $request->user()->auth_token, 'session', null, 'sharkdev.eu', 'none');
     }
 
     public function register(Request $request): \Illuminate\Http\JsonResponse
