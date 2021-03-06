@@ -9,7 +9,7 @@ class Login extends Component {
                 <form className="login-form">
                     <input type="text" name="email" id="password" placeholder="EMAIL"/>
                     <input type="password" name="password" id="password" placeholder="PASSWORD"/>
-                    <button className="login-button">Login</button>
+                    <button className="btn login-button">Login</button>
                 </form>
             </div>
         );
