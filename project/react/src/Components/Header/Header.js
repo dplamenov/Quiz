@@ -6,7 +6,7 @@ class Header extends React.Component {
     render() {
         return <header>
             <article className="logo-wrapper">
-                <h1>logo</h1>
+                <h1><Link to="/">logo</Link></h1>
             </article>
             <nav>
                 <ul>
