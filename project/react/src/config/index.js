@@ -1,5 +1,5 @@
 const config = {
-    apiUrl: 'https://quiz-api.sharkdev.eu/api/'
+    apiUrl: 'http://quiz-api.sharkdev.eu/api/'
 };
 
 export default config;

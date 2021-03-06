@@ -19,7 +19,7 @@ class Login extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         console.log(this.state);
-        userService.login()
+        userService.login(this.state)
             .then();
     }
 

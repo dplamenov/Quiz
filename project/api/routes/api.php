@@ -22,7 +22,10 @@ Route::get('/', function () {
     return response()->json(["debug" => true]);
 });
 
-//Route::resource('/question', Question::class);
+
+Route::options('{any?}', function ($any = null) {
+    return 'cors';
+})->where('any', '.*')->middleware('cors');
 
 Route::get('/question', [Question::class, 'all']);
 Route::get('/question/{question}', [Question::class, 'show']);
