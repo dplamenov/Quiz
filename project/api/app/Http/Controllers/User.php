@@ -36,7 +36,7 @@ class User extends Controller
     {
         $email = $request->get('email');
         $password = $request->get('password');
-        $realname = $request->get('real_name');
+        $realname = $request->get('realName');
 
         $user = new Models\User();
         $user->email = $email;

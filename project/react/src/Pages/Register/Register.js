@@ -22,8 +22,8 @@ class Register extends Component {
     submitHandler = (e) => {
         e.preventDefault();
         console.log(this.state);
-        // userService.register(this.state)
-        //     .then();
+        userService.register(this.state)
+            .then();
     }
 
     render() {
