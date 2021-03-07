@@ -23,6 +23,7 @@ class CheckApiToken
 
         $user = User::where('auth_token', $authToken)->get();
         $request->user = count($user) == 1 ? $user[0] : [];
+        $request->hasUser = count($user) == 1;
 
         return $next($request);
     }

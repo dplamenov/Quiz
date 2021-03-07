@@ -18,6 +18,8 @@ class User extends Controller
 
         $token = Str::random(60);
 
+//        var_dump(uth::attempt(['email' => $email, 'password' => $password]));
+
         if (!$request->user()) {
             return response()->json(['error' => 'no user'], 401);
         }
@@ -58,6 +60,14 @@ class User extends Controller
 
     public function auth(Request $request)
     {
-        return response()->json($request->user);
+        $statusCode = 200;
+        $result = $request->user;
+
+        if (!$request->hasUser) {
+            $statusCode = 401;
+            $result = ['error' => 'no user'];
+        }
+
+        return response()->json($result, $statusCode);
     }
 }
