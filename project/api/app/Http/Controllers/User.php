@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class User extends Controller
 {
-    public function login(Request $request)
+    public function login(Request $request): \Illuminate\Http\JsonResponse
     {
         $email = $request->get('email');
         $password = $request->get('password');
@@ -47,7 +47,7 @@ class User extends Controller
         return response()->json($request->all());
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->user->auth_token = '';
         $request->user->isOnline = 0;
