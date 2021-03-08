@@ -24,7 +24,6 @@ class Header extends React.Component {
             <nav>
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    {this.props.isLogged ? userNavigation : guestNavigation}
                 </ul>
             </nav>
         </header>;
