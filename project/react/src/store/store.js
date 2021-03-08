@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActionTypes, loginSuccess, loginFailure, logoutSuccess, logoutFailure } from './actions';
+import {ActionTypes, loginSuccess, loginFailure, logoutSuccess, logoutFailure} from './actions';
 import userService from '../services/user';
 
 export const StoreContext = React.createContext({});
@@ -15,9 +15,17 @@ function init(state) {
 
 const asyncActionMap = {
     [ActionTypes.Login]:
-        ({ user }) => userService.login(user)
-            .then(user => loginSuccess(user))
-            .catch(error => loginFailure(error)),
+        ({user, cb}) => {
+            return userService.login(user)
+                .then(user => {
+                    if (user.error) {
+                        return Promise.reject('no user');
+                    }
+                    cb();
+                    return loginSuccess(user);
+                })
+                .catch(error => loginFailure(error));
+        },
     [ActionTypes.Logout]:
         () => userService.logout()
             .then(() => logoutSuccess())
@@ -25,10 +33,10 @@ const asyncActionMap = {
 }
 
 const actionMap = {
-    [ActionTypes.Login]: (state) => ({ ...state, error: null }),
-    [ActionTypes.LoginSuccess]: (state, { user }) => ({ ...state, user }),
-    [ActionTypes.LogoutSuccess]: (state) => ({ ...state, user: null }),
-    [ActionTypes.LoginFailure]: (state, { error }) => ({ ...state, error })
+    [ActionTypes.Login]: (state) => ({...state, error: null}),
+    [ActionTypes.LoginSuccess]: (state, {user}) => ({...state, user}),
+    [ActionTypes.LogoutSuccess]: (state) => ({...state, user: null}),
+    [ActionTypes.LoginFailure]: (state, {error}) => ({...state, error})
 }
 
 const storeReducer = (state, action) => {
@@ -36,8 +44,7 @@ const storeReducer = (state, action) => {
     return handler ? handler(state, action.payload) : state;
 }
 
-const Store = ({ children }) => {
-
+const Store = ({children}) => {
     const [state, dispatch] = React.useReducer(storeReducer, initialState, init);
 
     const store = React.useMemo(() => ({

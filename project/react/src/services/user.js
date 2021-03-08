@@ -7,11 +7,7 @@ const userService = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        })
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-            });
+        }).then(res => res.json());
     },
 
     login: function (data) {
@@ -20,11 +16,7 @@ const userService = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }
-        })
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-            });
+        }).then(res => res.json());
     },
 
     logout: function () {

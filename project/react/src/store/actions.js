@@ -8,7 +8,7 @@ export const ActionTypes = {
     LogoutFailure: Symbol("[AUTH] Logout Failure")
 };
 
-export const login = (user) => ({ type: ActionTypes.Login, payload: { user }});
+export const login = (user, cb) => ({ type: ActionTypes.Login, payload: { user, cb }});
 export const loginFailure = (error) => ({ type: ActionTypes.LoginFailure, payload: { error }});
 export const loginSuccess = (user) => ({ type: ActionTypes.LoginSuccess, payload: { user }});
 

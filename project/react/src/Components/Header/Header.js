@@ -4,6 +4,19 @@ import {Link} from "react-router-dom";
 
 class Header extends React.Component {
     render() {
+        const guestNavigation = (
+            <>
+                <li><Link to="/user/login">Login</Link></li>
+                <li><Link to="/user/register">Register</Link></li>
+            </>
+        );
+
+        const userNavigation = (
+            <>
+                <li><Link to="/user/logout">Logout</Link></li>
+            </>
+        );
+
         return <header>
             <article className="logo-wrapper">
                 <h1><Link to="/">logo</Link></h1>
@@ -11,8 +24,7 @@ class Header extends React.Component {
             <nav>
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/user/login">Login</Link></li>
-                    <li><Link to="/user/register">Register</Link></li>
+                    {this.props.isLogged ? userNavigation : guestNavigation}
                 </ul>
             </nav>
         </header>;

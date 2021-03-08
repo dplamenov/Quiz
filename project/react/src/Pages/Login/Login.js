@@ -1,43 +1,43 @@
-import React, {Component} from "react";
+import React, {useState} from 'react';
 import './Login.css';
-import userService from "../../services/user";
+import {StoreContext} from "../../store/store";
+import {login} from "../../store/actions";
+import {Redirect, useHistory} from "react-router-dom";
 
-class Login extends Component {
-    constructor(props) {
-        super(props);
+function Login(props) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const {state, dispatch} = React.useContext(StoreContext);
+    const history = useHistory();
 
-        this.state = {
-            email: '',
-            password: ''
-        };
+    const emailChangeHandler = (event) => {
+        setEmail(event.target.value);
+
+    }
+    const passwordChangeHandler = (event) => {
+        setPassword(event.target.value);
+
     }
 
-    changeHandler = (event) => {
-        this.setState({[event.target.id]: event.target.value});
-    }
-
-    submitHandler = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault();
-        userService.login(this.state)
-            .then();
+        dispatch(login({email, password}, () => {
+            history.push('/');
+        }));
     }
 
-    render() {
-        const {email, password} = this.state;
-
-        return (
-            <div className="wrapper login-page">
-                <h1>Login</h1>
-                <form className="login-form" onSubmit={this.submitHandler}>
-                    <input type="text" name="email" id="email" placeholder="EMAIL" value={email}
-                           onChange={this.changeHandler}/>
-                    <input type="password" name="password" id="password" placeholder="PASSWORD" value={password}
-                           onChange={this.changeHandler}/>
-                    <button className="btn login-button">Login</button>
-                </form>
-            </div>
-        );
-    }
+    return (
+        <div className="wrapper login-page">
+            <h1>Login</h1>
+            <form className="login-form" onSubmit={submitHandler}>
+                <input type="text" name="email" id="email" placeholder="EMAIL" value={email}
+                       onChange={emailChangeHandler}/>
+                <input type="password" name="password" id="password" placeholder="PASSWORD" value={password}
+                       onChange={passwordChangeHandler}/>
+                <button className="btn login-button">Login</button>
+            </form>
+        </div>
+    );
 }
 
 export default Login;

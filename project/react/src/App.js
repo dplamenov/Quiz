@@ -13,17 +13,17 @@ import {
     Switch,
     Route
 } from "react-router-dom";
+import {Provider} from "react-redux";
 
 const Auth = ({children}) => {
     const {dispatch} = React.useContext(StoreContext);
-    console.log(dispatch);
     React.useEffect(() => {
         fetch("https://quiz-api.sharkdev.eu/api/user/auth", {credentials: "include"})
-            .then(res =>
-                res.status === 200
+            .then(res => {
+                return res.status === 200
                     ? res.json()
-                    : res.text().then(text => Promise.reject(text))
-            )
+                    : res.text().then(text => Promise.reject(text));
+            })
             .then(user => dispatch(loginSuccess(user)))
             .catch(() => {
                 dispatch(loginSuccess(null));
@@ -46,16 +46,14 @@ class App extends React.Component {
                 <Auth>
                     <StoreContext.Consumer>
                         {({state}) => {
-                            console.log(state);
                             const {user} = state;
                             const isLogged = !!state.user;
-
                             return user === undefined ? (
                                 <div>Loading...</div>
                             ) : (
                                 <Router>
                                     <p>{isLogged ? 'true' : 'false'}</p>
-                                    <Header/>
+                                    <Header isLogged={isLogged}/>
                                     <Switch>
                                         <Route path="/" exact={true}>
                                             <Home/>
@@ -65,6 +63,9 @@ class App extends React.Component {
                                         </Route>
                                         <Route path="/user/register">
                                             <Register/>
+                                        </Route>
+                                        <Route path="/user/logout">
+                                            <p>logout</p>
                                         </Route>
                                     </Switch>
                                 </Router>
