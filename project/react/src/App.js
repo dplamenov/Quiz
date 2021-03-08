@@ -55,16 +55,13 @@ class App extends React.Component {
                                     <Header isLogged={isLogged}/>
                                     <Switch>
                                         <Route path="/" exact={true}>
-                                            <Home/>
+                                            <Home isLogged={isLogged}/>
                                         </Route>
                                         <Route path="/user/login">
                                             <Login/>
                                         </Route>
                                         <Route path="/user/register">
                                             <Register/>
-                                        </Route>
-                                        <Route path="/user/logout">
-                                            <p>logout</p>
                                         </Route>
                                     </Switch>
                                 </Router>

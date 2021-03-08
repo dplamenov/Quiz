@@ -25,6 +25,7 @@ function Header(props) {
     const userNavigation = (
         <>
             <li><Link to="#" onClick={logoutHandler}>Logout</Link></li>
+            <li>Welcome, {state.user?.email}</li>
         </>
     );
 
@@ -36,7 +37,6 @@ function Header(props) {
             <ul>
                 <li><Link to="/">Home</Link></li>
                 {props.isLogged ? userNavigation : guestNavigation}
-                Welcome, {state.user?.email}
             </ul>
         </nav>
     </header>;
