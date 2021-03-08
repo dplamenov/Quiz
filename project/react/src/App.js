@@ -52,7 +52,6 @@ class App extends React.Component {
                                 <div>Loading...</div>
                             ) : (
                                 <Router>
-                                    <p>{isLogged ? 'true' : 'false'}</p>
                                     <Header isLogged={isLogged}/>
                                     <Switch>
                                         <Route path="/" exact={true}>
