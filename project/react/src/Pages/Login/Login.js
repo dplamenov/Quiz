@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import './Login.css';
 import {StoreContext} from "../../store/store";
 import {login} from "../../store/actions";
-import {Redirect, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function Login(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {state, dispatch} = React.useContext(StoreContext);
+    const {dispatch} = React.useContext(StoreContext);
     const history = useHistory();
 
     const emailChangeHandler = (event) => {

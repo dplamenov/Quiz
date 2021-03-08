@@ -19,8 +19,13 @@ const userService = {
         }).then(res => res.json());
     },
 
-    logout: function () {
-
+    logout: function (data) {
+        return fetch(`${config.apiUrl}user/logout`, {
+            method: 'get', body: JSON.stringify(data), credentials: 'include', headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json());
     }
 };
 

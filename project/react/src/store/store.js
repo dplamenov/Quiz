@@ -27,8 +27,11 @@ const asyncActionMap = {
                 .catch(error => loginFailure(error));
         },
     [ActionTypes.Logout]:
-        () => userService.logout()
-            .then(() => logoutSuccess())
+        ({cb}) => userService.logout()
+            .then((data) => {
+                cb();
+                return logoutSuccess();
+            })
             .catch(error => logoutFailure(error))
 }
 
