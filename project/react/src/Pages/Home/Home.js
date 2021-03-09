@@ -15,7 +15,7 @@ class Home extends React.Component {
     renderUser() {
         return (
             <>
-                <h1>Welcome</h1>
+                {/*<h1>Welcome</h1>*/}
                 <h1>Select category</h1>
                 <section className="quiz-themes">
                     <article className="quiz-theme">
@@ -57,7 +57,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            true ? this.renderUser() : this.renderGuest()
+            this.props.isLogged ? this.renderUser() : this.renderGuest()
         );
     }
 }
