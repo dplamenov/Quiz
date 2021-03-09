@@ -34,7 +34,6 @@ const Auth = ({children}) => {
     return <>{children}</>;
 };
 
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -62,7 +61,7 @@ class App extends React.Component {
                                             {isLogged ? <Redirect to="/"/> : <Login/>}
                                         </Route>
                                         <Route path="/user/register">
-                                            <Register/>
+                                            {isLogged ? <Redirect to="/"/> : <Register/>}
                                         </Route>
                                     </Switch>
                                 </Router>
