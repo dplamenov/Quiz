@@ -14,6 +14,7 @@ import {
     Route
 } from "react-router-dom";
 import {Provider} from "react-redux";
+import Loader from "./Components/Loader/Loader";
 
 const Auth = ({children}) => {
     const {dispatch} = React.useContext(StoreContext);
@@ -49,7 +50,7 @@ class App extends React.Component {
                             const {user} = state;
                             const isLogged = !!state.user;
                             return user === undefined ? (
-                                <div>Loading...</div>
+                                <Loader/>
                             ) : (
                                 <Router>
                                     <Header isLogged={isLogged}/>
