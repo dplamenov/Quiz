@@ -18,7 +18,6 @@ class User extends Controller
 
         $token = Str::random(60);
 
-//        var_dump(uth::attempt(['email' => $email, 'password' => $password]));
 
         if (!$request->user()) {
             return response()->json(['error' => 'no user'], 401);
