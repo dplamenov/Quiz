@@ -11,7 +11,7 @@ import {loginSuccess} from "./store/actions";
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route, Redirect
 } from "react-router-dom";
 import {Provider} from "react-redux";
 import Loader from "./Components/Loader/Loader";
@@ -59,7 +59,7 @@ class App extends React.Component {
                                             <Home isLogged={isLogged}/>
                                         </Route>
                                         <Route path="/user/login">
-                                            <Login/>
+                                            {isLogged ? <Redirect to="/"/> : <Login/>}
                                         </Route>
                                         <Route path="/user/register">
                                             <Register/>
