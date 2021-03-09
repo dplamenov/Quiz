@@ -1,6 +1,6 @@
 import React from 'react';
-import './Home.css';
 import {Link} from "react-router-dom";
+import './Home.css';
 
 class Home extends React.Component {
     renderGuest() {
@@ -15,7 +15,6 @@ class Home extends React.Component {
     renderUser() {
         return (
             <>
-                {/*<h1>Welcome</h1>*/}
                 <h1>Select category</h1>
                 <section className="quiz-themes">
                     <article className="quiz-theme">
