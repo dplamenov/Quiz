@@ -5,5 +5,5 @@ Features
 - Users can add a questions
 
 Technologies 
-- Node.JS & Express
 - React
+- Laravel REST API
