@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Question;
 use App\Http\Controllers\User;
+use App\Http\Controllers\Category;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,4 +36,5 @@ Route::post('/user/login', [User::class, 'login']);
 Route::post('/user/register', [User::class, 'register']);
 Route::get('/user/auth', [User::class, 'auth']);
 Route::get('/user/logout', [User::class, 'logout'])->middleware('auth');
+Route::get('/category', [Category::class, 'getAll']);
 

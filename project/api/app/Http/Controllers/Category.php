@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
 class Category extends Controller
 {
-    public function getAll()
+    public function getAll(): \Illuminate\Http\JsonResponse
     {
-
+        $categories = \App\Models\Category::all();
+        return response()->json($categories);
     }
 }
