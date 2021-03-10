@@ -2,6 +2,14 @@ h1, p {
     text-align: center;
 }
 
+main {
+    position: relative;
+}
+
+main h1 {
+    margin-top: 10px;
+}
+
 .quiz-themes {
     display: flex;
     max-width: 1500px;
@@ -13,7 +21,7 @@ h1, p {
     display: inline-block;
     position: absolute;
     right: 0;
-    top: -21.5px;
+    top: -10px;
     background-color: lightblue;
     padding: 2px 15px;
     border-bottom-left-radius: 25px;
