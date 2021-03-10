@@ -15,16 +15,19 @@ function init(state) {
 
 const asyncActionMap = {
     [ActionTypes.Login]:
-        ({user, cb}) => {
+        ({user, cb, errorCb}) => {
             return userService.login(user)
                 .then(user => {
                     if (user.error) {
-                        return Promise.reject('no user');
+                        return Promise.reject(user.error);
                     }
-                    cb();
+                    cb(user);
                     return loginSuccess(user);
                 })
-                .catch(error => loginFailure(error));
+                .catch(error => {
+                    errorCb(error);
+                    return loginFailure(error);
+                });
         },
     [ActionTypes.Logout]:
         ({cb}) => userService.logout()
