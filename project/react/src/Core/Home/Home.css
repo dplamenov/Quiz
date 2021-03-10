@@ -9,31 +9,7 @@ h1, p {
     flex-wrap: wrap;
 }
 
-.quiz-theme {
-    margin-top: 40px;
-    margin-right: 10px;
-    flex-basis: 24.3%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 0;
-    background-color: rgba(255, 255, 0, 0.297);
-}
 
-.quiz-theme img {
-    margin-bottom: 20px;
-    width: 128px;
-}
-
-.quiz-theme p {
-    text-align: center;
-    padding: 8px 0;
-    margin: 8px 0;
-    font-size: 26px;
-    background-color: #6b400c;
-    color: white;
-    width: 100%;
-}
 
 .stats {
     display: inline-block;

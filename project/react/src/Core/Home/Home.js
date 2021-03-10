@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import './Home.css';
+import CategoryCard from "../../Category/CategoryCard/CategoryCard";
 
 class Home extends React.Component {
     renderGuest() {
@@ -17,6 +18,7 @@ class Home extends React.Component {
             <>
                 <h1>Select category</h1>
                 <section className="quiz-themes">
+                    <CategoryCard />
                     <article className="quiz-theme">
                         <img src={process.env.PUBLIC_URL + 'images/categories/history.png'} alt=""/>
                         <p className="quiz-theme-name">History</p>
@@ -56,7 +58,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            this.props.isLogged ? this.renderUser() : this.renderGuest()
+            true ? this.renderUser() : this.renderGuest()
         );
     }
 }
