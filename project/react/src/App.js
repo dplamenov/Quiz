@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/Header/Header';
-import Home from './Pages/Home/Home';
-import Login from './Pages/Login/Login';
-import Register from "./Pages/Register/Register";
+import Header from './Core/Header/Header';
+import Home from './Core/Home/Home';
+import Login from './User/Login/Login';
+import Register from "./User/Register/Register";
 import Store, {StoreContext} from "./store/store";
 import {loginSuccess} from "./store/actions";
-import Loader from "./Components/Loader/Loader";
+import Loader from "./Core/Loader/Loader";
 
 import {
     BrowserRouter as Router,
