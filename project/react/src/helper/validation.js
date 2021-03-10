@@ -10,30 +10,32 @@ const validationsMapWithParams = {
     }
 };
 
+function setValidationResult(result, target, error, setError) {
+    if (!result) {
+        target.classList.add('error');
+        setError((state) => ({...state, [error]: true}));
+    } else {
+        target.classList.remove('error');
+        setError((state) => ({...state, [error]: false}));
+    }
+}
+
 function validationHandler(setError, validations = {}) {
     return ({target}) => {
         for (const validation of Object.entries(validations)) {
-            if (validationsMapWithoutParams.hasOwnProperty(validation[0])) {
+            const validationName = validation[0];
+
+            if (validationsMapWithoutParams.hasOwnProperty(validationName)) {
                 const error = validation[1];
-                const v = target.value.trim().match(validationsMapWithoutParams[validation[0]]);
-                if (!v) {
-                    setError((state) => ({...state, [error]: true}));
-                    target.classList.add('error');
-                } else {
-                    setError((state) => ({...state, [error]: false}));
-                    target.classList.remove('error');
-                }
-            } else if (validationsMapWithParams.hasOwnProperty(validation[0])) {
+                const result = target.value.trim().match(validationsMapWithoutParams[validation[0]]);
+
+                setValidationResult(result, target, error, setError);
+            } else if (validationsMapWithParams.hasOwnProperty(validationName)) {
                 const [param, error] = validation[1];
                 const regexFn = validationsMapWithParams[validation[0]];
-                const v = target.value.trim().match(regexFn(param));
-                if (!v) {
-                    target.classList.add('error');
-                    setError((state) => ({...state, [error]: true}));
-                } else {
-                    target.classList.remove('error');
-                    setError((state) => ({...state, [error]: false}));
-                }
+                const result = target.value.trim().match(regexFn(param));
+
+                setValidationResult(result, target, error, setError);
             }
         }
     }
