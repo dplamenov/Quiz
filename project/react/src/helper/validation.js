@@ -24,16 +24,17 @@ function validationHandler(setError, validations = {}) {
     return ({target}) => {
         for (const validation of Object.entries(validations)) {
             const validationName = validation[0];
+            const value = target.value.trim();
 
             if (validationsMapWithoutParams.hasOwnProperty(validationName)) {
                 const error = validation[1];
-                const result = target.value.trim().match(validationsMapWithoutParams[validation[0]]);
+                const result = value.match(validationsMapWithoutParams[validation[0]]);
 
                 setValidationResult(result, target, error, setError);
             } else if (validationsMapWithParams.hasOwnProperty(validationName)) {
                 const [param, error] = validation[1];
                 const regexFn = validationsMapWithParams[validation[0]];
-                const result = target.value.trim().match(regexFn(param));
+                const result = value.match(regexFn(param));
 
                 setValidationResult(result, target, error, setError);
             }
