@@ -2,8 +2,26 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import './Home.css';
 import CategoryCard from "../../Category/CategoryCard/CategoryCard";
+import categoryService from "../../services/category";
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            categories: []
+        };
+    }
+
+    componentDidMount() {
+        categoryService.getAll()
+            .then(categories => {
+               this.setState({
+                   categories
+               })
+            });
+    }
+
     renderGuest() {
         return (
             <>
@@ -18,39 +36,42 @@ class Home extends React.Component {
             <>
                 <h1>Select category</h1>
                 <section className="quiz-themes">
-                    <CategoryCard />
-                    <article className="quiz-theme">
-                        <img src={process.env.PUBLIC_URL + 'images/categories/history.png'} alt=""/>
-                        <p className="quiz-theme-name">History</p>
-                    </article>
-                    <article className="quiz-theme">
-                        <img src={process.env.PUBLIC_URL + 'images/categories/geography.png'} alt=""/>
-                        <p className="quiz-theme-name">Geography</p>
-                    </article>
-                    <article className="quiz-theme">
-                        <img src={process.env.PUBLIC_URL + 'images/categories/math.png'} alt=""/>
-                        <p className="quiz-theme-name">Math</p>
-                    </article>
-                    <article className="quiz-theme">
-                        <img src={process.env.PUBLIC_URL + 'images/categories/music.png'} alt=""/>
-                        <p className="quiz-theme-name">Music</p>
-                    </article>
-                    <article className="quiz-theme">
-                        <img src={process.env.PUBLIC_URL + 'images/categories/soccer.png'} alt=""/>
-                        <p className="quiz-theme-name">Soccer</p>
-                    </article>
-                    <article className="quiz-theme">
-                        <img src={process.env.PUBLIC_URL + 'images/categories/chemistry.png'} alt=""/>
-                        <p className="quiz-theme-name">Chemistry</p>
-                    </article>
-                    <article className="quiz-theme">
-                        <img src={process.env.PUBLIC_URL + 'images/categories/biology.png'} alt=""/>
-                        <p className="quiz-theme-name">Biology</p>
-                    </article>
-                    <article className="quiz-theme">
-                        <img src={process.env.PUBLIC_URL + 'images/categories/physics.png'} alt=""/>
-                        <p className="quiz-theme-name">Physics</p>
-                    </article>
+                    {this.state.categories.map(category => {
+                        console.log(category);
+                        return <CategoryCard key={category.id} name={category.name}/>
+                    })}
+                    {/*<article className="quiz-theme">*/}
+                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/history.png'} alt=""/>*/}
+                    {/*    <p className="quiz-theme-name">History</p>*/}
+                    {/*</article>*/}
+                    {/*<article className="quiz-theme">*/}
+                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/geography.png'} alt=""/>*/}
+                    {/*    <p className="quiz-theme-name">Geography</p>*/}
+                    {/*</article>*/}
+                    {/*<article className="quiz-theme">*/}
+                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/math.png'} alt=""/>*/}
+                    {/*    <p className="quiz-theme-name">Math</p>*/}
+                    {/*</article>*/}
+                    {/*<article className="quiz-theme">*/}
+                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/music.png'} alt=""/>*/}
+                    {/*    <p className="quiz-theme-name">Music</p>*/}
+                    {/*</article>*/}
+                    {/*<article className="quiz-theme">*/}
+                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/soccer.png'} alt=""/>*/}
+                    {/*    <p className="quiz-theme-name">Soccer</p>*/}
+                    {/*</article>*/}
+                    {/*<article className="quiz-theme">*/}
+                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/chemistry.png'} alt=""/>*/}
+                    {/*    <p className="quiz-theme-name">Chemistry</p>*/}
+                    {/*</article>*/}
+                    {/*<article className="quiz-theme">*/}
+                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/biology.png'} alt=""/>*/}
+                    {/*    <p className="quiz-theme-name">Biology</p>*/}
+                    {/*</article>*/}
+                    {/*<article className="quiz-theme">*/}
+                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/physics.png'} alt=""/>*/}
+                    {/*    <p className="quiz-theme-name">Physics</p>*/}
+                    {/*</article>*/}
                 </section>
             </>
         );

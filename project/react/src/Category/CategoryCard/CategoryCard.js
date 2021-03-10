@@ -1,11 +1,13 @@
 import React from 'react';
 import './CategoryCard.css';
 
-function CategoryCard() {
+function CategoryCard(props) {
+    const imageUrl = `${process.env.PUBLIC_URL}images/categories/${props.name.toString()}.png`
+
     return (
         <article className="quiz-theme">
-            <img src={process.env.PUBLIC_URL + 'images/categories/history.png'} alt=""/>
-            <p className="quiz-theme-name">History</p>
+            <img src={imageUrl} alt=""/>
+            <p className="quiz-theme-name">{props.name}</p>
         </article>
     );
 }
