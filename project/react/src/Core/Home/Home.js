@@ -16,9 +16,9 @@ class Home extends React.Component {
     componentDidMount() {
         categoryService.getAll()
             .then(categories => {
-               this.setState({
-                   categories
-               })
+                this.setState({
+                    categories
+                })
             });
     }
 
@@ -40,38 +40,6 @@ class Home extends React.Component {
                         console.log(category);
                         return <CategoryCard key={category.id} name={category.name}/>
                     })}
-                    {/*<article className="quiz-theme">*/}
-                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/history.png'} alt=""/>*/}
-                    {/*    <p className="quiz-theme-name">History</p>*/}
-                    {/*</article>*/}
-                    {/*<article className="quiz-theme">*/}
-                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/geography.png'} alt=""/>*/}
-                    {/*    <p className="quiz-theme-name">Geography</p>*/}
-                    {/*</article>*/}
-                    {/*<article className="quiz-theme">*/}
-                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/math.png'} alt=""/>*/}
-                    {/*    <p className="quiz-theme-name">Math</p>*/}
-                    {/*</article>*/}
-                    {/*<article className="quiz-theme">*/}
-                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/music.png'} alt=""/>*/}
-                    {/*    <p className="quiz-theme-name">Music</p>*/}
-                    {/*</article>*/}
-                    {/*<article className="quiz-theme">*/}
-                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/soccer.png'} alt=""/>*/}
-                    {/*    <p className="quiz-theme-name">Soccer</p>*/}
-                    {/*</article>*/}
-                    {/*<article className="quiz-theme">*/}
-                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/chemistry.png'} alt=""/>*/}
-                    {/*    <p className="quiz-theme-name">Chemistry</p>*/}
-                    {/*</article>*/}
-                    {/*<article className="quiz-theme">*/}
-                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/biology.png'} alt=""/>*/}
-                    {/*    <p className="quiz-theme-name">Biology</p>*/}
-                    {/*</article>*/}
-                    {/*<article className="quiz-theme">*/}
-                    {/*    <img src={process.env.PUBLIC_URL + 'images/categories/physics.png'} alt=""/>*/}
-                    {/*    <p className="quiz-theme-name">Physics</p>*/}
-                    {/*</article>*/}
                 </section>
             </>
         );
@@ -79,7 +47,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            true ? this.renderUser() : this.renderGuest()
+            this.props.isLogged ? this.renderUser() : this.renderGuest()
         );
     }
 }
