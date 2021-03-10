@@ -5,10 +5,14 @@ import {login} from "../../store/actions";
 import {useHistory} from "react-router-dom";
 import validationHandler from "../../helper/validation";
 
-function Login(props) {
+function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [errors, setErrors] = useState({
+        invalidMail: false,
+        invalidPassword: false
+    });
 
     const {dispatch} = React.useContext(StoreContext);
     const history = useHistory();
@@ -20,12 +24,6 @@ function Login(props) {
     const passwordChangeHandler = (event) => {
         setPassword(event.target.value);
     }
-
-    // const validationHandler = (...validations) => {
-    //     return ({target}) => {
-    //         console.log(target, target.value);
-    //     }
-    // }
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -41,12 +39,15 @@ function Login(props) {
         <div className="wrapper login-page">
             <h1>Login</h1>
             <form className="login-form" onSubmit={submitHandler}>
+                {errors.invalidMail}
                 {!!errorMessage ? <p>{errorMessage}</p> : ''}
-                <p>email is not valid</p>
+                {!!errors.invalidMail ? <p>email is not valid</p> : ''}
+                {!!errors.invalidPassword ? <p>password is not valid</p> : ''}
                 <input type="text" name="email" id="email" placeholder="EMAIL" value={email}
-                       onChange={emailChangeHandler} onBlur={validationHandler('email')}/>
+                       onChange={emailChangeHandler} onBlur={validationHandler(setErrors, {email: 'invalidMail'})}/>
                 <input type="password" name="password" id="password" placeholder="PASSWORD" value={password}
-                       onChange={passwordChangeHandler} onBlur={validationHandler()}/>
+                       onChange={passwordChangeHandler}
+                       onBlur={validationHandler(setErrors, {min: [5, 'invalidPassword']})}/>
                 <button className="btn login-button">Login</button>
             </form>
         </div>
