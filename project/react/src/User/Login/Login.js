@@ -3,6 +3,7 @@ import './Login.css';
 import {StoreContext} from "../../store/store";
 import {login} from "../../store/actions";
 import {useHistory} from "react-router-dom";
+import validationHandler from "../../helper/validation";
 
 function Login(props) {
     const [email, setEmail] = useState('');
@@ -20,11 +21,11 @@ function Login(props) {
         setPassword(event.target.value);
     }
 
-    const validationHandler = (...validations) => {
-        return ({target}) => {
-            console.log(target, target.value);
-        }
-    }
+    // const validationHandler = (...validations) => {
+    //     return ({target}) => {
+    //         console.log(target, target.value);
+    //     }
+    // }
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -45,7 +46,7 @@ function Login(props) {
                 <input type="text" name="email" id="email" placeholder="EMAIL" value={email}
                        onChange={emailChangeHandler} onBlur={validationHandler('email')}/>
                 <input type="password" name="password" id="password" placeholder="PASSWORD" value={password}
-                       onChange={passwordChangeHandler} onBlur={validationHandler}/>
+                       onChange={passwordChangeHandler} onBlur={validationHandler()}/>
                 <button className="btn login-button">Login</button>
             </form>
         </div>
