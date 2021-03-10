@@ -23,7 +23,7 @@ main h1 {
     right: 0;
     top: -10px;
     background-color: lightblue;
-    padding: 2px 15px;
+    padding: 2px 15px 2px 50px;
     border-bottom-left-radius: 25px;
 }
 

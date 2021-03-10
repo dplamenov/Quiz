@@ -50,7 +50,7 @@ class Home extends React.Component {
     render() {
         return (
             <main>
-                {true ? this.renderUser() : this.renderGuest()}
+                {this.props.isLogged ? this.renderUser() : this.renderGuest()}
             </main>
         );
     }
