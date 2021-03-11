@@ -3,7 +3,7 @@ import './Login.css';
 import {StoreContext} from "../../store/store";
 import {login} from "../../store/actions";
 import {useHistory} from "react-router-dom";
-import validationHandler from "../../helper/validation";
+import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -39,16 +39,17 @@ function Login() {
         <div className="wrapper login-page">
             <h1>Login</h1>
             <form className="login-form" onSubmit={submitHandler}>
-                {errors.invalidMail}
                 {!!errorMessage ? <p>{errorMessage}</p> : ''}
                 {!!errors.invalidMail ? <p>email is not valid</p> : ''}
-                {!!errors.invalidPassword ? <p>password is not valid</p> : ''}
+                {!!errors.invalidPassword ? <p>password must be at least 8 chars</p> : ''}
                 <input type="text" name="email" id="email" placeholder="EMAIL" value={email}
                        onChange={emailChangeHandler} onBlur={validationHandler(setErrors, {email: 'invalidMail'})}/>
                 <input type="password" name="password" id="password" placeholder="PASSWORD" value={password}
                        onChange={passwordChangeHandler}
-                       onBlur={validationHandler(setErrors, {min: [5, 'invalidPassword']})}/>
-                <button className="btn login-button">Login</button>
+                       onBlur={validationHandler(setErrors, {min: [8, 'invalidPassword']})}/>
+                <button className="btn login-button" disabled={!canSubmit(errors)}
+                        onClick={submitButtonHandler(errors)}>Login
+                </button>
             </form>
         </div>
     );

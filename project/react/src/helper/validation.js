@@ -60,10 +60,11 @@ export function submitButtonHandler(errors) {
     }
 
     return (e) => {
+        console.log(e);
         if (!canSubmit(errors)) {
             e.preventDefault();
         }
-        
+
         const form = findForm(e.target);
         const allInputs = [...form.querySelectorAll('input')];
         allInputs.forEach(input => {
