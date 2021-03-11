@@ -50,9 +50,8 @@ const asyncActionMap = {
         ({data, cb, errorCb}) => userService.register(data)
             .then((data) => {
                 if (data.exception) {
-                    return Promise.reject(data.exception);
+                    return Promise.reject('email already registered');
                 }
-
                 cb(data);
                 return registerSuccess(data);
             })

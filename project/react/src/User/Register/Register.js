@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 import './Register.css';
 import {StoreContext} from "../../store/store";
 import {register} from "../../store/actions";
@@ -9,6 +9,7 @@ function Register() {
     const [realName, setRealName] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const {dispatch} = React.useContext(StoreContext);
     const history = useHistory();
@@ -25,8 +26,9 @@ function Register() {
         const data = {email, realName, password, repeatPassword};
         dispatch(register(data, () => {
             history.push('/');
-        }, () => {
-            console.log('error');
+        }, (error) => {
+            setErrorMessage(error);
+            console.log(error);
         }));
     }
 
@@ -34,6 +36,7 @@ function Register() {
         <div className="wrapper register-page">
             <h1>Register</h1>
             <form className="register-form" onSubmit={submitHandler}>
+                {!!errorMessage ? <p>{errorMessage}</p> : ''}
                 <input type="text" name="email" id="email" placeholder="EMAIL" onChange={changeHandler(setEmail)}
                        value={email}/>
                 <input type="text" name="realName" id="realName" placeholder="REAL NAME"
