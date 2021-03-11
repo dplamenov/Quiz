@@ -13,6 +13,7 @@ import {
     Switch,
     Route, Redirect
 } from "react-router-dom";
+import Question from "./Question/Question/Question";
 
 const Auth = ({children}) => {
     const {dispatch} = React.useContext(StoreContext);
@@ -61,6 +62,7 @@ class App extends React.Component {
                                         <Route path="/user/register">
                                             {isLogged ? <Redirect to="/"/> : <Register/>}
                                         </Route>
+                                        <Route path="/question/:catId" component={Question}/>
                                     </Switch>
                                 </Router>
                             );
