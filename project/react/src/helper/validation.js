@@ -5,8 +5,11 @@ const validationsMapWithoutParams = {
 }
 
 const validationsMapWithParams = {
-    'min': (param) => {
-        return new RegExp(`.{${param},}`);
+    min: (minValue) => {
+        return new RegExp(`.{${minValue},}`);
+    },
+    match: (valueToMatch) => {
+        return new RegExp(`${valueToMatch}`);
     }
 };
 
@@ -33,8 +36,8 @@ function validationHandler(setError, validations = {}) {
                 setValidationResult(result, target, error, setError);
             } else if (validationsMapWithParams.hasOwnProperty(validationName)) {
                 const [param, error] = validation[1];
-                const regexFn = validationsMapWithParams[validation[0]];
-                const result = value.match(regexFn(param));
+                const validateFn = validationsMapWithParams[validation[0]];
+                const result = value.match(validateFn(param));
 
                 setValidationResult(result, target, error, setError);
             }
