@@ -1,0 +1,15 @@
+.answers {
+    width: 1000px;
+    margin: 5px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.question {
+    flex-basis: 40%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+    background-color: #f7931a;
+}
