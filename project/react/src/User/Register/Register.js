@@ -3,7 +3,7 @@ import './Register.css';
 import {StoreContext} from "../../store/store";
 import {register} from "../../store/actions";
 import {useHistory} from "react-router-dom";
-import validationHandler from "../../helper/validation";
+import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
 
 function Register() {
     const [email, setEmail] = useState('');
@@ -43,7 +43,6 @@ function Register() {
         <div className="wrapper register-page">
             <h1>Register</h1>
             <form className="register-form" onSubmit={submitHandler}>
-
                 {!!errorMessage ? <p>{errorMessage}</p> : ''}
                 {!!errors.invalidMail ? <p>email is not valid</p> : ''}
                 {!!errors.minRealName ? <p>real name must be at least 3 chars</p> : ''}
@@ -61,7 +60,9 @@ function Register() {
                 <input type="password" name="repeatPassword" id="repeatPassword" placeholder="REPEAT PASSWORD"
                        onChange={changeHandler(setRepeatPassword)} value={repeatPassword}
                        onBlur={validationHandler(setErrors, {match: [password, 'matchPassword']})}/>
-                <button className="btn register-button">Register</button>
+                <button className="btn register-button" disabled={!canSubmit(errors)}
+                        onClick={submitButtonHandler(errors)}>Register
+                </button>
             </form>
         </div>
     );

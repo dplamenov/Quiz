@@ -45,4 +45,32 @@ function validationHandler(setError, validations = {}) {
     }
 }
 
+export function canSubmit(errors) {
+    return (Object.values(errors)
+        .every(v => v === false));
+}
+
+export function submitButtonHandler(errors) {
+    function findForm(target) {
+        if (target.tagName !== 'FORM') {
+            return findForm(target.parentNode);
+        }
+
+        return target;
+    }
+
+    return (e) => {
+        if (!canSubmit(errors)) {
+            e.preventDefault();
+        }
+        
+        const form = findForm(e.target);
+        const allInputs = [...form.querySelectorAll('input')];
+        allInputs.forEach(input => {
+            input.focus();
+            input.blur();
+        });
+    };
+}
+
 export default validationHandler;

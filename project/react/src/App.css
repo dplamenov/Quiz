@@ -48,3 +48,6 @@
   margin: 0;
 }
 
+.btn:disabled {
+  background: #f8c68a;
+}
