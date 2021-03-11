@@ -1,6 +1,15 @@
 import React from 'react';
-import {ActionTypes, loginSuccess, loginFailure, logoutSuccess, logoutFailure} from './actions';
+import {
+    ActionTypes,
+    loginSuccess,
+    loginFailure,
+    logoutSuccess,
+    logoutFailure,
+    registerSuccess,
+    registerFailure
+} from './actions';
 import userService from '../services/user';
+import Login from "../User/Login/Login";
 
 export const StoreContext = React.createContext({});
 
@@ -35,14 +44,30 @@ const asyncActionMap = {
                 cb();
                 return logoutSuccess();
             })
-            .catch(error => logoutFailure(error))
+            .catch(error => logoutFailure(error)),
+
+    [ActionTypes.Register]:
+        ({data, cb, errorCb}) => userService.register(data)
+            .then((data) => {
+                if (data.exception) {
+                    return Promise.reject(data.exception);
+                }
+                
+                cb(data);
+                return registerSuccess(data);
+            })
+            .catch(error => {
+                errorCb(error);
+                return registerFailure(error);
+            })
 }
 
 const actionMap = {
     [ActionTypes.Login]: (state) => ({...state, error: null}),
     [ActionTypes.LoginSuccess]: (state, {user}) => ({...state, user}),
     [ActionTypes.LogoutSuccess]: (state) => ({...state, user: null}),
-    [ActionTypes.LoginFailure]: (state, {error}) => ({...state, error})
+    [ActionTypes.LoginFailure]: (state, {error}) => ({...state, error}),
+    [ActionTypes.Register]: (state) => ({...state})
 }
 
 const storeReducer = (state, action) => {
