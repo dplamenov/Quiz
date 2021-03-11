@@ -62,7 +62,7 @@ class App extends React.Component {
                                         <Route path="/user/register">
                                             {isLogged ? <Redirect to="/"/> : <Register/>}
                                         </Route>
-                                        <Route path="/question/:catId" component={Question}/>
+                                        <Route path="/question/:category" component={Question}/>
                                     </Switch>
                                 </Router>
                             );
