@@ -52,7 +52,7 @@ const asyncActionMap = {
                 if (data.exception) {
                     return Promise.reject(data.exception);
                 }
-                
+
                 cb(data);
                 return registerSuccess(data);
             })
