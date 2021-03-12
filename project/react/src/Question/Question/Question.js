@@ -1,14 +1,24 @@
 import React, {useEffect, useState} from "react";
 import "./Question.css";
 import Answer from "../Answer/Answer";
+import questionService from "../../services/question";
 
 function Question(props) {
-    // console.log(props.match.params.category);
-
+    const [question, setQuestion] = useState({});
     const [leftSeconds, setLeftSeconds] = useState(10);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
 
+    const getNextQuestion = () => {
+        const catId = props.match.params.category;
+        questionService.getQuestion(catId)
+            .then(q => {
+                q.answers = JSON.parse(q.answers);
+                setQuestion(q);
+            })
+    }
+
     useEffect(() => {
+        getNextQuestion();
         setInterval(() => {
             tickTimer();
         }, 1000);
@@ -19,7 +29,7 @@ function Question(props) {
     }
 
     const answerHandler = ({target}) => {
-        if(target.tagName !== 'ARTICLE'){
+        if (target.tagName !== 'ARTICLE') {
             return;
         }
 
@@ -30,7 +40,7 @@ function Question(props) {
     return (
         <>
             <h1 className="question-title">
-                When bulgaria celebrate christmas?
+                {question.question}
             </h1>
             <p className="counter-container">
                 <span>Left time: </span>
@@ -38,10 +48,7 @@ function Question(props) {
                 <span>s</span>
             </p>
             <section className="answers" onClick={answerHandler}>
-                <Answer id={1} content={"25.12"}/>
-                <Answer id={2} content={"01.01"}/>
-                <Answer id={3} content={"24.11"}/>
-                <Answer id={4} content={"05.03"}/>
+                {question.answers?.map((answer, id) => <Answer id={id + 1} content={answer} key={id + 1}/>)}
             </section>
         </>
     );
