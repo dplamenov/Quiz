@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./Question.css";
 import Answer from "../Answer/Answer";
 import questionService from "../../services/question";
+import TimerEnd from "../TimerEnd/TimerEnd";
 
 function Question(props) {
     const [question, setQuestion] = useState({});
@@ -49,6 +50,7 @@ function Question(props) {
 
     return (
         <>
+            {!isMoreTimeAvailable ? <TimerEnd/> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>
