@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import "./Question.css";
+import Answer from "../Answer/Answer";
 
 function Question(props) {
-    console.log(props.match.params.category);
+    // console.log(props.match.params.category);
 
-    const [leftSeconds, setLeftSeconds] = useState(30);
+    const [leftSeconds, setLeftSeconds] = useState(10);
+    const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
 
     useEffect(() => {
         setInterval(() => {
@@ -14,6 +16,15 @@ function Question(props) {
 
     const tickTimer = () => {
         setLeftSeconds(s => s - 1);
+    }
+
+    const answerHandler = ({target}) => {
+        if(target.tagName !== 'ARTICLE'){
+            return;
+        }
+
+        const answerId = target.getAttribute('id');
+        console.log(answerId);
     }
 
     return (
@@ -26,19 +37,11 @@ function Question(props) {
                 <span className="counter">{leftSeconds}</span>
                 <span>s</span>
             </p>
-            <section className="answers">
-                <article className="question">
-                    1
-                </article>
-                <article className="question">
-                    2
-                </article>
-                <article className="question">
-                    3
-                </article>
-                <article className="question">
-                    4
-                </article>
+            <section className="answers" onClick={answerHandler}>
+                <Answer id={1} content={"25.12"}/>
+                <Answer id={2} content={"01.01"}/>
+                <Answer id={3} content={"24.11"}/>
+                <Answer id={4} content={"05.03"}/>
             </section>
         </>
     );
