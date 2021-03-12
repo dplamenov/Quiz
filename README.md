@@ -20,6 +20,8 @@ Quiz application with React
 
 - Create new questions
 
-Technologies 
+<h2>Technologies</h2>
+
 - React
+
 - Laravel REST API
