@@ -1,5 +1,6 @@
 # Quiz
-Quiz application with Node.js
+Quiz application with React
+[DEMO](http://quiz.sharkdev.eu)
 
 Features
 - Users can add a questions
