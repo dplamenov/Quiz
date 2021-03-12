@@ -6,7 +6,7 @@ import TimerEnd from "../TimerEnd/TimerEnd";
 
 function Question(props) {
     const [question, setQuestion] = useState({});
-    const [leftSeconds, setLeftSeconds] = useState(1);
+    const [leftSeconds, setLeftSeconds] = useState(10);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
 
     let timerIntervalId;
