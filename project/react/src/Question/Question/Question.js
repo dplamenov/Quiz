@@ -5,7 +5,7 @@ import questionService from "../../services/question";
 
 function Question(props) {
     const [question, setQuestion] = useState({});
-    const [leftSeconds, setLeftSeconds] = useState(10);
+    const [leftSeconds, setLeftSeconds] = useState(2);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
 
     let timerIntervalId;
@@ -38,14 +38,13 @@ function Question(props) {
     }
 
     const answerHandler = ({target}) => {
-        if (target.tagName !== 'ARTICLE') {
+        if (target.tagName !== 'ARTICLE' || isMoreTimeAvailable !== true) {
             return;
         }
 
         const answerId = target.getAttribute('id');
         console.log(answerId);
     }
-
 
 
     return (
