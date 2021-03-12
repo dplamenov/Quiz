@@ -25,3 +25,16 @@
     justify-content: center;
     margin-top: 30px;
 }
+
+@media only screen and (max-width: 600px) {
+    .timer-end {
+        width: 50%;
+        height: 60vh;
+        top: 45%;
+        left: 50%;
+    }
+
+    .timer-end-heading {
+        font-size: 40px;
+    }
+}
