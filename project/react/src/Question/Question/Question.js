@@ -6,7 +6,7 @@ import TimerEnd from "../TimerEnd/TimerEnd";
 
 function Question(props) {
     const [question, setQuestion] = useState({});
-    const [leftSeconds, setLeftSeconds] = useState(2);
+    const [leftSeconds, setLeftSeconds] = useState(1);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
 
     let timerIntervalId;
@@ -29,7 +29,7 @@ function Question(props) {
 
     const tickTimer = () => {
         setLeftSeconds(s => {
-            if (s - 1 === 0) {
+            if (s - 1 <= 0) {
                 setIsMoreTimeAvailable(false);
                 clearTimeout(timerIntervalId);
             }

@@ -1,0 +1,27 @@
+.timer-end {
+    border: 1px solid black;
+    background-color: rgba(95, 158, 160, .8);
+    position: fixed;
+    width: 40%;
+    height: 30vh;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.timer-end-heading {
+    color: white;
+    text-transform: uppercase;
+    font-size: 80px;
+    margin: 0;
+}
+
+.timer-end-text {
+    color: white;
+}
+
+.timer-end-refresh-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
