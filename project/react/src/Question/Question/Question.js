@@ -8,6 +8,8 @@ function Question(props) {
     const [leftSeconds, setLeftSeconds] = useState(10);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
 
+    let timerIntervalId;
+
     const getNextQuestion = () => {
         const catId = props.match.params.category;
         questionService.getQuestion(catId)
@@ -19,13 +21,20 @@ function Question(props) {
 
     useEffect(() => {
         getNextQuestion();
-        setInterval(() => {
+        timerIntervalId = setInterval(() => {
             tickTimer();
         }, 1000);
     }, []);
 
     const tickTimer = () => {
-        setLeftSeconds(s => s - 1);
+        setLeftSeconds(s => {
+            if (s - 1 === 0) {
+                setIsMoreTimeAvailable(false);
+                clearTimeout(timerIntervalId);
+            }
+            return s - 1;
+        });
+
     }
 
     const answerHandler = ({target}) => {
@@ -37,6 +46,8 @@ function Question(props) {
         console.log(answerId);
     }
 
+
+
     return (
         <>
             <h1 className="question-title">
@@ -47,7 +58,7 @@ function Question(props) {
                 <span className="counter">{leftSeconds}</span>
                 <span>s</span>
             </p>
-            <section className="answers" onClick={answerHandler}>
+            <section className={isMoreTimeAvailable ? 'answers' : 'answers disabled'} onClick={answerHandler}>
                 {question.answers?.map((answer, id) => <Answer id={id + 1} content={answer} key={id + 1}/>)}
             </section>
         </>
