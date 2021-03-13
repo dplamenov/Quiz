@@ -14,6 +14,7 @@ import {
     Route, Redirect
 } from "react-router-dom";
 import Question from "./Question/Question/Question";
+import Admin from "./Admin/Admin";
 
 const Auth = ({children}) => {
     const {dispatch} = React.useContext(StoreContext);
@@ -47,6 +48,7 @@ class App extends React.Component {
                         {({state}) => {
                             const {user} = state;
                             const isLogged = !!state.user;
+
                             return user === undefined ? (
                                 <Loader/>
                             ) : (
@@ -63,6 +65,7 @@ class App extends React.Component {
                                             {isLogged ? <Redirect to="/"/> : <Register/>}
                                         </Route>
                                         <Route path="/question/:category" component={Question}/>
+                                        <Route path="/admin/" component={Admin}/>
                                     </Switch>
                                 </Router>
                             );
