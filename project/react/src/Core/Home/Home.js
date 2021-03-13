@@ -40,7 +40,7 @@ class Home extends React.Component {
                 </article>
                 <section className="quiz-themes">
                     {this.state.categories.map(category => {
-                        return <CategoryCard key={category.id} name={category.name}/>
+                        return <CategoryCard key={category.id} name={category.name} id={category.id}/>
                     })}
                 </section>
             </>
