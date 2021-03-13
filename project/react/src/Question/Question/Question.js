@@ -3,11 +3,13 @@ import "./Question.css";
 import Answer from "../Answer/Answer";
 import questionService from "../../services/question";
 import TimerEnd from "../TimerEnd/TimerEnd";
+import WrongAnswer from "../WrongAnswer/WrongAnswer";
 
 function Question(props) {
     const [question, setQuestion] = useState({});
     const [leftSeconds, setLeftSeconds] = useState(10);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
+    const [isAnswerWrong, setIsAnswerWrong] = useState(false);
 
     let timerIntervalId;
 
@@ -17,6 +19,7 @@ function Question(props) {
             .then(q => {
                 q.answers = JSON.parse(q.answers);
                 setQuestion(q);
+                setIsAnswerWrong(false);
                 setLeftSeconds(10);
             })
     }
@@ -50,6 +53,7 @@ function Question(props) {
         if (+answerId === +correct_answer) {
             getNextQuestion();
         } else {
+            setIsAnswerWrong(true);
             console.log('wrong');
         }
     }
@@ -58,6 +62,7 @@ function Question(props) {
     return (
         <>
             {!isMoreTimeAvailable ? <TimerEnd/> : ''}
+            {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer]}/> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>
