@@ -4,7 +4,7 @@ import {useRouteMatch} from "react-router";
 import {Link, NavLink, Redirect, Route, Switch} from "react-router-dom";
 
 function Admin(props) {
-    let {path, url} = useRouteMatch();
+    let {path} = useRouteMatch();
 
     return (
         <>

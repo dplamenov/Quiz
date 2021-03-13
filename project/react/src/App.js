@@ -7,14 +7,15 @@ import Register from "./User/Register/Register";
 import Store, {StoreContext} from "./store/store";
 import {loginSuccess} from "./store/actions";
 import Loader from "./Core/Loader/Loader";
+import Question from "./Question/Question/Question";
+import Admin from "./Admin";
 
 import {
     BrowserRouter as Router,
     Switch,
     Route, Redirect
 } from "react-router-dom";
-import Question from "./Question/Question/Question";
-import Admin from "./Admin/Admin";
+
 
 const Auth = ({children}) => {
     const {dispatch} = React.useContext(StoreContext);
