@@ -1,0 +1,21 @@
+.admin-panel-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-panel-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.admin-panel-nav li {
+    margin-right: 10px;
+}
+
+.admin-panel-nav a {
+    color: white;
+    background-color: #f7931a;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
