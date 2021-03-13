@@ -2,6 +2,9 @@ import React from 'react';
 import './Admin.css';
 import {useRouteMatch} from "react-router";
 import {Link, NavLink, Redirect, Route, Switch} from "react-router-dom";
+import Users from "../Users/Users";
+import Questions from "../Questions/Questions";
+import Categories from "../Categories/Categories";
 
 function Admin(props) {
     let {path} = useRouteMatch();
@@ -32,15 +35,9 @@ function Admin(props) {
                     <Route exact path={path}>
                         <h3 className="please-select-page">Please select page</h3>
                     </Route>
-                    <Route path={`${path}/users`}>
-                       <h1>users</h1>
-                    </Route>
-                    <Route path={`${path}/questions`}>
-                        <h1>questions</h1>
-                    </Route>
-                    <Route path={`${path}/categories`}>
-                        <h1>categories</h1>
-                    </Route>
+                    <Route path={`${path}/users`} component={Users}/>
+                    <Route path={`${path}/questions`} component={Questions}/>
+                    <Route path={`${path}/categories`} component={Categories}/>
                 </Switch>
             </section>
 
