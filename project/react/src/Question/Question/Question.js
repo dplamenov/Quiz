@@ -10,8 +10,8 @@ function Question(props) {
     const [leftSeconds, setLeftSeconds] = useState(10);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
     const [isAnswerWrong, setIsAnswerWrong] = useState(false);
+    const [timerIntervalId, setTimerIntervalId] = useState();
 
-    let timerIntervalId;
 
     const getNextQuestion = () => {
         const catId = props.match.params.category;
@@ -26,16 +26,18 @@ function Question(props) {
 
     useEffect(() => {
         getNextQuestion();
-        timerIntervalId = setInterval(() => {
+        const _timerIntervalId = setInterval(() => {
             tickTimer();
         }, 1000);
+        setTimerIntervalId(_timerIntervalId);
     }, []);
 
     const tickTimer = () => {
+        console.log('tick');
         setLeftSeconds(s => {
             if (s - 1 <= 0) {
                 setIsMoreTimeAvailable(false);
-                clearTimeout(timerIntervalId);
+                clearInterval(timerIntervalId);
             }
             return s - 1;
         });
@@ -54,7 +56,7 @@ function Question(props) {
             getNextQuestion();
         } else {
             setIsAnswerWrong(true);
-            console.log('wrong');
+            clearInterval(timerIntervalId);
         }
     }
 
