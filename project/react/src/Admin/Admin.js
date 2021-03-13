@@ -1,7 +1,7 @@
 import React from 'react';
 import './Admin.css';
 import {useRouteMatch} from "react-router";
-import {Link, Redirect} from "react-router-dom";
+import {Link, NavLink, Redirect, Route, Switch} from "react-router-dom";
 
 function Admin(props) {
     let {path, url} = useRouteMatch();
@@ -9,21 +9,40 @@ function Admin(props) {
     return (
         <>
             {props.user?.access !== 'admin' ? <Redirect to="/"/> : ''}
-            <h1>Admin panel</h1>
+            <h1>
+                <Link to='/admin' className="admin-panel-heading-a">Admin panel</Link>
+            </h1>
 
             <nav className="admin-panel-nav">
                 <ul>
                     <li>
-                        <Link to="/admin/users">Users</Link>
+                        <NavLink to="/admin/users">Users</NavLink>
                     </li>
                     <li>
-                        <Link to="/admin/question">Question</Link>
+                        <NavLink to="/admin/questions">Questions</NavLink>
                     </li>
                     <li>
-                        <Link to="/admin/category">Category</Link>
+                        <NavLink to="/admin/categories">Categories</NavLink>
                     </li>
                 </ul>
             </nav>
+
+            <section className="main-admin-wrapper">
+                <Switch>
+                    <Route exact path={path}>
+                        <h3 className="please-select-page">Please select page</h3>
+                    </Route>
+                    <Route path={`${path}/users`}>
+                       <h1>users</h1>
+                    </Route>
+                    <Route path={`${path}/questions`}>
+                        <h1>questions</h1>
+                    </Route>
+                    <Route path={`${path}/categories`}>
+                        <h1>categories</h1>
+                    </Route>
+                </Switch>
+            </section>
 
         </>
     );

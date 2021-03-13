@@ -1,6 +1,7 @@
 .admin-panel-nav {
     display: flex;
     justify-content: center;
+    margin: 20px 0;
 }
 
 .admin-panel-nav ul {
@@ -18,4 +19,25 @@
     padding: 12px 20px;
     border-radius: 8px;
     text-decoration: none;
+}
+
+a.active {
+    background-color: #643e10;
+}
+
+.main-admin-wrapper {
+    border: 1px solid black;
+    max-width: 70%;
+    margin: 30px auto;
+}
+
+.admin-panel-heading-a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.please-select-page {
+    text-align: center;
+    font-size: 32px;
+    margin: 2px;
 }
