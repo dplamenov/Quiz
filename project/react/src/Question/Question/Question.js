@@ -17,6 +17,7 @@ function Question(props) {
             .then(q => {
                 q.answers = JSON.parse(q.answers);
                 setQuestion(q);
+                setLeftSeconds(10);
             })
     }
 
@@ -44,7 +45,13 @@ function Question(props) {
         }
 
         const answerId = target.getAttribute('id');
-        console.log(answerId);
+        const {correct_answer} = question;
+
+        if (+answerId === +correct_answer) {
+            getNextQuestion();
+        } else {
+            console.log('wrong');
+        }
     }
 
 

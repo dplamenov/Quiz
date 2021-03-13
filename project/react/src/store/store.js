@@ -9,7 +9,6 @@ import {
     registerFailure
 } from './actions';
 import userService from '../services/user';
-import Login from "../User/Login/Login";
 
 export const StoreContext = React.createContext({});
 
