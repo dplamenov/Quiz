@@ -7,7 +7,7 @@ import WrongAnswer from "../WrongAnswer/WrongAnswer";
 
 function Question(props) {
     const [question, setQuestion] = useState({});
-    const [leftSeconds, setLeftSeconds] = useState(10);
+    const [leftSeconds, setLeftSeconds] = useState(2);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
     const [isAnswerWrong, setIsAnswerWrong] = useState(false);
     const [timerIntervalId, setTimerIntervalId] = useState();
@@ -20,24 +20,22 @@ function Question(props) {
                 q.answers = JSON.parse(q.answers);
                 setQuestion(q);
                 setIsAnswerWrong(false);
-                setLeftSeconds(10);
+                setLeftSeconds(2);
             })
     }
 
     useEffect(() => {
         getNextQuestion();
-        const _timerIntervalId = setInterval(() => {
+        setTimerIntervalId(setInterval(() => {
             tickTimer();
-        }, 1000);
-        setTimerIntervalId(_timerIntervalId);
+        }, 1000));
     }, []);
 
     const tickTimer = () => {
-        console.log('tick');
         setLeftSeconds(s => {
             if (s - 1 <= 0) {
                 setIsMoreTimeAvailable(false);
-                clearInterval(timerIntervalId);
+                clearInterval(1);
             }
             return s - 1;
         });
