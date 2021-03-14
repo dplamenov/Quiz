@@ -13,7 +13,7 @@ class Admin extends Controller
 
     public function getAllCategories()
     {
-
-
+        $categories = \App\Models\Category::all();
+        return response()->json($categories);
     }
 }

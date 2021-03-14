@@ -40,3 +40,4 @@ Route::get('/user/logout', [User::class, 'logout'])->middleware('auth');
 Route::get('/category', [Category::class, 'getAll']);
 
 Route::get('/admin/users', [Admin::class, 'getAllUsers']);
+Route::get('/admin/categories', [Admin::class, 'getAllCategories']);
