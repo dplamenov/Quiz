@@ -2,9 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
 class Admin extends Controller
 {
-    //
+    public function getAllUsers(): \Illuminate\Http\JsonResponse
+    {
+        $users = \App\Models\User::all();
+        return response()->json($users);
+    }
+
+    public function getAllCategories()
+    {
+
+
+    }
 }

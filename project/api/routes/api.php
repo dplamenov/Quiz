@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Question;
 use App\Http\Controllers\User;
+use App\Http\Controllers\Admin;
 use App\Http\Controllers\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +39,4 @@ Route::get('/user/auth', [User::class, 'auth']);
 Route::get('/user/logout', [User::class, 'logout'])->middleware('auth');
 Route::get('/category', [Category::class, 'getAll']);
 
+Route::get('/admin/users', [Admin::class, 'getAllUsers']);
