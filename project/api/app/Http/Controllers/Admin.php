@@ -11,7 +11,7 @@ class Admin extends Controller
         return response()->json($users);
     }
 
-    public function getAllCategories()
+    public function getAllCategories(): \Illuminate\Http\JsonResponse
     {
         $categories = \App\Models\Category::all();
         return response()->json($categories);
