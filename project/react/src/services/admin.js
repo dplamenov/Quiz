@@ -8,6 +8,15 @@ const AdminService = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json());
+    },
+
+    getAllCategories() {
+        return fetch(`${config.apiUrl}admin/categories`, {
+            credentials: 'include', headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json());
     }
 };
 
