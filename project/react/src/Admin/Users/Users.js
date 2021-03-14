@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import './Users.css';
 import adminService from "../../services/admin";
 
 function Users() {
@@ -6,13 +7,14 @@ function Users() {
 
     useEffect(() => {
         adminService.getAllUsers()
-            .then(users => setUsers(users));
+            .then(users => setUsers(users.sort((u1, u2) => u1.id - u2.id)));
     }, []);
+
 
     return (
         <>
             <h1>Users</h1>
-            <table>
+            <table className="admin-panel-users-users-table">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -28,7 +30,8 @@ function Users() {
                             <td>{user.id}</td>
                             <td>{user.email}</td>
                             <td>{user.real_name}</td>
-                            <td>{user.isOnline ? 'Yes' : 'No'}</td>
+                            <td>{user.isOnline ? <span className="admin-panel-users-green">Yes</span> :
+                                <span className="admin-panel-users-red">No</span>}</td>
                         </tr>
                     );
                 })}
