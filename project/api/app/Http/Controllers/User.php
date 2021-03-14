@@ -30,7 +30,7 @@ class User extends Controller
         $request->user()->isOnline = 1;
         $request->user()->save();
 
-        return response()->json($request->user())->cookie('auth-token', $request->user()->auth_token, 'session', null, 'sharkdev.eu', 'none');
+        return response()->json($request->user())->cookie('auth-token', $request->user()->auth_token, 'session', null, '.sharkdev.eu', 'none');
     }
 
     public function register(Request $request): \Illuminate\Http\JsonResponse
