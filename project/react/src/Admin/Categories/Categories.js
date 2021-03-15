@@ -13,9 +13,25 @@ function Categories() {
     return (
         <>
             <h1>Categories</h1>
-            {categories.map(cat => {
-                console.log(cat);
-            })}
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Category name</th>
+                </tr>
+                </thead>
+                <tbody>
+                {categories.map(cat => {
+                    return (
+                        <tr key={cat.id}>
+                            <td>{cat.id}</td>
+                            <td>{cat.name}</td>
+                        </tr>
+                    );
+                })}
+                </tbody>
+            </table>
+
         </>
     );
 }
