@@ -2,8 +2,7 @@ import React, {useEffect, useState} from "react";
 import adminService from "../../services/admin";
 import './Categories.css';
 
-function Categories() {
-
+function Categories({history}) {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -15,7 +14,7 @@ function Categories() {
         <>
             <h1>Categories</h1>
             <section className="admin-panel-categories-actions">
-                <button className="btn">
+                <button className="btn" onClick={() => history.push('/admin/categories/create')}>
                     Create category
                 </button>
             </section>
