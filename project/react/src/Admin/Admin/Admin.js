@@ -31,7 +31,7 @@ function Admin(props) {
                 </ul>
             </nav>
 
-            <section className="main-admin-wrapper">
+            <section className="wrapper">
                 <Switch>
                     <Route exact path={path}>
                         <h3 className="please-select-page">Please select page</h3>

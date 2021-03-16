@@ -5,7 +5,8 @@
 
 .admin-panel-categories-table {
     width: 100%;
-    text-align: left;
+    margin-top: 40px;
+    text-align: center;
     border-collapse: collapse;
 }
 
@@ -17,7 +18,7 @@
     margin: 3px 0;
 }
 
-.admin-panel-categories-table tbody tr:hover {
+.admin-panel-categories-table tbody tr:hover td{
     background: darkgray;
     color: white;
 }
