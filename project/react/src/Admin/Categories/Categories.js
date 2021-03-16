@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import adminService from "../../services/admin";
+import './Categories.css';
 
 function Categories() {
 
@@ -13,11 +14,18 @@ function Categories() {
     return (
         <>
             <h1>Categories</h1>
-            <table>
+            <section className="admin-panel-categories-actions">
+                <button className="btn">
+                    Create category
+                </button>
+            </section>
+            <table className="admin-panel-categories-table">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>Category name</th>
+                   <th>Edit</th>
+                    <th>Edit</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,6 +34,8 @@ function Categories() {
                         <tr key={cat.id}>
                             <td>{cat.id}</td>
                             <td>{cat.name}</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
                         </tr>
                     );
                 })}
