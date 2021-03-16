@@ -5,6 +5,7 @@ import {Link, NavLink, Redirect, Route, Switch} from "react-router-dom";
 import Users from "../Users/Users";
 import Questions from "../Questions/Questions";
 import Categories from "../Categories/Categories";
+import CreateCategory from "../Categories/CreateCategory/CreateCategory";
 
 function Admin(props) {
     let {path} = useRouteMatch();
@@ -19,13 +20,13 @@ function Admin(props) {
             <nav className="admin-panel-nav">
                 <ul>
                     <li>
-                        <NavLink to="/admin/users">Users</NavLink>
+                        <NavLink to="/admin/users" exact> Users</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/admin/questions">Questions</NavLink>
+                        <NavLink to="/admin/questions" exact>Questions</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/admin/categories">Categories</NavLink>
+                        <NavLink to="/admin/categories" exact>Categories</NavLink>
                     </li>
                 </ul>
             </nav>
@@ -37,7 +38,8 @@ function Admin(props) {
                     </Route>
                     <Route path={`${path}/users`} component={Users}/>
                     <Route path={`${path}/questions`} component={Questions}/>
-                    <Route path={`${path}/categories`} component={Categories}/>
+                    <Route path={`${path}/categories`} component={Categories} exact/>
+                    <Route path={`${path}/categories/create`} component={CreateCategory}/>
                 </Switch>
             </section>
 

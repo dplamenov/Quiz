@@ -24,7 +24,7 @@ function Categories() {
                 <tr>
                     <th>ID</th>
                     <th>Category name</th>
-                   <th>Edit</th>
+                    <th>Edit</th>
                     <th>Edit</th>
                 </tr>
                 </thead>
