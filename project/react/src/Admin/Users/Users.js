@@ -20,6 +20,7 @@ function Users() {
                     <th>ID</th>
                     <th>Email</th>
                     <th>Real name</th>
+                    <th>Role</th>
                     <th>Active</th>
                 </tr>
                 </thead>
@@ -30,6 +31,7 @@ function Users() {
                             <td>{user.id}</td>
                             <td>{user.email}</td>
                             <td>{user.real_name}</td>
+                            <td>{user.access}</td>
                             <td>{user.isOnline ? <span className="admin-panel-users-green">Yes</span> :
                                 <span className="admin-panel-users-red">No</span>}</td>
                         </tr>
