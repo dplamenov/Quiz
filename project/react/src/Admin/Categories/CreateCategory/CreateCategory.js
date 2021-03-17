@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import './CreateCategory.css';
 import categoryService from "../../../services/category";
+import {withRouter} from "react-router";
 
-function CreateCategory() {
+function CreateCategory({history}) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState();
@@ -29,7 +30,7 @@ function CreateCategory() {
 
         categoryService.createCategory(formData)
             .then(category => {
-                console.log(category);
+                history.push('/admin/categories');
             });
     }
 
@@ -48,4 +49,4 @@ function CreateCategory() {
     );
 }
 
-export default CreateCategory;
+export default withRouter(CreateCategory);
