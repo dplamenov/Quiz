@@ -11,3 +11,13 @@ form .input-inline {
     position: relative;
     top: -33.5px;
 }
+
+.admin-panel-question-flex {
+    display: flex;
+    align-content: center;
+    margin: 20px 0;
+}
+
+.admin-panel-question-flex > * {
+    margin:0 8px 0 0;
+}
