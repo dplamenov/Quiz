@@ -24,7 +24,7 @@ function CreateCategory() {
 
         const formData = new FormData();
         formData.append('image', image);
-        formData.append('name', 'name');
+        formData.append('name', name);
         formData.append('description', description);
 
         categoryService.createCategory(formData)
