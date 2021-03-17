@@ -1,3 +1,13 @@
 .admin-panel-questions-create-question-heading {
     text-align: center;
 }
+
+form .input-inline {
+    padding-left: 8%;
+    display: inline-block;
+}
+
+.remove-input {
+    position: relative;
+    top: -33.5px;
+}
