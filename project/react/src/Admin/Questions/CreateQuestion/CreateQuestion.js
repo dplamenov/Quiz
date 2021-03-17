@@ -4,7 +4,7 @@ import './CreateQuestion.css';
 function CreateQuestions() {
     return (
         <>
-            <h2>Create question</h2>
+            <h2 className="admin-panel-questions-create-question-heading">Create question</h2>
         </>
     );
 }

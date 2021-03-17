@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import './Questions.css';
 import adminService from "../../services/admin";
+import {withRouter} from "react-router";
 
-function Questions() {
+function Questions({history}) {
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
@@ -15,6 +16,11 @@ function Questions() {
     return (
         <>
             <h1>Questions</h1>
+            <section className="admin-panel-questions-actions">
+                <button className="btn" onClick={() => history.push('/admin/questions/create')}>
+                    Create question
+                </button>
+            </section>
             <table className="admin-panel-questions-all">
                 <thead>
                 <tr>
@@ -44,4 +50,4 @@ function Questions() {
     );
 }
 
-export default Questions;
+export default withRouter(Questions);

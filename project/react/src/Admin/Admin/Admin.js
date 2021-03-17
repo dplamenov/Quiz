@@ -6,6 +6,7 @@ import Users from "../Users/Users";
 import Questions from "../Questions/Questions";
 import Categories from "../Categories/Categories";
 import CreateCategory from "../Categories/CreateCategory/CreateCategory";
+import CreateQuestions from "../Questions/CreateQuestion/CreateQuestion";
 
 function Admin(props) {
     let {path} = useRouteMatch();
@@ -36,10 +37,13 @@ function Admin(props) {
                     <Route exact path={path}>
                         <h3 className="please-select-page">Please select page</h3>
                     </Route>
-                    <Route path={`${path}/users`} component={Users}/>
-                    <Route path={`${path}/questions`} component={Questions}/>
+                    <Route path={`${path}/users`} component={Users} exact/>
+
+                    <Route path={`${path}/questions`} component={Questions} exact/>
+                    <Route path={`${path}/questions/create`} component={CreateQuestions} exact/>
+
                     <Route path={`${path}/categories`} component={Categories} exact/>
-                    <Route path={`${path}/categories/create`} component={CreateCategory}/>
+                    <Route path={`${path}/categories/create`} component={CreateCategory} exact/>
                 </Switch>
             </section>
 
