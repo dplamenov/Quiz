@@ -16,4 +16,10 @@ class Admin extends Controller
         $categories = \App\Models\Category::all();
         return response()->json($categories);
     }
+
+    public function getAllQuestions(): \Illuminate\Http\JsonResponse
+    {
+        $questions = \App\Models\Question::all();
+        return response()->json($questions);
+    }
 }

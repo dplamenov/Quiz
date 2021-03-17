@@ -29,7 +29,7 @@ Route::options('{any?}', function ($any = null) {
     return 'cors';
 })->where('any', '.*')->middleware('cors');
 
-Route::get('/question', [Question::class, 'all']);
+Route::get('/question', [Question::class, 'getRandomById']);
 Route::get('/question/{question}', [Question::class, 'show']);
 
 Route::post('/user/login', [User::class, 'login']);

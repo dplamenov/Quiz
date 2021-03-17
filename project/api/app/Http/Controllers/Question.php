@@ -12,7 +12,7 @@ class Question extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function all(Request $request)
+    public function getRandomById(Request $request)
     {
         $catId = $request->get('cat');
 

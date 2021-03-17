@@ -29,7 +29,7 @@ function CreateCategory({history}) {
         formData.append('description', description);
 
         categoryService.createCategory(formData)
-            .then(category => {
+            .then(_ => {
                 history.push('/admin/categories');
             });
     }
