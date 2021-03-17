@@ -15,14 +15,28 @@ class Category extends Controller
 
     public function create(Request $request)
     {
-        $image = $_FILES['image'];
-        $target_dir = "./categories/";
-        $target_file = $target_dir . basename($image["name"]);
+        if (isset($_FILES['image'])) {
+            $name = $request->get('name');
+            $description = $request->get('description');
 
-        if(move_uploaded_file($image["tmp_name"], $target_file)){
-            echo 'yes';
+            $image = $_FILES['image'];
+            $target_dir = "./categories/";
+            $target_file = $target_dir . basename($name);
+
+            if (!move_uploaded_file($image["tmp_name"], $target_file . '.png')) {
+                return response()->json(['error' => 'image is not valid']);
+            }
+
+            $category = new \App\Models\Category();
+            $category->name = $name;
+            $category->description = $description;
+            $category->save();
+
+            return response()->json($request->file('image'));
         }
 
-        return response()->json($request->file('image'));
+        return response()->json(['error' => 'image is not valid']);
+
+
     }
 }
