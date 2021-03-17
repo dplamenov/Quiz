@@ -42,3 +42,4 @@ Route::post('/category', [Category::class, 'create']);
 
 Route::get('/admin/users', [Admin::class, 'getAllUsers']);
 Route::get('/admin/categories', [Admin::class, 'getAllCategories']);
+Route::get('/admin/questions', [Admin::class, 'getAllQuestions']);

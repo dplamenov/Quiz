@@ -20,6 +20,10 @@ class Admin extends Controller
     public function getAllQuestions(): \Illuminate\Http\JsonResponse
     {
         $questions = \App\Models\Question::all();
+        foreach ($questions as $q) {
+            $catId = $q->category;
+            $q->category = \App\Models\Category::find($catId)->name;
+        }
         return response()->json($questions);
     }
 }

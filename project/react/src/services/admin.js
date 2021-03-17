@@ -17,6 +17,15 @@ const AdminService = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json());
+    },
+
+    getAllQuestions() {
+        return fetch(`${config.apiUrl}admin/questions`, {
+            credentials: 'include', headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json());
     }
 };
 
