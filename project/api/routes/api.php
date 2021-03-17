@@ -38,6 +38,7 @@ Route::post('/user/register', [User::class, 'register']);
 Route::get('/user/auth', [User::class, 'auth']);
 Route::get('/user/logout', [User::class, 'logout'])->middleware('auth');
 Route::get('/category', [Category::class, 'getAll']);
+Route::post('/category', [Category::class, 'create']);
 
 Route::get('/admin/users', [Admin::class, 'getAllUsers']);
 Route::get('/admin/categories', [Admin::class, 'getAllCategories']);

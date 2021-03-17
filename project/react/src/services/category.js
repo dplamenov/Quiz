@@ -13,10 +13,7 @@ const categoryService = {
     createCategory(data) {
         return fetch(`${config.apiUrl}category`, {
             method: 'POST', body: data,
-            credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
+            credentials: 'include'
         }).then(res => res.json());
     }
 };
