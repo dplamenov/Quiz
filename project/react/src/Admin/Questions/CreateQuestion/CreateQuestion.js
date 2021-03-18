@@ -6,7 +6,7 @@ import questionService from "../../../services/question";
 function CreateQuestions({history}) {
     const [categories, setCategories] = useState([]);
     const [question, setQuestion] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState('1');
     const [answers, setAnswers] = useState([{value: '', isCorrect: true, id: 1}]);
 
 
@@ -77,6 +77,8 @@ function CreateQuestions({history}) {
 
     const submitHandler = (e) => {
         e.preventDefault();
+
+        console.log(category);
 
         const questionObject = {
             question,

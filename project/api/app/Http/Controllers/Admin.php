@@ -22,6 +22,7 @@ class Admin extends Controller
         $questions = \App\Models\Question::all();
         foreach ($questions as $q) {
             $catId = $q->category;
+//            var_dump($catId);
             $q->category = \App\Models\Category::find($catId)->name;
         }
         return response()->json($questions);
