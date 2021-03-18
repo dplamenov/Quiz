@@ -3,11 +3,12 @@ import './CreateQuestion.css';
 import categoryService from "../../../services/category";
 import questionService from "../../../services/question";
 
-function CreateQuestions() {
+function CreateQuestions({history}) {
     const [categories, setCategories] = useState([]);
     const [question, setQuestion] = useState('');
     const [category, setCategory] = useState('');
     const [answers, setAnswers] = useState([{value: '', isCorrect: true, id: 1}]);
+
 
     useEffect(() => {
         categoryService.getAll()
@@ -86,7 +87,7 @@ function CreateQuestions() {
 
         questionService.create(questionObject)
             .then(question => {
-
+                history.push('/admin/questions');
             });
     };
 
