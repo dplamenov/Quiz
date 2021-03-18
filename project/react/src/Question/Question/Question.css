@@ -10,7 +10,6 @@
     background-color: gray;
 }
 
-
 @media only screen and (max-width: 600px) {
     .answers {
         flex-direction: column;
