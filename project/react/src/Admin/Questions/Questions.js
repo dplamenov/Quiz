@@ -35,7 +35,7 @@ function Questions({history}) {
                 {questions.map(question => {
                     const answers = JSON.parse(question.answers);
                     return (
-                        <tr>
+                        <tr key={question.id}>
                             <td>{question.id}</td>
                             <td>{question.question}</td>
                             <td>{answers.join(', ')}</td>

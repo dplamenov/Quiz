@@ -4,10 +4,9 @@ import categoryService from "../../../services/category";
 
 function CreateQuestions() {
     const [categories, setCategories] = useState([]);
-    const [answersInputs, setAnswersInputs] = useState([true]);
     const [question, setQuestion] = useState('');
     const [category, setCategory] = useState('');
-    const [answers, setAnswers] = useState([]);
+    const [answers, setAnswers] = useState([{value: '', isCorrect: true, id: 1}]);
 
     useEffect(() => {
         categoryService.getAll()
@@ -17,14 +16,21 @@ function CreateQuestions() {
     }, []);
 
     const addMoreAnswerInput = () => {
-        setAnswersInputs(inputs => [...inputs, true]);
+        const newAnswer = {value: '', isCorrect: false};
+        setAnswers(inputs => {
+            newAnswer.id = inputs.length + 1;
+            return [...inputs, newAnswer];
+        });
     };
 
     const clearAnswerInput = ({target}) => {
-        if (answersInputs.length <= 1) {
+        if (answers.length <= 1) {
             return;
         }
-        target.parentNode.remove();
+
+        setAnswers(answers => {
+            return answers.filter(a => a.id !== +target.parentNode.getAttribute('data-id'));
+        });
     };
 
     const questionChangeHandler = ({target}) => {
@@ -46,7 +52,7 @@ function CreateQuestions() {
 
             const newAnswer = {id, value: target.value, isCorrect: false};
 
-            if (+newAnswer.id === 0) {
+            if (+newAnswer.id === 1) {
                 newAnswer.isCorrect = true;
             }
 
@@ -56,7 +62,7 @@ function CreateQuestions() {
 
     const changeCorrectAnswer = ({target}) => {
         const value = target.value;
-        
+
         setAnswers(answers => {
             const answer = answers.find(a => a.id === +value);
 
@@ -91,17 +97,18 @@ function CreateQuestions() {
                     <h4>Answers</h4>
                     <span onClick={addMoreAnswerInput}>Add more</span>
                 </div>
-                {answersInputs.map((_, i) => {
+                {answers.map((_, i) => {
                     return (
-                        <div key={i}>
+                        <div key={_.id} data-id={_.id}>
                             <input type="text" className="input input-inline" onChange={answerChangeHandler}
-                                   data-id={i}/>
+                                   data-id={_.id}/>
                             <span className="remove-input" onClick={clearAnswerInput}>Clear answer</span>
                         </div>
                     );
                 })}
                 <h4>Choose correct answer</h4>
                 <select className="input" onChange={changeCorrectAnswer}>
+                    {console.log(answers)}
                     {answers.map(answer => {
                         return (
                             <option key={answer.id} value={answer.id}>{answer.value}</option>
