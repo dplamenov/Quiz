@@ -6,26 +6,38 @@ import TimerEnd from "../TimerEnd/TimerEnd";
 import WrongAnswer from "../WrongAnswer/WrongAnswer";
 
 function Question(props) {
+    const [allQuestions, setAllQuestions] = useState([]);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [question, setQuestion] = useState({});
-    const [leftSeconds, setLeftSeconds] = useState(2);
+    const [leftSeconds, setLeftSeconds] = useState(50);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
     const [isAnswerWrong, setIsAnswerWrong] = useState(false);
     const [timerIntervalId, setTimerIntervalId] = useState();
-
+    const [isComplete, setIsComplete] = useState(false);
 
     const getNextQuestion = () => {
-        const catId = props.match.params.category;
-        questionService.getQuestion(catId)
-            .then(q => {
-                q.answers = JSON.parse(q.answers);
-                setQuestion(q);
-                setIsAnswerWrong(false);
-                setLeftSeconds(2);
-            })
+        if (!allQuestions[currentQuestionIndex + 1]) {
+            setIsComplete(true);
+            clearInterval(1);
+            return;
+        }
+        setQuestion(allQuestions[currentQuestionIndex + 1]);
+        setIsAnswerWrong(false);
+        setLeftSeconds(50);
     }
 
     useEffect(() => {
-        getNextQuestion();
+        const catId = props.match.params.category;
+        questionService.getQuestion(catId)
+            .then(q => {
+                q = q.map(q => {
+                    q.answers = JSON.parse(q.answers);
+                    return q;
+                });
+
+                setAllQuestions(q);
+                setQuestion(q[0]);
+            });
         setTimerIntervalId(setInterval(() => {
             tickTimer();
         }, 1000));
@@ -51,6 +63,7 @@ function Question(props) {
         const {correct_answer} = question;
 
         if (+answerId === +correct_answer) {
+            setCurrentQuestionIndex(n => n + 1);
             getNextQuestion();
         } else {
             setIsAnswerWrong(true);
@@ -63,6 +76,7 @@ function Question(props) {
         <>
             {!isMoreTimeAvailable ? <TimerEnd/> : ''}
             {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer]}/> : ''}
+            {isComplete ? <p>Complete!</p> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>
