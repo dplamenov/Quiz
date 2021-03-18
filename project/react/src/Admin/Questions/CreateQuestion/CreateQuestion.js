@@ -75,7 +75,15 @@ function CreateQuestions() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(answers);
+
+        const questionObject = {
+            question,
+            category,
+            answers: answers.map(a => a.value),
+            correctAnswer: answers.find(a => a.isCorrect === true).id
+        };
+
+        console.log(questionObject);
     };
 
 
@@ -108,7 +116,6 @@ function CreateQuestions() {
                 })}
                 <h4>Choose correct answer</h4>
                 <select className="input" onChange={changeCorrectAnswer}>
-                    {console.log(answers)}
                     {answers.map(answer => {
                         return (
                             <option key={answer.id} value={answer.id}>{answer.value}</option>
