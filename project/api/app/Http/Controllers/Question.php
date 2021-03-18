@@ -11,7 +11,7 @@ class Question extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getRandomById(Request $request)
+    public function getRandomById(Request $request): \Illuminate\Http\JsonResponse
     {
         $catId = $request->get('cat');
 
@@ -27,11 +27,19 @@ class Question extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $question = new \App\Models\Question();
+        $question->question = $request->get('question');
+        $question->category = intval($request->get('category'));
+        $question->answers = json_encode($request->get('answers'));
+        $question->correct_answer = $request->get('correctAnswer');
+
+        $question->save();
+
+        return response()->json($question);
     }
 
     /**
