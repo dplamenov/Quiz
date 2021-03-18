@@ -8,7 +8,7 @@ const questionService = {
 
     create(question) {
         return fetch(`${config.apiUrl}question`, {
-            method: 'POST', body: question,
+            method: 'POST', body: JSON.stringify(question),
             credentials: 'include', headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './CreateQuestion.css';
 import categoryService from "../../../services/category";
+import questionService from "../../../services/question";
 
 function CreateQuestions() {
     const [categories, setCategories] = useState([]);
@@ -83,7 +84,10 @@ function CreateQuestions() {
             correctAnswer: answers.find(a => a.isCorrect === true).id
         };
 
-        console.log(questionObject);
+        questionService.create(questionObject)
+            .then(question => {
+
+            });
     };
 
 
