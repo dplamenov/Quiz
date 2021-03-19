@@ -19,8 +19,8 @@ class Question extends Controller
             return response()->json(['error' => 'specify category id']);
         }
 
-        $result = \App\Models\Question::where('category', $catId)->get()->random(5);
-        return response()->json($result);
+        $result = \App\Models\Question::where('category', $catId)->get();
+        return response()->json(count($result) >= 5 ? $result->random(5) : $result);
     }
 
     /**
