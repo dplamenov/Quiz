@@ -6,7 +6,7 @@ function Completed() {
         <>
             <section className="completed">
                 <h1 className="completed-heading">You are awesome!</h1>
-                <p className="completed-text">Start again</p>
+                <p className="completed-text">You got 10points.</p>
                 <article className="completed-image-wrapper">
                     <img src="/images/ok.png" alt=""/>
                 </article>
@@ -14,3 +14,5 @@ function Completed() {
         </>
     );
 }
+
+export default Completed;

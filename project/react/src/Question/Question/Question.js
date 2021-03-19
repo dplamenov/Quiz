@@ -4,6 +4,7 @@ import Answer from "../Answer/Answer";
 import questionService from "../../services/question";
 import TimerEnd from "../TimerEnd/TimerEnd";
 import WrongAnswer from "../WrongAnswer/WrongAnswer";
+import Completed from "../Completed/Completed";
 
 function Question(props) {
     const [allQuestions, setAllQuestions] = useState([]);
@@ -76,7 +77,7 @@ function Question(props) {
         <>
             {!isMoreTimeAvailable ? <TimerEnd/> : ''}
             {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}/> : ''}
-            {isComplete ? <p>Complete!</p> : ''}
+            {isComplete ? <Completed /> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>
