@@ -35,9 +35,6 @@ class Home extends React.Component {
         return (
             <>
                 <h1>Select category</h1>
-                <article className="stats">
-                    <p>Level: 1 | XP: 133</p>
-                </article>
                 <section className="quiz-themes">
                     {this.state.categories.map(category => {
                         return <CategoryCard key={category.id} name={category.name} id={category.id}/>

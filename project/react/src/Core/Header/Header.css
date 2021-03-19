@@ -4,6 +4,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 80px;
+    height: 60px;
 }
 
 header h1 {
@@ -32,6 +33,16 @@ header h1 > a {
     color: black;
 }
 
+.stats {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    background-color: lightblue;
+    padding: 2px 80px 2px 70px;
+    border-bottom-left-radius: 25px;
+}
+
 @media only screen and (max-width: 600px) {
     header {
         padding: 20px 0;
@@ -40,5 +51,12 @@ header h1 > a {
 
     header ul {
         padding: 0;
+    }
+
+    .stats {
+        position: static;
+        display: block;
+        border-bottom-right-radius: 25px;
+        text-align: center;
     }
 }

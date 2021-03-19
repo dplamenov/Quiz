@@ -17,16 +17,6 @@ main h1 {
     flex-wrap: wrap;
 }
 
-.stats {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    top: -10px;
-    background-color: lightblue;
-    padding: 2px 15px 2px 50px;
-    border-bottom-left-radius: 25px;
-}
-
 @media only screen and (max-width: 600px) {
     .quiz-themes {
         flex-direction: column;
@@ -34,12 +24,5 @@ main h1 {
 
     .quiz-theme {
         margin-left: 10px;
-    }
-
-    .stats {
-        position: static;
-        display: block;
-        border-bottom-right-radius: 25px;
-        text-align: center;
     }
 }

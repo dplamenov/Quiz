@@ -30,17 +30,25 @@ function Header(props) {
         </>
     );
 
-    return <header>
-        <article className="logo-wrapper">
-            <h1><Link to="/">logo</Link></h1>
-        </article>
-        <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                {props.isLogged ? userNavigation : guestNavigation}
-            </ul>
-        </nav>
-    </header>;
+    return (
+        <>
+            <header>
+                <article className="logo-wrapper">
+                    <h1><Link to="/">logo</Link></h1>
+                </article>
+                <nav>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        {props.isLogged ? userNavigation : guestNavigation}
+                    </ul>
+                </nav>
+                <article className="stats">
+                    <p>Level: 1 | XP: 133</p>
+                </article>
+            </header>
+
+        </>
+    );
 }
 
 export default Header;
