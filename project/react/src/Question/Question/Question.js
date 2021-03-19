@@ -36,6 +36,11 @@ function Question(props) {
                     return q;
                 });
 
+                if (q.length === 0) {
+                    props.history.push('/');
+                    return;
+                }
+
                 setAllQuestions(q);
                 setQuestion(q[0]);
             });
@@ -77,7 +82,7 @@ function Question(props) {
         <>
             {!isMoreTimeAvailable ? <TimerEnd/> : ''}
             {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}/> : ''}
-            {isComplete ? <Completed /> : ''}
+            {isComplete ? <Completed/> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>

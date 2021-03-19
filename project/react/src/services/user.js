@@ -26,6 +26,15 @@ const userService = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json());
+    },
+
+    addPoints: function (points) {
+        return fetch(`${config.apiUrl}user/points`, {
+            method: 'post', body: JSON.stringify({points}), credentials: 'include', headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json());
     }
 };
 
