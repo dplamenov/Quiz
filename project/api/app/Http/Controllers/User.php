@@ -69,4 +69,23 @@ class User extends Controller
 
         return response()->json($result, $statusCode);
     }
+
+    public function addPoints(Request $request)
+    {
+        $points = $request->get('points');
+
+        $user = $request->user;
+
+        $user->xp += $points;
+        $user->level = floor($user->xp / 100) + 1;
+
+        $user->save();
+
+        return response()->json([
+            'userPoints' => $user->xp,
+            'level' => $user->level,
+            'fromCurrentLevel' => $user->xp - ($user->level - 1) * 100,
+            'toNextLevel' => $user->level * 100 - $user->xp
+        ]);
+    }
 }

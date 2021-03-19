@@ -34,10 +34,10 @@ Route::post('/question', [Question::class, 'create']);
 Route::get('/question/{question}', [Question::class, 'show']);
 
 Route::post('/user/login', [User::class, 'login']);
-//    ->middleware('notauth');
 Route::post('/user/register', [User::class, 'register']);
 Route::get('/user/auth', [User::class, 'auth']);
 Route::get('/user/logout', [User::class, 'logout'])->middleware('auth');
+Route::post('/user/points', [User::class, 'addPoints']);
 Route::get('/category', [Category::class, 'getAll']);
 Route::post('/category', [Category::class, 'create']);
 
