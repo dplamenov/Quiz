@@ -82,7 +82,7 @@ function Question(props) {
         <>
             {!isMoreTimeAvailable ? <TimerEnd/> : ''}
             {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}/> : ''}
-            {isComplete ? <Completed/> : ''}
+            {isComplete ? <Completed points={5}/> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>
