@@ -45,7 +45,7 @@ function Stats({location, history}) {
                 </thead>
                 <tbody>
                 {data?.data?.map((user, i) => {
-                    const isCurrentUser = user.id === state.user.id;
+                    const isCurrentUser = user.id === state?.user?.id;
                     return (
                         <tr key={user.id} className={isCurrentUser ? 'stats-user' : ''}>
                             <td>{data.from + i}</td>
