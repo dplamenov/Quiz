@@ -36,7 +36,7 @@ header h1 > a {
 .stats {
     display: inline-block;
     position: absolute;
-    right: 0;
+    right: 18px;
     top: 100px;
     background-color: lightblue;
     padding: 10px 80px 10px 70px;
@@ -63,6 +63,10 @@ header h1 > a {
     top: 0;
     right: 0;
     height: 15px;
+}
+
+.no-xp::after {
+    content: none;
 }
 
 @media only screen and (max-width: 600px) {

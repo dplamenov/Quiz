@@ -31,7 +31,7 @@ function Header(props) {
     );
 
     const stats = (
-        <article className="stats">
+        <article className={state.user?.points?.fromCurrentLevel === 0 ? 'stats no-xp' : 'stats'}>
             <article className="stats-bar" style={{width: `${state.user?.points?.fromCurrentLevel}%`}}/>
             <p>Level: {state.user?.level} | XP: {state.user?.xp}</p>
         </article>
