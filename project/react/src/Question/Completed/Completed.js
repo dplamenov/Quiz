@@ -2,12 +2,17 @@ import React, {useEffect} from "react";
 import './Comleted.css';
 import {StoreContext} from "../../store/store";
 import {addPoints} from "../../store/actions";
+import gameService from "../../services/game";
 
-function Completed({points}) {
-    const {dispatch, state} = React.useContext(StoreContext);
+function Completed({points, category}) {
+    const {dispatch} = React.useContext(StoreContext);
 
     useEffect(() => {
         dispatch(addPoints(points));
+        gameService.storeGame({category})
+            .then(() => {
+                console.log('store game');
+            });
     }, []);
 
     return (

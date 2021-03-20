@@ -15,6 +15,8 @@ function Question(props) {
     const [isAnswerWrong, setIsAnswerWrong] = useState(false);
     const [timerIntervalId, setTimerIntervalId] = useState();
     const [isComplete, setIsComplete] = useState(false);
+    const catId = props.match.params.category;
+
 
     const getNextQuestion = () => {
         if (!allQuestions[currentQuestionIndex + 1]) {
@@ -28,7 +30,7 @@ function Question(props) {
     }
 
     useEffect(() => {
-        const catId = props.match.params.category;
+
         questionService.getQuestion(catId)
             .then(q => {
                 q = q.map(q => {
@@ -82,7 +84,7 @@ function Question(props) {
         <>
             {!isMoreTimeAvailable ? <TimerEnd/> : ''}
             {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}/> : ''}
-            {isComplete ? <Completed points={5}/> : ''}
+            {isComplete ? <Completed points={5} category={catId}/> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>
