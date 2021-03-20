@@ -40,7 +40,7 @@ function Categories({history}) {
                 })}
                 </tbody>
             </table>
-
+            {categories.length === 0 ? <p>No categories.</p> : ''}
         </>
     );
 }

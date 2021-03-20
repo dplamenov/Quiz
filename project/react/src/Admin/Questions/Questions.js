@@ -46,6 +46,7 @@ function Questions({history}) {
                 })}
                 </tbody>
             </table>
+            {questions.length === 0 ? <p>No questions.</p> : ''}
         </>
     );
 }
