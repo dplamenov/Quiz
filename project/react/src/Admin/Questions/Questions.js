@@ -21,7 +21,7 @@ function Questions({history}) {
                     Create question
                 </button>
             </section>
-            <table className="admin-panel-questions-all">
+            <table className="custom-table">
                 <thead>
                 <tr>
                     <th>ID</th>

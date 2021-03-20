@@ -2,27 +2,3 @@
     display: flex;
     justify-content: center;
 }
-
-.admin-panel-categories-table {
-    width: 100%;
-    margin-top: 40px;
-    text-align: center;
-    border-collapse: collapse;
-}
-
-.admin-panel-categories-table th {
-    padding: 0;
-}
-
-.admin-panel-categories-table tbody tr {
-    margin: 3px 0;
-}
-
-.admin-panel-categories-table tbody tr:hover td{
-    background: darkgray;
-    color: white;
-}
-
-.admin-panel-categories-table td {
-    padding: 8px 0;
-}

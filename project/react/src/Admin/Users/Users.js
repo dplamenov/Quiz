@@ -14,7 +14,7 @@ function Users() {
     return (
         <>
             <h1>Users</h1>
-            <table className="admin-panel-users-users-table">
+            <table className="custom-table">
                 <thead>
                 <tr>
                     <th>ID</th>

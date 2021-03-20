@@ -37,17 +37,4 @@
   }
 }
 
-.btn {
-  padding: 12px 25px;
-  background: #f7931a;
-  border: 0;
-  border-radius: 8px;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin: 0;
-}
 
-.btn:disabled {
-  background: #f8c68a;
-}

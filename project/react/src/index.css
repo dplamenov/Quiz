@@ -29,3 +29,42 @@ code {
 .no-resize {
   resize: none;
 }
+
+.btn {
+  padding: 12px 25px;
+  background: #f7931a;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+}
+
+.btn:disabled {
+  background: #f8c68a;
+}
+
+.custom-table {
+  width: 100%;
+  margin-top: 40px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.custom-table th {
+  padding: 0;
+}
+
+.custom-table tbody tr {
+  margin: 3px 0;
+}
+
+.custom-table tbody tr:hover td{
+  background: darkgray;
+  color: white;
+}
+
+.custom-table td {
+  padding: 8px 0;
+}

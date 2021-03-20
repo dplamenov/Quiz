@@ -18,7 +18,7 @@ function Categories({history}) {
                     Create category
                 </button>
             </section>
-            <table className="admin-panel-categories-table">
+            <table className="custom-table">
                 <thead>
                 <tr>
                     <th>ID</th>

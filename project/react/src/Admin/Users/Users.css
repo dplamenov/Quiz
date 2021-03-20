@@ -1,27 +1,3 @@
-.admin-panel-users-users-table {
-    width: 100%;
-    text-align: left;
-    border-collapse: collapse;
-}
-
-.admin-panel-users-users-table th {
-    padding: 0;
-}
-
-.admin-panel-users-users-table tbody tr:hover {
-    background: darkgray;
-    color: white;
-}
-
-.admin-panel-users-users-table tbody tr {
-    margin: 3px 0;
-}
-
-
-.admin-panel-users-users-table td {
-    padding: 8px 0;
-}
-
 .admin-panel-users-green {
     color: green;
 }

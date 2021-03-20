@@ -15,6 +15,7 @@ import {
     Switch,
     Route, Redirect
 } from "react-router-dom";
+import Stats from "./Core/Stats/Stats";
 
 
 const Auth = ({children}) => {
@@ -67,6 +68,7 @@ class App extends React.Component {
                                         </Route>
                                         <Route path="/question/:category" component={Question}/>
                                         <Route path="/admin" component={(props) => <Admin {...props} user={user}/>}/>
+                                        <Route path="/stats" component={Stats}/>
                                     </Switch>
                                 </Router>
                             );
