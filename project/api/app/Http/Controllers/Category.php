@@ -30,6 +30,7 @@ class Category extends Controller
             $category = new \App\Models\Category();
             $category->name = $name;
             $category->description = $description;
+            $category->position = 1;
             $category->save();
 
             return response()->json($request->file('image'));
