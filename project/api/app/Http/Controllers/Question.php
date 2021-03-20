@@ -23,12 +23,14 @@ class Question extends Controller
         return response()->json(count($result) >= 5 ? $result->random(5) : $result);
     }
 
+
     /**
-     * Show the form for creating a new resource.correctAnswer
+     * Store a newly created resource in storage.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $question = new \App\Models\Question();
         $question->question = $request->get('question');
@@ -39,17 +41,6 @@ class Question extends Controller
         $question->save();
 
         return response()->json($question);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
