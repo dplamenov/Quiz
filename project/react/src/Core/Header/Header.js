@@ -46,6 +46,7 @@ function Header(props) {
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>
+                        <li><Link to="/stats">Stats</Link></li>
                         {props.isLogged ? userNavigation : guestNavigation}
                     </ul>
                 </nav>
