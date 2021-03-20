@@ -19,9 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('real_name');
-            $table->integer('level');
-            $table->string('access');
-            $table->boolean('isOnline');
+            $table->integer('level')->default(1);
+            $table->integer('xp')->default(0);
+            $table->string('access')->default('user');
+            $table->boolean('isOnline')->default(true);
+            $table->text('auth_token')->nullable();
         });
     }
 
