@@ -57,7 +57,7 @@ class User extends Controller
         return response()->json(['logout' => true])->withCookie('auth-token');
     }
 
-    public function auth(Request $request)
+    public function auth(Request $request): \Illuminate\Http\JsonResponse
     {
         $statusCode = 200;
         $result = $request->user;
@@ -80,7 +80,7 @@ class User extends Controller
         return response()->json($result, $statusCode);
     }
 
-    public function addPoints(Request $request)
+    public function addPoints(Request $request): \Illuminate\Http\JsonResponse
     {
         $points = $request->get('points');
 
@@ -97,5 +97,14 @@ class User extends Controller
             'fromCurrentLevel' => $user->xp - ($user->level - 1) * 100,
             'toNextLevel' => $user->level * 100 - $user->xp
         ]);
+    }
+
+    public function stats(): \Illuminate\Http\JsonResponse
+    {
+        $users = Models\User::orderBy('level', 'DESC')
+            ->orderBy('xp', 'DESC')
+            ->get();
+
+        return response()->json($users);
     }
 }
