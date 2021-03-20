@@ -30,8 +30,6 @@ function Header(props) {
         </>
     );
 
-    console.log(state);
-
     const stats = (
         <article className="stats">
             <article className="stats-bar" style={{width: `${state.user?.points.fromCurrentLevel}%`}}/>
@@ -43,7 +41,7 @@ function Header(props) {
         <>
             <header>
                 <article className="logo-wrapper">
-                    <h1><Link to="/">logo</Link></h1>
+                    <h1><Link to="/">QUIZ GAME</Link></h1>
                 </article>
                 <nav>
                     <ul>
