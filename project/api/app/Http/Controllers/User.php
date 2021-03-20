@@ -45,7 +45,7 @@ class User extends Controller
         $user->real_name = $realname;
         $user->save();
 
-        return response()->json($request->all());
+        return response()->json($user);
     }
 
     public function logout(Request $request): \Illuminate\Http\JsonResponse
