@@ -36,8 +36,8 @@ const userService = {
         }).then(res => res.json());
     },
 
-    stats: function () {
-        return fetch(`${config.apiUrl}user/stats`, {
+    stats: function (page) {
+        return fetch(`${config.apiUrl}user/stats?page=${page}`, {
             method: 'get', credentials: 'include', headers: {
                 'Accept': 'application/json'
             }

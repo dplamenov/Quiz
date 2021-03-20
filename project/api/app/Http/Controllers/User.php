@@ -103,8 +103,9 @@ class User extends Controller
     {
         $users = Models\User::orderBy('level', 'DESC')
             ->orderBy('xp', 'DESC')
-            ->get();
+            ->paginate(5);
 
+//        $users = Models\User::paginate(5);
         return response()->json($users);
     }
 }
