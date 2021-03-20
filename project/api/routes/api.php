@@ -4,6 +4,7 @@ use App\Http\Controllers\Question;
 use App\Http\Controllers\User;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Category;
+use \App\Http\Controllers\Game;
 use Illuminate\Support\Facades\Route;
 
 
@@ -32,6 +33,8 @@ Route::options('{any?}', function ($any = null) {
 Route::get('/question', [Question::class, 'getRandomById']);
 Route::post('/question', [Question::class, 'store']);
 Route::get('/question/{question}', [Question::class, 'show']);
+
+Route::post('/game', [Game::class, 'storeGame']);
 
 Route::post('/user/login', [User::class, 'login']);
 Route::post('/user/register', [User::class, 'register']);
