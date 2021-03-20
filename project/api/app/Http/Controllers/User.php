@@ -67,6 +67,16 @@ class User extends Controller
             $result = ['error' => 'no user'];
         }
 
+        if ($statusCode == 200) {
+            $user = $request->user;
+            $user->points = [
+                'userPoints' => $user->xp,
+                'level' => $user->level,
+                'fromCurrentLevel' => $user->xp - ($user->level - 1) * 100,
+                'toNextLevel' => $user->level * 100 - $user->xp
+            ];
+        };
+
         return response()->json($result, $statusCode);
     }
 

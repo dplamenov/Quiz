@@ -9,7 +9,9 @@ export const ActionTypes = {
 
     Logout: Symbol("[AUTH] Logout"),
     LogoutSuccess: Symbol("[AUTH] Logout Success"),
-    LogoutFailure: Symbol("[AUTH] Logout Failure")
+    LogoutFailure: Symbol("[AUTH] Logout Failure"),
+
+    AddPoints: Symbol('[USER] Add Points')
 };
 
 export const login = (user, cb, errorCb) => ({type: ActionTypes.Login, payload: {user, cb, errorCb}});
@@ -23,3 +25,5 @@ export const registerSuccess = (data) => ({type: ActionTypes.RegisterFailure, pa
 export const logout = (cb) => ({type: ActionTypes.Logout, payload: {cb}});
 export const logoutFailure = (error) => ({type: ActionTypes.LogoutFailure, payload: {error}});
 export const logoutSuccess = () => ({type: ActionTypes.LogoutSuccess, payload: undefined});
+
+export const addPoints = (point) => ({type: ActionTypes.AddPoints, payload: {point}});

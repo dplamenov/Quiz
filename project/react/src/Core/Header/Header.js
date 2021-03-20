@@ -30,6 +30,15 @@ function Header(props) {
         </>
     );
 
+    console.log(state);
+
+    const stats = (
+        <article className="stats">
+            <article className="stats-bar" style={{width: `${state.user?.points.fromCurrentLevel}%`}}/>
+            <p>Level: {state.user?.level} | XP: {state.user?.xp}</p>
+        </article>
+    );
+
     return (
         <>
             <header>
@@ -42,9 +51,7 @@ function Header(props) {
                         {props.isLogged ? userNavigation : guestNavigation}
                     </ul>
                 </nav>
-                <article className="stats">
-                    <p>Level: 1 | XP: 133</p>
-                </article>
+                {props.isLogged ? stats : ''}
             </header>
 
         </>

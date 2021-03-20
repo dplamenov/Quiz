@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
 import './Comleted.css';
-import userService from "../../services/user";
+import {StoreContext} from "../../store/store";
+import {addPoints} from "../../store/actions";
 
 function Completed({points}) {
+    const {dispatch, state} = React.useContext(StoreContext);
+
     useEffect(() => {
-        userService.addPoints(points)
-            .then(userPointsData => {
-                console.log(userPointsData);
-            });
+        dispatch(addPoints(points));
     }, []);
 
     return (

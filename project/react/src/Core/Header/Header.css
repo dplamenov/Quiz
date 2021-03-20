@@ -39,8 +39,30 @@ header h1 > a {
     right: 0;
     top: 100px;
     background-color: lightblue;
-    padding: 2px 80px 2px 70px;
+    padding: 10px 80px 10px 70px;
     border-bottom-left-radius: 25px;
+}
+
+.stats::after {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    height: 15px;
+    width: 100%;
+}
+
+.stats-bar {
+    z-index: 2;
+    content: '';
+    background: rgb(73, 175, 64);
+    background: linear-gradient(261deg, rgba(73, 175, 64, 1) 0%, rgba(186, 228, 135, 0.6404936974789917) 100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 15px;
 }
 
 @media only screen and (max-width: 600px) {

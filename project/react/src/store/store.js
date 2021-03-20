@@ -6,7 +6,7 @@ import {
     logoutSuccess,
     logoutFailure,
     registerSuccess,
-    registerFailure
+    registerFailure, addPoints
 } from './actions';
 import userService from '../services/user';
 
@@ -57,6 +57,12 @@ const asyncActionMap = {
             .catch(error => {
                 errorCb(error);
                 return registerFailure(error);
+            }),
+
+    [ActionTypes.AddPoints]:
+        ({point}) => userService.addPoints(point)
+            .then((pointsData) => {
+                return addPoints(pointsData);
             })
 }
 
@@ -65,7 +71,14 @@ const actionMap = {
     [ActionTypes.LoginSuccess]: (state, {user}) => ({...state, user}),
     [ActionTypes.LogoutSuccess]: (state) => ({...state, user: null}),
     [ActionTypes.LoginFailure]: (state, {error}) => ({...state, error}),
-    [ActionTypes.Register]: (state) => ({...state})
+    [ActionTypes.Register]: (state) => ({...state}),
+    [ActionTypes.AddPoints]: (state, {point}) => {
+        const currentState = {...state};
+        currentState.user.level = point.level;
+        currentState.user.xp = point.userPoints;
+        currentState.user.points = point;
+        return {...state};
+    }
 }
 
 const storeReducer = (state, action) => {
