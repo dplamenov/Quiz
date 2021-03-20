@@ -3,6 +3,7 @@ import './Stats.css';
 import userService from "../../services/user";
 import {StoreContext} from "../../store/store";
 import queryString from '../../helper/queryString';
+import gameService from "../../services/game";
 
 function Stats({location, history}) {
     const [data, setData] = useState({});
@@ -28,6 +29,10 @@ function Stats({location, history}) {
     const nextPage = () => {
         history.push(`?page=${pageIndex + 1}`);
         setPageIndex(i => i + 1);
+    };
+
+    const getUserFavouriteCategory = (userId) => {
+
     };
 
     return (

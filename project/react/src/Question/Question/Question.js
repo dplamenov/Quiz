@@ -30,7 +30,6 @@ function Question(props) {
     }
 
     useEffect(() => {
-
         questionService.getQuestion(catId)
             .then(q => {
                 q = q.map(q => {

@@ -110,7 +110,8 @@ class User extends Controller
 
     public function getUserGames(Request $request): \Illuminate\Http\JsonResponse
     {
-        $userGames = Models\Game::where('user_id', $request->user->id)
+        $userGames = Models\Game::select('id', 'category_id', 'user_id')
+            ->where('user_id', $request->get('userId'))
             ->get();
         return response()->json($userGames);
     }
