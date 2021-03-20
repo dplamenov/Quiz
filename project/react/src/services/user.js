@@ -19,11 +19,10 @@ const userService = {
         }).then(res => res.json());
     },
 
-    logout: function (data) {
+    logout: function () {
         return fetch(`${config.apiUrl}user/logout`, {
-            method: 'get', body: JSON.stringify(data), credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+            method: 'get', credentials: 'include', headers: {
+                'Accept': 'application/json'
             }
         }).then(res => res.json());
     },
@@ -33,6 +32,14 @@ const userService = {
             method: 'post', body: JSON.stringify({points}), credentials: 'include', headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
+            }
+        }).then(res => res.json());
+    },
+
+    stats: function () {
+        return fetch(`${config.apiUrl}user/stats`, {
+            method: 'get', credentials: 'include', headers: {
+                'Accept': 'application/json'
             }
         }).then(res => res.json());
     }
