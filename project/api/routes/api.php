@@ -42,6 +42,7 @@ Route::get('/user/auth', [User::class, 'auth']);
 Route::get('/user/logout', [User::class, 'logout'])->middleware('auth');
 Route::post('/user/points', [User::class, 'addPoints']);
 Route::get('/user/stats', [User::class, 'stats']);
+Route::get('/user/favourite', [User::class, 'getUserGames']);
 
 Route::get('/category', [Category::class, 'getAll']);
 Route::post('/category', [Category::class, 'create']);

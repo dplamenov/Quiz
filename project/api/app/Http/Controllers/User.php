@@ -105,7 +105,13 @@ class User extends Controller
             ->orderBy('xp', 'DESC')
             ->paginate(5);
 
-//        $users = Models\User::paginate(5);
         return response()->json($users);
+    }
+
+    public function getUserGames(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $userGames = Models\Game::where('user_id', $request->user->id)
+            ->get();
+        return response()->json($userGames);
     }
 }
