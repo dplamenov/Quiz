@@ -8,6 +8,15 @@ class Game extends Controller
 {
     public function storeGame(Request $request): \Illuminate\Http\JsonResponse
     {
-        return response()->json($request->user);
+        $user = $request->user;
+        $game = new \App\Models\Game();
+
+        $game->user_id = $user->id;
+        $game->category_id = $request->get('category');
+        $game->question_count = 5;
+
+        $game->save();
+
+        return response()->json($game);
     }
 }
