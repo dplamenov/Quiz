@@ -24,6 +24,16 @@ const categoryService = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json());
+    },
+
+    edit(id, name) {
+        return fetch(`${config.apiUrl}category/${id}`, {
+            method: 'put', body: JSON.stringify({name}), credentials: 'include',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json());
     }
 };
 

@@ -2,28 +2,41 @@ import React, {useEffect, useState} from "react";
 import './EditCategory.css';
 import categoryService from "../../../services/category";
 
-function EditCategory({match}) {
+function EditCategory({match, history}) {
     const [category, setCategory] = useState({});
+    const [name, setName] = useState('');
 
     useEffect(() => {
         const id = match.params.id;
         categoryService.getById(id)
             .then(category => {
                 setCategory(category);
+                setName(category.name);
             });
     }, [categoryService]);
 
+    const nameChangeHandler = ({target}) => {
+        setName(target.value);
+    };
 
-    console.log(category);
+    const submitHandler = (e) => {
+        e.preventDefault();
+        categoryService.edit(category.id, name)
+            .then(() => {
+                history.push('/admin/categories');
+            });
+    };
 
     return (
         <div className="wrapper">
             <h2>Edit category: {category.name}</h2>
-            <label>
-                Category name:
-                <input type="text" value={category.name}/>
-            </label>
-            <button className="btn">Update</button>
+            <form onSubmit={submitHandler}>
+                <label>
+                    Category name:
+                    <input type="text" value={name} onChange={nameChangeHandler}/>
+                </label>
+                <button className="btn">Update</button>
+            </form>
         </div>
     );
 }
