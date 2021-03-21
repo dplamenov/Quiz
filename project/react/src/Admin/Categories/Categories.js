@@ -3,7 +3,6 @@ import adminService from "../../services/admin";
 import './Categories.css';
 import {Link} from "react-router-dom";
 import DeleteCategory from "./DeleteCategory/DeleteCategory";
-import category from "../../services/category";
 
 function Categories({history}) {
     const [categories, setCategories] = useState([]);
@@ -14,6 +13,10 @@ function Categories({history}) {
             .then(categories => setCategories(categories.sort((u1, u2) => u1.id - u2.id)));
     }, []);
 
+    const closeDeleteCategoryHandler = () => {
+        setDeleteCategory(false);
+    };
+
     const deleteHandler = (catId) => {
         return () => {
             setDeleteCategory(catId);
@@ -22,7 +25,7 @@ function Categories({history}) {
 
     return (
         <>
-            {deleteCategory ? <DeleteCategory id={deleteCategory}/> : ''}
+            {deleteCategory ? <DeleteCategory id={deleteCategory} closeHandler={closeDeleteCategoryHandler}/> : ''}
             <h1>Categories</h1>
             <section className="admin-panel-categories-actions">
                 <button className="btn" onClick={() => history.push('/admin/categories/create')}>

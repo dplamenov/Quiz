@@ -1,7 +1,12 @@
 import React from 'react';
 import './DeleteCategory.css';
 
-function DeleteCategory({id}) {
+function DeleteCategory({id, closeHandler}) {
+
+    const noHandler = () => {
+        closeHandler();
+    };
+
     return (
         <section className="delete-category">
             <h1 className="delete-category-heading">Are you sure?</h1>
@@ -14,7 +19,7 @@ function DeleteCategory({id}) {
             </article>
             <article className="delete-category-button-wrapper">
                 <button className="btn">Yes</button>
-                <button className="btn">No</button>
+                <button className="btn" onClick={noHandler}>No</button>
             </article>
         </section>
     );
