@@ -44,6 +44,8 @@ class Category extends Controller
     public function getById($catId): \Illuminate\Http\JsonResponse
     {
         $category = \App\Models\Category::find($catId);
+        $category->questionsCount = \App\Models\Question::where('category', $catId)->count();
+
         return response()->json($category);
     }
 
