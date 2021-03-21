@@ -25,7 +25,6 @@ function Categories({history}) {
 
     const yesHandler = () => {
         setDeleteCategory(false);
-        console.log(history);
         history.go('/admin/categories');
     };
 
