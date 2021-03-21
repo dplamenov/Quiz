@@ -7,6 +7,7 @@ import Questions from "../Questions/Questions";
 import Categories from "../Categories/Categories";
 import CreateCategory from "../Categories/CreateCategory/CreateCategory";
 import CreateQuestions from "../Questions/CreateQuestion/CreateQuestion";
+import EditCategory from "../Categories/EditCategory/EditCategory";
 
 function Admin(props) {
     let {path} = useRouteMatch();
@@ -44,6 +45,7 @@ function Admin(props) {
 
                     <Route path={`${path}/categories`} component={Categories} exact/>
                     <Route path={`${path}/categories/create`} component={CreateCategory} exact/>
+                    <Route path={`${path}/category/:id/edit`} component={EditCategory} exact/>
                 </Switch>
             </section>
 

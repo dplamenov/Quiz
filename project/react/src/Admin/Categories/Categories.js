@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import adminService from "../../services/admin";
 import './Categories.css';
+import {Link} from "react-router-dom";
 
 function Categories({history}) {
     const [categories, setCategories] = useState([]);
@@ -33,7 +34,7 @@ function Categories({history}) {
                         <tr key={cat.id}>
                             <td>{cat.id}</td>
                             <td>{cat.name}</td>
-                            <td>Edit</td>
+                            <td><Link to={'category/' + cat.id + '/edit'}>Edit</Link></td>
                             <td>Delete</td>
                         </tr>
                     );
