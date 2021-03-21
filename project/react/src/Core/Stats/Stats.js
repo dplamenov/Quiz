@@ -3,8 +3,6 @@ import './Stats.css';
 import userService from "../../services/user";
 import {StoreContext} from "../../store/store";
 import queryString from '../../helper/queryString';
-import gameService from "../../services/game";
-import user from "../../services/user";
 
 function Stats({location, history}) {
     const [data, setData] = useState({});
