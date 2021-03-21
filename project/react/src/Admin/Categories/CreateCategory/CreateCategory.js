@@ -49,4 +49,4 @@ function CreateCategory({history}) {
     );
 }
 
-export default withRouter(CreateCategory);
+export default CreateCategory;

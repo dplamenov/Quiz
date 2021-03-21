@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './Questions.css';
 import adminService from "../../services/admin";
-import {withRouter} from "react-router";
 
 function Questions({history}) {
     const [questions, setQuestions] = useState([]);
@@ -51,4 +50,4 @@ function Questions({history}) {
     );
 }
 
-export default withRouter(Questions);
+export default Questions;
