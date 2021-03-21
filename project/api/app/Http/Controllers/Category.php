@@ -56,4 +56,12 @@ class Category extends Controller
 
         return response()->json($category);
     }
+
+    public function delete($catId)
+    {
+        $category = \App\Models\Category::find($catId);
+        $category->delete();
+
+        return response()->json($category);
+    }
 }
