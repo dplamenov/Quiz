@@ -15,6 +15,15 @@ const categoryService = {
             method: 'POST', body: data,
             credentials: 'include'
         }).then(res => res.json());
+    },
+
+    getById(id) {
+        return fetch(`${config.apiUrl}category/${id}`, {
+            credentials: 'include', headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json());
     }
 };
 
