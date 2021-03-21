@@ -42,6 +42,14 @@ const userService = {
                 'Accept': 'application/json'
             }
         }).then(res => res.json());
+    },
+
+    getFavouriteGame: function (userId) {
+        return fetch(`${config.apiUrl}user/favourite?userId=${userId}`, {
+            method: 'get', credentials: 'include', headers: {
+                'Accept': 'application/json'
+            }
+        }).then(res => res.json());
     }
 };
 

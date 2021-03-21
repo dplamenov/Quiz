@@ -4,6 +4,7 @@ import userService from "../../services/user";
 import {StoreContext} from "../../store/store";
 import queryString from '../../helper/queryString';
 import gameService from "../../services/game";
+import user from "../../services/user";
 
 function Stats({location, history}) {
     const [data, setData] = useState({});
@@ -31,10 +32,6 @@ function Stats({location, history}) {
         setPageIndex(i => i + 1);
     };
 
-    const getUserFavouriteCategory = (userId) => {
-
-    };
-
     return (
         <div className="wrapper">
             <h2 className="stats-heading">Statistics</h2>
@@ -45,7 +42,6 @@ function Stats({location, history}) {
                     <th>User email</th>
                     <th>Level</th>
                     <th>XP</th>
-                    <th>Favourite category</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,7 +53,6 @@ function Stats({location, history}) {
                             <td>{user.email}{isCurrentUser ? '(YOU)' : ''}</td>
                             <td>{user.level}</td>
                             <td>{user.xp}</td>
-                            <td>SOON</td>
                         </tr>
                     );
                 })}
