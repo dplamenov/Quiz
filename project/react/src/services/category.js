@@ -34,6 +34,16 @@ const categoryService = {
                 'Content-Type': 'application/json'
             }
         }).then(res => res.json());
+    },
+
+    delete(id) {
+        return fetch(`${config.apiUrl}category/${id}`, {
+            method: 'delete', credentials: 'include',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json());
     }
 };
 
