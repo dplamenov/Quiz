@@ -1,6 +1,6 @@
 .delete-category {
     border: 1px solid black;
-    background-color: rgb(88, 205, 108);
+    background-color: rgb(160, 15, 33);
     position: fixed;
     width: 40%;
     height: 30vh;
@@ -20,10 +20,37 @@
     color: white;
 }
 
-.delete-category-wrapper {
+.delete-category-image-wrapper {
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    height: 100px;
+}
+
+.delete-category-image-wrapper > img {
+    height: 100%;
+}
+
+.delete-category-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.delete-category-button-wrapper button {
+    padding: 12px 20px;
+}
+
+.delete-category-button-wrapper button:nth-child(1) {
+    position: relative;
+    right: 20px;
+    background-color: green;
+}
+
+.delete-category-button-wrapper button:nth-child(2) {
+    position: relative;
+    left: 20px;
+    background-color: red;
 }
 
 @media only screen and (max-width: 600px) {
