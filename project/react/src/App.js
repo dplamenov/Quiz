@@ -51,6 +51,8 @@ class App extends React.Component {
                             const {user} = state;
                             const isLogged = !!state.user;
 
+                            console.log(user);
+
                             return user === undefined ? (
                                 <Loader/>
                             ) : (

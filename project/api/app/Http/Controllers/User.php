@@ -30,6 +30,13 @@ class User extends Controller
         $request->user()->isOnline = 1;
         $request->user()->save();
 
+        $request->user()->points = [
+            'userPoints' => $request->user()->xp,
+            'level' => $request->user()->level,
+            'fromCurrentLevel' => $request->user()->xp - ($request->user()->level - 1) * 100,
+            'toNextLevel' => $request->user()->level * 100 - $request->user()->xp
+        ];
+
         return response()->json($request->user())->cookie('auth-token', $request->user()->auth_token, 'session', null, '.sharkdev.eu', 'none');
     }
 
