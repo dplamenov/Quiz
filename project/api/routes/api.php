@@ -46,6 +46,8 @@ Route::get('/user/favourite', [User::class, 'getUserGames']);
 
 Route::get('/category', [Category::class, 'getAll']);
 Route::post('/category', [Category::class, 'create']);
+Route::get('/category/{id}', [Category::class, 'getById']);
+Route::put('/category/{id}', [Category::class, 'edit']);
 
 Route::get('/admin/users', [Admin::class, 'getAllUsers']);
 Route::get('/admin/categories', [Admin::class, 'getAllCategories']);
