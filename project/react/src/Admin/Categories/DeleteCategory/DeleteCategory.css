@@ -1,0 +1,40 @@
+.delete-category {
+    border: 1px solid black;
+    background-color: rgb(88, 205, 108);
+    position: fixed;
+    width: 40%;
+    height: 30vh;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.delete-category-heading {
+    color: white;
+    text-transform: uppercase;
+    font-size: 80px;
+    margin: 0;
+}
+
+.delete-category-text {
+    color: white;
+}
+
+.delete-category-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+    .delete-category {
+        width: 50%;
+        height: 60vh;
+        top: 45%;
+        left: 50%;
+    }
+
+    .delete-category-heading {
+        font-size: 40px;
+    }
+}
