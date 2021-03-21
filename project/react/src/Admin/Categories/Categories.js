@@ -23,9 +23,17 @@ function Categories({history}) {
         };
     };
 
+    const yesHandler = () => {
+        setDeleteCategory(false);
+        console.log(history);
+        history.go('/admin/categories');
+    };
+
     return (
         <>
-            {deleteCategory ? <DeleteCategory id={deleteCategory} closeHandler={closeDeleteCategoryHandler}/> : ''}
+            {deleteCategory ?
+                <DeleteCategory id={deleteCategory} closeHandler={closeDeleteCategoryHandler}
+                                yesHandler={yesHandler}/> : ''}
             <h1>Categories</h1>
             <section className="admin-panel-categories-actions">
                 <button className="btn" onClick={() => history.push('/admin/categories/create')}>
