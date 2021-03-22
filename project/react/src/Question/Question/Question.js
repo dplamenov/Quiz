@@ -5,6 +5,7 @@ import questionService from "../../services/question";
 import TimerEnd from "../TimerEnd/TimerEnd";
 import WrongAnswer from "../WrongAnswer/WrongAnswer";
 import Completed from "../Completed/Completed";
+import ReportError from "../ReportError/ReportError";
 
 function Question(props) {
     const [allQuestions, setAllQuestions] = useState([]);
@@ -15,6 +16,8 @@ function Question(props) {
     const [isAnswerWrong, setIsAnswerWrong] = useState(false);
     const [timerIntervalId, setTimerIntervalId] = useState();
     const [isComplete, setIsComplete] = useState(false);
+    const [reportError, setReportError] = useState(false);
+
     const catId = props.match.params.category;
 
 
@@ -58,8 +61,7 @@ function Question(props) {
             }
             return s - 1;
         });
-
-    }
+    };
 
     const answerHandler = ({target}) => {
         if (target.tagName !== 'ARTICLE' || isMoreTimeAvailable !== true) {
@@ -76,14 +78,20 @@ function Question(props) {
             setIsAnswerWrong(true);
             clearInterval(timerIntervalId);
         }
-    }
+    };
 
+    const reportForErrorHandler = () => {
+        setIsAnswerWrong(false);
+        setReportError(true);
+    };
 
     return (
         <>
             {!isMoreTimeAvailable ? <TimerEnd/> : ''}
-            {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}/> : ''}
+            {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}
+                                          reportForErrorHandler={reportForErrorHandler}/> : ''}
             {isComplete ? <Completed points={5} category={catId}/> : ''}
+            {reportError ? <ReportError question={question.question} answers={question.answers}/> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>

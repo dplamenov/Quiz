@@ -1,45 +1,38 @@
-.wrong-answer {
+.report-error{
     border: 1px solid black;
-    background-color: rgba(219, 69, 69,.8);
+    background-color: rgb(255, 255, 255);
     position: fixed;
     width: 40%;
     height: 30vh;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
+
 }
 
-.wrong-answer-heading {
-    color: white;
+.report-error-heading {
     text-transform: uppercase;
     font-size: 80px;
     margin: 0;
 }
 
-.wrong-answer-text {
-    color: white;
-}
-
-.wrong-answer-img-wrapper {
+.report-error-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 30px;
-}
-
-.wrong-answer-report-error {
-    font-weight: bold;
-    text-decoration: underline;
+    width: 50%;
+    margin: 0 auto;
 }
 
 @media only screen and (max-width: 600px) {
-    .wrong-answer {
+    .report-error {
         width: 50%;
         height: 60vh;
         top: 45%;
         left: 50%;
     }
 
-    .wrong-answer-heading {
+    .report-error-heading {
         font-size: 40px;
     }
 }
