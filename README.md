@@ -26,6 +26,7 @@ Quiz application with React
 
 <h2>Architecture</h2>
 <h3>Modules</h3>
+
 - Core
 
 - Category
@@ -34,6 +35,7 @@ Quiz application with React
 
 - Admin
 <h3>Services</h3>
+
 - Admin
 
 - Category
