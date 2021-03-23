@@ -1,16 +1,13 @@
 import config from '../config/index';
+import request from "../helper/request";
 
 const categoryService = {
     getAll() {
-        return fetch(`${config.apiUrl}category`, {
-            credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.get('category');
     },
 
     createCategory(data) {
+        //formData
         return fetch(`${config.apiUrl}category`, {
             method: 'POST', body: data,
             credentials: 'include'
@@ -18,32 +15,15 @@ const categoryService = {
     },
 
     getById(id) {
-        return fetch(`${config.apiUrl}category/${id}`, {
-            credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.get(`category/${id}`);
     },
 
     edit(id, name) {
-        return fetch(`${config.apiUrl}category/${id}`, {
-            method: 'put', body: JSON.stringify({name}), credentials: 'include',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.put(`category/${id}`, {name});
     },
 
     delete(id) {
-        return fetch(`${config.apiUrl}category/${id}`, {
-            method: 'delete', credentials: 'include',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.delete(`category/${id}`);
     }
 };
 
