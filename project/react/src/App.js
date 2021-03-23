@@ -16,6 +16,7 @@ import {
     Route, Redirect
 } from "react-router-dom";
 import Stats from "./Core/Stats/Stats";
+import Notification from "./Core/Notification/Notification";
 
 
 const Auth = ({children}) => {
@@ -58,6 +59,7 @@ class App extends React.Component {
                             ) : (
                                 <Router>
                                     <Header isLogged={isLogged}/>
+                                    <Notification message={'Test'}/>
                                     <Switch>
                                         <Route path="/" exact={true}>
                                             <Home isLogged={isLogged}/>
