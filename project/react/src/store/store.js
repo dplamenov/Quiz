@@ -90,9 +90,6 @@ const actionMap = {
     },
     [ActionTypes.HideNotification]: (state) => {
         return {...state, notification: false};
-    },
-    [ActionTypes.SetIdNotify]: (state, {id}) => {
-        return {...state, notification: {...state.notification, id}}
     }
 }
 

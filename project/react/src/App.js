@@ -53,7 +53,6 @@ class App extends React.Component {
                             const isLogged = !!state.user;
 
                             const notification = state.notification;
-                            console.log(notification);
                             return user === undefined ? (
                                 <Loader/>
                             ) : (

@@ -2,15 +2,25 @@ import React, {useEffect, useState} from "react";
 import './Notification.css';
 import {StoreContext} from "../../store/store";
 import {hideNotification} from "../../store/actions";
+import {withRouter} from "react-router";
 
-function Notification({message, type = 'success', setIntervalId}) {
+function Notification({message, type = 'success', history}) {
     const styleClasses = ['notification', type];
     const {dispatch} = React.useContext(StoreContext);
+    const [id, setId] = useState(0);
+
+    history.listen(() => {
+        dispatch(hideNotification());
+        clearInterval(id);
+    });
 
     useEffect(() => {
-         setInterval(() => {
-                dispatch(hideNotification());
-            }, 3000)
+        const id = setInterval(() => {
+            dispatch(hideNotification());
+            clearInterval(id);
+        }, 3000);
+
+        setId(id);
     }, []);
 
     return (
@@ -20,4 +30,4 @@ function Notification({message, type = 'success', setIntervalId}) {
     )
 }
 
-export default Notification;
+export default withRouter(Notification);
