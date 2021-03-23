@@ -91,7 +91,7 @@ function Question(props) {
             {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}
                                           reportForErrorHandler={reportForErrorHandler}/> : ''}
             {isComplete ? <Completed points={5} category={catId}/> : ''}
-            {reportError ? <ReportError question={question.question} answers={question.answers}/> : ''}
+            {reportError ? <ReportError question={question.question} answers={question.answers} id={question.id}/> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>

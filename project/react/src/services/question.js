@@ -1,4 +1,3 @@
-import config from '../config/index';
 import request from "../helper/request";
 
 const questionService = {
@@ -8,6 +7,10 @@ const questionService = {
 
     create(question) {
         return request.post('question', question);
+    },
+
+    reportForError(id, userAnswer) {
+        return request.post(`question/${id}/report`, {answer: userAnswer});
     }
 };
 
