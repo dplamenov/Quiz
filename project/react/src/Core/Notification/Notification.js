@@ -21,7 +21,7 @@ function Notification({message, type = 'success', history}) {
         }, 3000);
 
         setId(id);
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className={styleClasses.join(' ')}>

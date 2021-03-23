@@ -13,7 +13,7 @@ function EditCategory({match, history}) {
                 setCategory(category);
                 setName(category.name);
             });
-    }, [categoryService]);
+    }, [match.params.id]);
 
     const nameChangeHandler = ({target}) => {
         setName(target.value);

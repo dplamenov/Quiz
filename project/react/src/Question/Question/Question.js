@@ -51,7 +51,7 @@ function Question(props) {
         setTimerIntervalId(setInterval(() => {
             tickTimer();
         }, 1000));
-    }, []);
+    }, [catId, props.history]);
 
     const tickTimer = () => {
         setLeftSeconds(s => {

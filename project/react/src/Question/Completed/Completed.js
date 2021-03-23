@@ -13,7 +13,7 @@ function Completed({points, category}) {
             .then(() => {
                 console.log('store game');
             });
-    }, []);
+    }, [category, dispatch, points]);
 
     return (
         <>

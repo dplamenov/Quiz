@@ -5,7 +5,7 @@ import Home from './Core/Home/Home';
 import Login from './User/Login/Login';
 import Register from "./User/Register/Register";
 import Store, {StoreContext} from "./store/store";
-import {hideNotification, loginSuccess} from "./store/actions";
+import {loginSuccess} from "./store/actions";
 import Loader from "./Core/Loader/Loader";
 import Question from "./Question/Question/Question";
 import Admin from "./Admin";
@@ -53,6 +53,7 @@ class App extends React.Component {
                             const isLogged = !!state.user;
 
                             const notification = state.notification;
+                            console.log(state);
                             return user === undefined ? (
                                 <Loader/>
                             ) : (

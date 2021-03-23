@@ -10,7 +10,7 @@ function DeleteCategory({id, closeHandler, yesHandler: redirectHandler}) {
             .then(category => {
                 setCategory(category);
             });
-    }, [categoryService]);
+    }, [id]);
 
     const noHandler = () => {
         closeHandler();

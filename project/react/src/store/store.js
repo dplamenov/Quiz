@@ -80,12 +80,6 @@ const actionMap = {
         return {...state};
     },
     [ActionTypes.ShowNotification]: (state, {type, message}) => {
-        const {notification} = state;
-
-        setTimeout(() => {
-            return {...state, notification: false};
-        }, 1000);
-
         return {...state, notification: {type, message, id: undefined}}
     },
     [ActionTypes.HideNotification]: (state) => {

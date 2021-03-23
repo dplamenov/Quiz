@@ -18,7 +18,7 @@ function Stats({location, history}) {
             .then(stats => {
                 setData(stats);
             });
-    }, [userService, pageIndex]);
+    }, [pageIndex, location.search]);
 
     const prevPage = () => {
         history.push(`?page=${pageIndex - 1}`);
