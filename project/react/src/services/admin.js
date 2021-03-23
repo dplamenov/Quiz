@@ -1,31 +1,16 @@
-import config from '../config/index';
+import request from "../helper/request";
 
 const AdminService = {
     getAllUsers() {
-        return fetch(`${config.apiUrl}admin/users`, {
-            credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.get(`admin/users`);
     },
 
     getAllCategories() {
-        return fetch(`${config.apiUrl}admin/categories`, {
-            credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.get('admin/categories');
     },
 
     getAllQuestions() {
-        return fetch(`${config.apiUrl}admin/questions`, {
-            credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.get('admin/questions')
     }
 };
 
