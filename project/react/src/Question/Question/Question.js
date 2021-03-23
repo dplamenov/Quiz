@@ -85,13 +85,18 @@ function Question(props) {
         setReportError(true);
     };
 
+    const afterReportHandler = () => {
+        props.history.push('/');
+    }
+
     return (
         <>
             {!isMoreTimeAvailable ? <TimerEnd/> : ''}
             {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}
                                           reportForErrorHandler={reportForErrorHandler}/> : ''}
             {isComplete ? <Completed points={5} category={catId}/> : ''}
-            {reportError ? <ReportError question={question.question} answers={question.answers} id={question.id}/> : ''}
+            {reportError ? <ReportError question={question.question} answers={question.answers} id={question.id}
+                                        afterReportHandler={afterReportHandler}/> : ''}
             <h1 className="question-title">
                 {question.question}
             </h1>
