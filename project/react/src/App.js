@@ -52,14 +52,14 @@ class App extends React.Component {
                             const {user} = state;
                             const isLogged = !!state.user;
 
-                            console.log(user);
-
+                            const notification = state.notification;
                             return user === undefined ? (
                                 <Loader/>
                             ) : (
                                 <Router>
                                     <Header isLogged={isLogged}/>
-                                    <Notification message={'Test'}/>
+                                    {!!notification ? <Notification message={notification.message}
+                                                                    type={notification.type}/> : ''}
                                     <Switch>
                                         <Route path="/" exact={true}>
                                             <Home isLogged={isLogged}/>

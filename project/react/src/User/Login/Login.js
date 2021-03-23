@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Login.css';
 import {StoreContext} from "../../store/store";
-import {login} from "../../store/actions";
+import {login, showNotification} from "../../store/actions";
 import {useHistory} from "react-router-dom";
 import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
 
@@ -30,6 +30,7 @@ function Login() {
         dispatch(login({email, password}, () => {
             setErrorMessage('');
             history.push('/');
+            dispatch(showNotification('success', 'Login successful'))
         }, (error) => {
             setErrorMessage(error);
         }));

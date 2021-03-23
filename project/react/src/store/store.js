@@ -78,6 +78,9 @@ const actionMap = {
         currentState.user.xp = point.userPoints;
         currentState.user.points = point;
         return {...state};
+    },
+    [ActionTypes.ShowNotification]: (state, {type, message}) => {
+        return {...state, notification: {type, message}}
     }
 }
 
