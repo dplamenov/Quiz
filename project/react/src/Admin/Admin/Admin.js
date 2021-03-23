@@ -8,6 +8,7 @@ import Categories from "../Categories/Categories";
 import CreateCategory from "../Categories/CreateCategory/CreateCategory";
 import CreateQuestions from "../Questions/CreateQuestion/CreateQuestion";
 import EditCategory from "../Categories/EditCategory/EditCategory";
+import HomePage from "../HomePage/HomePage";
 
 function Admin(props) {
     let {path} = useRouteMatch();
@@ -35,9 +36,7 @@ function Admin(props) {
 
             <section className="wrapper">
                 <Switch>
-                    <Route exact path={path}>
-                        <h3 className="please-select-page">Please select page</h3>
-                    </Route>
+                    <Route exact path={path} component={HomePage} />
                     <Route path={`${path}/users`} component={Users} exact/>
 
                     <Route path={`${path}/questions`} component={Questions} exact/>
