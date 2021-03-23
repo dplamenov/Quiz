@@ -1,55 +1,28 @@
-import config from '../config/index';
+import request from "../helper/request";
 
 const userService = {
     register: function (data) {
-        return fetch(`${config.apiUrl}user/register`, {
-            method: 'post', body: JSON.stringify(data), credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.post('user/register', data);
     },
 
     login: function (data) {
-        return fetch(`${config.apiUrl}user/login`, {
-            method: 'post', body: JSON.stringify(data), credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.post('user/login', data);
     },
 
     logout: function () {
-        return fetch(`${config.apiUrl}user/logout`, {
-            method: 'get', credentials: 'include', headers: {
-                'Accept': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.get('user/logout');
     },
 
     addPoints: function (points) {
-        return fetch(`${config.apiUrl}user/points`, {
-            method: 'post', body: JSON.stringify({points}), credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.post('user/points', {points});
     },
 
     stats: function (page) {
-        return fetch(`${config.apiUrl}user/stats?page=${page}`, {
-            method: 'get', credentials: 'include', headers: {
-                'Accept': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.get(`user/stats?page=${page}`);
     },
 
     getFavouriteGame: function (userId) {
-        return fetch(`${config.apiUrl}user/favourite?userId=${userId}`, {
-            method: 'get', credentials: 'include', headers: {
-                'Accept': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.get(`user/favourite?userId=${userId}`);
     }
 };
 
