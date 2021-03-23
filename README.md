@@ -28,6 +28,7 @@ Quiz application with React
 <h3>Modules</h3>
 
 - Core
+  <p>Contains main components like: Header and Navigation</p>
 
 - Category
 
