@@ -11,6 +11,10 @@ const AdminService = {
 
     getAllQuestions() {
         return request.get('admin/questions')
+    },
+
+    getData() {
+        return request.get('admin');
     }
 };
 

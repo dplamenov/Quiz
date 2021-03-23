@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Admin.css';
 import {useRouteMatch} from "react-router";
 import {Link, NavLink, Redirect, Route, Switch} from "react-router-dom";
@@ -11,7 +11,7 @@ import EditCategory from "../Categories/EditCategory/EditCategory";
 import HomePage from "../HomePage/HomePage";
 
 function Admin(props) {
-    let {path} = useRouteMatch();
+    const {path} = useRouteMatch();
 
     return (
         <>
