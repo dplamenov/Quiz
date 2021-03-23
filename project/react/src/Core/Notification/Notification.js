@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from "react";
 import './Notification.css';
+import {StoreContext} from "../../store/store";
+import {hideNotification} from "../../store/actions";
 
-function Notification({message, type = 'success'}) {
-    const [styleClasses, setStyleClasses] = useState(['notification', type]);
+function Notification({message, type = 'success', setIntervalId}) {
+    const styleClasses = ['notification', type];
+    const {dispatch} = React.useContext(StoreContext);
 
     useEffect(() => {
-        setInterval(() => {
-            setStyleClasses(styles => [...styles, 'hidden']);
-        }, 3000);
+         setInterval(() => {
+                dispatch(hideNotification());
+            }, 3000)
     }, []);
 
     return (

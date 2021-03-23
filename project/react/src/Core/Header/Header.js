@@ -30,8 +30,6 @@ function Header(props) {
         </>
     );
 
-    console.log(state.user?.points?.fromCurrentLevel);
-
     const stats = (
         <article className={state.user?.points?.fromCurrentLevel === 0 ? 'stats no-xp' : 'stats'}>
             <article className="stats-bar" style={{width: `${state.user?.points?.fromCurrentLevel}%`}}/>

@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
 import './CreateCategory.css';
 import categoryService from "../../../services/category";
-import {withRouter} from "react-router";
+import {StoreContext} from "../../../store/store";
+import {showNotification} from "../../../store/actions";
 
 function CreateCategory({history}) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState();
+
+    const {dispatch} = React.useContext(StoreContext);
 
     const nameChangeHandler = ({target}) => {
         setName(target.value);
@@ -29,8 +32,15 @@ function CreateCategory({history}) {
         formData.append('description', description);
 
         categoryService.createCategory(formData)
-            .then(_ => {
+            .then(result => {
+                if(result.error) {
+                    return Promise.reject(result.error);
+                }
                 history.push('/admin/categories');
+                dispatch(showNotification('success', 'Created.'));
+            })
+            .catch(error => {
+                dispatch(showNotification('error', error));
             });
     }
 

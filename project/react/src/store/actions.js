@@ -13,7 +13,8 @@ export const ActionTypes = {
 
     AddPoints: Symbol('[USER] Add Points'),
 
-    ShowNotification: Symbol('[NOTIFICATION] Show')
+    ShowNotification: Symbol('[NOTIFICATION] Show'),
+    HideNotification: Symbol('[NOTIFICATION] Hide')
 };
 
 export const login = (user, cb, errorCb) => ({type: ActionTypes.Login, payload: {user, cb, errorCb}});
@@ -30,4 +31,5 @@ export const logoutSuccess = () => ({type: ActionTypes.LogoutSuccess, payload: u
 
 export const addPoints = (point) => ({type: ActionTypes.AddPoints, payload: {point}});
 
-export const showNotification = (type, message) => ({type: ActionTypes.ShowNotification, payload: {type, message}})
+export const showNotification = (type, message) => ({type: ActionTypes.ShowNotification, payload: {type, message}});
+export const hideNotification = () => ({type: ActionTypes.HideNotification, payload: undefined});
