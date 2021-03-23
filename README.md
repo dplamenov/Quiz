@@ -18,7 +18,12 @@ Quiz application with React
 - Report question for error
 <h3>Admin</h3>
 
-- Create new questions
+- Create questions
+
+- Create categories
+
+- Review reported question errors
+
 
 <h2>Technologies</h2>
 
