@@ -22,9 +22,25 @@ class Admin extends Controller
         $questions = \App\Models\Question::all();
         foreach ($questions as $q) {
             $catId = $q->category;
-//            var_dump($catId);
             $q->category = \App\Models\Category::find($catId)->name;
         }
         return response()->json($questions);
+    }
+
+    public function getData(): \Illuminate\Http\JsonResponse
+    {
+        $result = [
+            'users' => [
+                'count' => \App\Models\User::count()
+            ],
+            'categories' => [
+                'count' => \App\Models\Category::count()
+            ],
+            'questions' => [
+                'count' => \App\Models\Question::count()
+            ]
+        ];
+
+        return response()->json($result);
     }
 }

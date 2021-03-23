@@ -51,6 +51,7 @@ Route::get('/category/{id}', [Category::class, 'getById']);
 Route::put('/category/{id}', [Category::class, 'edit']);
 Route::delete('/category/{id}', [Category::class, 'delete']);
 
+Route::get('/admin', [Admin::class, 'getData']);
 Route::get('/admin/users', [Admin::class, 'getAllUsers']);
 Route::get('/admin/categories', [Admin::class, 'getAllCategories']);
 Route::get('/admin/questions', [Admin::class, 'getAllQuestions']);
