@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import {Link} from "react-router-dom";
 import {useHistory} from "react-router-dom";
-import {logout} from "../../store/actions";
+import {logout, showNotification} from "../../store/actions";
 import {StoreContext} from "../../store/store";
 
 function Header(props) {
@@ -12,6 +12,7 @@ function Header(props) {
     const logoutHandler = () => {
         dispatch(logout(() => {
             history.push('/');
+            dispatch(showNotification('success', 'Logout'));
         }));
     };
 
