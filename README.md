@@ -11,18 +11,18 @@ Quiz application with React
 - See stats.
 <h3>Logged-in users</h3>
 
-- Play quiz(answer at questions)
+- Play quiz(answer at questions).
 
-- Gain points
+- Gain points.
 
-- Report question for error
+- Report question for error.
 <h3>Admin</h3>
 
-- Create questions
+- Create questions.
 
-- Create categories
+- Create categories.
 
-- Review reported question errors
+- Review reported question errors.
 
 
 <h2>Technologies</h2>
