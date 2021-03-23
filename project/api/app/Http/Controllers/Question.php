@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\QuestionError;
 use Illuminate\Http\Request;
 
 class Question extends Controller
@@ -58,5 +59,17 @@ class Question extends Controller
         }
 
         return response()->json($question[0]);
+    }
+
+    public function reportForError(Request $request, $questionId): \Illuminate\Http\JsonResponse
+    {
+        $error = new QuestionError();
+        $error->user_id = $request->user->id;
+        $error->question_id = $questionId;
+        $error->answer_by_user = $request->get('answer');
+
+        $error->save();
+
+        return response()->json($error);
     }
 }
