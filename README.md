@@ -24,6 +24,25 @@ Quiz application with React
 
 - Review reported question errors.
 
+<h2>Architecture</h2>
+<h3>Modules</h3>
+- Core
+
+- Category
+
+- Question
+
+- Admin
+<h3>Services</h3>
+- Admin
+
+- Category
+
+- Game
+
+- Question
+ 
+- User
 
 <h2>Technologies</h2>
 
