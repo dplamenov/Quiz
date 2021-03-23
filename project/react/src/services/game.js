@@ -1,15 +1,9 @@
-import config from '../config/index';
+import request from "../helper/request";
 
 const gameService = {
     storeGame(data) {
-        return fetch(`${config.apiUrl}game`, {
-            method: 'post', body: JSON.stringify(data), credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.post('game', data);
     }
-
 };
 
 export default gameService;
