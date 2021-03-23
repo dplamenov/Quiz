@@ -16,6 +16,8 @@ function HomePage() {
                 <span className="bold space">Total categories</span>
                 <span>5</span>
             </p>
+            <hr/>
+            {/*todo display all question error reports*/}
         </div>
     );
 }
