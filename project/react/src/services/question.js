@@ -1,19 +1,13 @@
 import config from '../config/index';
+import request from "../helper/request";
 
 const questionService = {
     getQuestion(catId) {
-        return fetch(`${config.apiUrl}question?cat=${catId}`)
-            .then(res => res.json());
+        return request.get(`question?cat=${catId}`);
     },
 
     create(question) {
-        return fetch(`${config.apiUrl}question`, {
-            method: 'POST', body: JSON.stringify(question),
-            credentials: 'include', headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res => res.json());
+        return request.post('question', question);
     }
 };
 
