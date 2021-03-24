@@ -63,7 +63,7 @@ class App extends React.Component {
                                     <Header isLogged={isLogged}/>
                                     {!!notification ? <Notification message={notification.message}
                                                                     type={notification.type}/> : ''}
-                                    <ToastContainer/>
+                                    <ToastContainer newestOnTop={false} />
                                     <Switch>
                                         <Route path="/" exact={true}>
                                             <Home isLogged={isLogged}/>

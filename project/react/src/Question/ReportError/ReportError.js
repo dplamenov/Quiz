@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import './ReportError.css';
 import questionService from "../../services/question";
+import {toast} from "react-toastify";
 
 function ReportError({id, question, answers, afterReportHandler}) {
     const [answerValue, setAnswerValue] = useState('');
@@ -8,7 +9,8 @@ function ReportError({id, question, answers, afterReportHandler}) {
     const reportHandler = () => {
         questionService.reportForError(id, answerValue)
             .then(() => {
-                afterReportHandler()
+                afterReportHandler();
+                toast.success('Report for error');
             });
     };
 
