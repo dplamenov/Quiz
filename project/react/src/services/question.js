@@ -11,6 +11,10 @@ const questionService = {
 
     reportForError(id, userAnswer) {
         return request.post(`question/${id}/report`, {answer: userAnswer});
+    },
+
+    getReports() {
+        return request.get('question/reports');
     }
 };
 

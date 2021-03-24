@@ -28,6 +28,7 @@ function HomePage() {
             <hr/>
             {/*todo display all question error reports from other (new) component*/}
             <ReportedErrors />
+            <hr/>
         </div>
     );
 }
