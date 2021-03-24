@@ -2,13 +2,18 @@ import React, {useEffect, useState} from 'react';
 import './HomePage.css';
 import adminService from "../../services/admin"
 import ReportedErrors from "../ReportedErrors/ReportedErrors";
+import LoaderHOC from "../../Core/LoaderHOC";
 
-function HomePage() {
+function HomePage({startLoader, stopLoader}) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
+        startLoader();
         adminService.getData()
-            .then(data => setData(data));
+            .then(data => {
+                setData(data);
+                stopLoader();
+            });
     }, []);
 
     return (
@@ -33,4 +38,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default LoaderHOC(HomePage);
