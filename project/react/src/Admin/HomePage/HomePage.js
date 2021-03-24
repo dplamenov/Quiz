@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './HomePage.css';
 import adminService from "../../services/admin"
+import ReportedErrors from "../ReportedErrors/ReportedErrors";
 
 function HomePage() {
     const [data, setData] = useState([]);
@@ -26,6 +27,7 @@ function HomePage() {
             </p>
             <hr/>
             {/*todo display all question error reports from other (new) component*/}
+            <ReportedErrors />
         </div>
     );
 }
