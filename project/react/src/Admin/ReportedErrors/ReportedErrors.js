@@ -2,14 +2,17 @@ import React, {useEffect, useState} from "react";
 import './ReportedErrors.css';
 import questionService from "../../services/question";
 import {toast} from 'react-toastify'
+import LoaderHOC from "../../Core/LoaderHOC";
 
-function ReportedErrors() {
+function ReportedErrors({startLoader, stopLoader}) {
     const [reports, setReports] = useState([]);
 
     const getReports = () => {
+        startLoader();
         questionService.getReports()
             .then(reports => {
                 setReports(reports);
+                stopLoader();
             });
     };
 
@@ -59,4 +62,4 @@ function ReportedErrors() {
     );
 }
 
-export default ReportedErrors;
+export default LoaderHOC(ReportedErrors);
