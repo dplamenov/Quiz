@@ -63,8 +63,8 @@ function Categories({history, startLoader, stopLoader}) {
                         <tr key={cat.id}>
                             <td>{cat.id}</td>
                             <td>{cat.name}</td>
-                            <td><Link to={'category/' + cat.id + '/edit'}>Edit</Link></td>
-                            <td onClick={deleteHandler(cat.id)}>Delete</td>
+                            <td><Link to={'category/' + cat.id + '/edit'}><img src="/images/edit.png" alt=""/></Link></td>
+                            <td onClick={deleteHandler(cat.id)}><img src="/images/delete.png" alt=""/></td>
                         </tr>
                     );
                 })}
