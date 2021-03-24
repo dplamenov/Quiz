@@ -72,4 +72,10 @@ class Question extends Controller
 
         return response()->json($error);
     }
+
+    public function getReports(): \Illuminate\Http\JsonResponse
+    {
+        $reports = QuestionError::all();
+        return response()->json($reports);
+    }
 }

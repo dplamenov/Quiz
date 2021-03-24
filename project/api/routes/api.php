@@ -32,6 +32,7 @@ Route::options('{any?}', function ($any = null) {
 
 Route::get('/question', [Question::class, 'getRandomById']);
 Route::post('/question', [Question::class, 'store']);
+Route::get('/question/reports', [Question::class, 'getReports']);
 Route::get('/question/{question}', [Question::class, 'show']);
 Route::post('/question/{question}/report', [Question::class, 'reportForError']);
 
