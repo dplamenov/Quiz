@@ -15,24 +15,23 @@ function ReportedErrors() {
     return (
         <>
             <h2>Question reported for errors</h2>
-            <p>only active reports</p>
             <table className="custom-table">
                 <thead>
                 <tr>
                     <th>Report ID</th>
                     <th>User</th>
                     <th>Question</th>
-                    <th>Details</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
                 {reports.map(report => {
                     return (
-                        <tr>
+                        <tr className="report-error-table-tr">
                             <td>{report.id}</td>
                             <td>{report.user_id}</td>
                             <td>{report.question_id}</td>
-                            <td>Details</td>
+                            <td><img src="images/delete.png" alt=""/></td>
                         </tr>
                     );
                 })}
