@@ -3,8 +3,9 @@ import './Comleted.css';
 import {StoreContext} from "../../store/store";
 import {addPoints} from "../../store/actions";
 import gameService from "../../services/game";
+import {withRouter} from "react-router";
 
-function Completed({points, category}) {
+function Completed({points, category, history}) {
     const {dispatch} = React.useContext(StoreContext);
 
     useEffect(() => {
@@ -13,6 +14,9 @@ function Completed({points, category}) {
             .then(() => {
                 console.log('store game');
             });
+        setTimeout(() => {
+            history.push('/');
+        }, 2000);
     }, [category, points]);
 
     return (
@@ -28,4 +32,4 @@ function Completed({points, category}) {
     );
 }
 
-export default Completed;
+export default withRouter(Completed);
