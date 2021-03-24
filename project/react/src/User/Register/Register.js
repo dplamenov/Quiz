@@ -4,6 +4,7 @@ import {StoreContext} from "../../store/store";
 import {register} from "../../store/actions";
 import {useHistory} from "react-router-dom";
 import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
+import {toast} from "react-toastify";
 
 function Register() {
     const [email, setEmail] = useState('');
@@ -33,9 +34,10 @@ function Register() {
         const data = {email, realName, password, repeatPassword};
         dispatch(register(data, () => {
             history.push('/');
+            toast.success('Register successful');
         }, (error) => {
+            toast.error(error);
             setErrorMessage(error);
-            console.log(error);
         }));
     }
 

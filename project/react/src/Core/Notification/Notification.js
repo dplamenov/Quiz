@@ -7,11 +7,9 @@ import {withRouter} from "react-router";
 function Notification({message, type = 'success', history}) {
     const styleClasses = ['notification', type];
     const {dispatch} = React.useContext(StoreContext);
-    const [id, setId] = useState(0);
 
     history.listen(() => {
         dispatch(hideNotification());
-        clearInterval(id);
     });
 
     useEffect(() => {
@@ -19,8 +17,7 @@ function Notification({message, type = 'success', history}) {
             dispatch(hideNotification());
             clearInterval(id);
         }, 3000);
-
-        setId(id);
+        return () => console.log('unmount');
     }, [dispatch]);
 
     return (

@@ -2,8 +2,9 @@ import React from 'react';
 import './Header.css';
 import {Link} from "react-router-dom";
 import {useHistory} from "react-router-dom";
-import {logout, showNotification} from "../../store/actions";
+import {logout} from "../../store/actions";
 import {StoreContext} from "../../store/store";
+import {toast} from 'react-toastify'
 
 function Header(props) {
     const history = useHistory();
@@ -12,7 +13,7 @@ function Header(props) {
     const logoutHandler = () => {
         dispatch(logout(() => {
             history.push('/');
-            dispatch(showNotification('success', 'Logout'));
+            toast('Logout');
         }));
     };
 

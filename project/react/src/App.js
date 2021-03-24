@@ -9,6 +9,7 @@ import {loginSuccess} from "./store/actions";
 import Loader from "./Core/Loader/Loader";
 import Question from "./Question/Question/Question";
 import Admin from "./Admin";
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
     BrowserRouter as Router,
@@ -17,6 +18,7 @@ import {
 } from "react-router-dom";
 import Stats from "./Core/Stats/Stats";
 import Notification from "./Core/Notification/Notification";
+import {ToastContainer} from "react-toastify";
 
 
 const Auth = ({children}) => {
@@ -61,6 +63,7 @@ class App extends React.Component {
                                     <Header isLogged={isLogged}/>
                                     {!!notification ? <Notification message={notification.message}
                                                                     type={notification.type}/> : ''}
+                                    <ToastContainer/>
                                     <Switch>
                                         <Route path="/" exact={true}>
                                             <Home isLogged={isLogged}/>

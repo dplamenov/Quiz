@@ -4,6 +4,7 @@ import {StoreContext} from "../../store/store";
 import {login, showNotification} from "../../store/actions";
 import {useHistory} from "react-router-dom";
 import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
+import {toast} from "react-toastify";
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -30,7 +31,7 @@ function Login() {
         dispatch(login({email, password}, () => {
             setErrorMessage('');
             history.push('/');
-            dispatch(showNotification('success', 'Login successful'))
+            toast.success('Login successful');
         }, (error) => {
             setErrorMessage(error);
         }));
