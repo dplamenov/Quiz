@@ -71,7 +71,12 @@ header h1 > a {
 
 @media only screen and (max-width: 600px) {
     header {
-        padding: 20px 0;
+        padding: 10px 0;
+        flex-direction: column;
+        height: unset;
+    }
+
+    header nav ul {
         flex-direction: column;
     }
 
@@ -84,5 +89,14 @@ header h1 > a {
         display: block;
         border-bottom-right-radius: 25px;
         text-align: center;
+        background-color: unset;
+    }
+
+    .stats::after {
+        content: none;
+    }
+
+    .stats-bar {
+        display: none;
     }
 }
