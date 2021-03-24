@@ -31,8 +31,7 @@ function HomePage({startLoader, stopLoader}) {
                 <span>{data?.categories?.count}</span>
             </p>
             <hr/>
-            {/*todo display all question error reports from other (new) component*/}
-            <ReportedErrors />
+            <ReportedErrors/>
             <hr/>
         </div>
     );
