@@ -15,6 +15,14 @@ const questionService = {
 
     getReports() {
         return request.get('question/reports');
+    },
+
+    getReport(id) {
+        return request.get(`question/report/${id}`);
+    },
+
+    deleteReport(id) {
+        return request.delete(`question/report/${id}`);
     }
 };
 
