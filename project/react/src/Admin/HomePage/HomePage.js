@@ -32,7 +32,6 @@ function HomePage({startLoader, stopLoader}) {
             </p>
             <hr/>
             <ReportedErrors/>
-            <hr/>
         </div>
     );
 }

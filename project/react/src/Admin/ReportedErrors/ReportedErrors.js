@@ -4,7 +4,7 @@ import questionService from "../../services/question";
 import {toast} from 'react-toastify'
 import LoaderHOC from "../../Core/LoaderHOC";
 
-function ReportedErrors({startLoader, stopLoader}) {
+function ReportedErrors({startLoader, stopLoader, isLoading}) {
     const [reports, setReports] = useState([]);
 
     const getReports = () => {
@@ -57,7 +57,7 @@ function ReportedErrors({startLoader, stopLoader}) {
                 })}
                 </tbody>
             </table>
-            {reports.length === 0 ? <p>No reports.</p> : ''}
+            {reports.length === 0 && !isLoading ? <p>No reports.</p> : ''}
         </>
     );
 }
