@@ -6,6 +6,7 @@ import TimerEnd from "../TimerEnd/TimerEnd";
 import WrongAnswer from "../WrongAnswer/WrongAnswer";
 import Completed from "../Completed/Completed";
 import ReportError from "../ReportError/ReportError";
+import Loader from "../../Core/Loader/Loader";
 
 function Question(props) {
     const [allQuestions, setAllQuestions] = useState([]);
@@ -17,6 +18,7 @@ function Question(props) {
     const [timerIntervalId, setTimerIntervalId] = useState();
     const [isComplete, setIsComplete] = useState(false);
     const [reportError, setReportError] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const catId = props.match.params.category;
 
@@ -32,7 +34,7 @@ function Question(props) {
         setLeftSeconds(50);
     }
 
-    useEffect(() => {
+    const startGame = () => {
         questionService.getQuestion(catId)
             .then(q => {
                 q = q.map(q => {
@@ -44,13 +46,17 @@ function Question(props) {
                     props.history.push('/');
                     return;
                 }
-
+                setIsLoading(false);
                 setAllQuestions(q);
                 setQuestion(q[0]);
+                setTimerIntervalId(setInterval(() => {
+                    tickTimer();
+                }, 1000));
             });
-        setTimerIntervalId(setInterval(() => {
-            tickTimer();
-        }, 1000));
+    };
+
+    useEffect(() => {
+        startGame();
     }, [catId, props.history]);
 
     const tickTimer = () => {
@@ -89,11 +95,28 @@ function Question(props) {
         props.history.push('/');
     }
 
+    const startAgainHandler = () => {
+        setIsLoading(true);
+        setIsAnswerWrong(false);
+        setIsMoreTimeAvailable(true);
+        setLeftSeconds(50);
+        setCurrentQuestionIndex(0);
+        startGame();
+
+    };
+
+    const goToHomeHandler = () => {
+        props.history.push('/');
+    };
+
     return (
         <>
-            {!isMoreTimeAvailable ? <TimerEnd/> : ''}
+            {isLoading ? <Loader/> : ''}
+            {!isMoreTimeAvailable ? <TimerEnd startAgainHandler={startAgainHandler}/> : ''}
             {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}
-                                          reportForErrorHandler={reportForErrorHandler}/> : ''}
+                                          reportForErrorHandler={reportForErrorHandler}
+                                          startAgainHandler={startAgainHandler}
+                                          goToHomeHandler={goToHomeHandler}/> : ''}
             {isComplete ? <Completed points={5} category={catId}/> : ''}
             {reportError ? <ReportError question={question.question} answers={question.answers} id={question.id}
                                         afterReportHandler={afterReportHandler}/> : ''}

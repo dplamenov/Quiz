@@ -1,7 +1,7 @@
 import React from 'react';
 import './WrongAnswer.css';
 
-function WrongAnswer({correct, reportForErrorHandler}) {
+function WrongAnswer({correct, reportForErrorHandler, startAgainHandler, goToHomeHandler}) {
     return (
         <section className="wrong-answer">
             <h1 className="wrong-answer-heading">Wrong</h1>
@@ -10,6 +10,10 @@ function WrongAnswer({correct, reportForErrorHandler}) {
                 <span>If you think correct answer is not {correct} you can </span>
                 <span onClick={reportForErrorHandler} className="wrong-answer-report-error">Report error</span>
             </p>
+            <article className="flex">
+                <button className="btn" onClick={startAgainHandler}>Start again</button>
+                <button className="btn" onClick={goToHomeHandler}>Home page</button>
+            </article>
         </section>
     );
 }

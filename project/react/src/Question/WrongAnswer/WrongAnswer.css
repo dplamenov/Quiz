@@ -1,6 +1,6 @@
 .wrong-answer {
     border: 1px solid black;
-    background-color: rgba(219, 69, 69,.8);
+    background-color: rgba(219, 69, 69, .8);
     position: fixed;
     width: 40%;
     height: 30vh;
@@ -29,6 +29,11 @@
 .wrong-answer-report-error {
     font-weight: bold;
     text-decoration: underline;
+}
+
+.start-again {
+    text-align: center;
+    color: white;
 }
 
 @media only screen and (max-width: 600px) {
