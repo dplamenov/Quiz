@@ -8,9 +8,13 @@ function Categories({history}) {
     const [categories, setCategories] = useState([]);
     const [deleteCategory, setDeleteCategory] = useState(false);
 
-    useEffect(() => {
+    const getAll = () => {
         adminService.getAllCategories()
             .then(categories => setCategories(categories.sort((u1, u2) => u1.id - u2.id)));
+    }
+
+    useEffect(() => {
+        getAll();
     }, []);
 
     const closeDeleteCategoryHandler = () => {
@@ -25,7 +29,7 @@ function Categories({history}) {
 
     const yesHandler = () => {
         setDeleteCategory(false);
-        history.go('/admin/categories');
+        getAll();
     };
 
     return (

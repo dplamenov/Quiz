@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './DeleteCategory.css';
 import categoryService from "../../../services/category";
+import {toast} from "react-toastify";
 
 function DeleteCategory({id, closeHandler, yesHandler: redirectHandler}) {
     const [category, setCategory] = useState();
@@ -19,6 +20,7 @@ function DeleteCategory({id, closeHandler, yesHandler: redirectHandler}) {
     const yesHandler = () => {
         categoryService.delete(id)
             .then(_ => {
+                toast.success('Deleted');
                 redirectHandler();
             });
     };

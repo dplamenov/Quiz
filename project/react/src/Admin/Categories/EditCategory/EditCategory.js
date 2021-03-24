@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './EditCategory.css';
 import categoryService from "../../../services/category";
+import {toast} from "react-toastify";
 
 function EditCategory({match, history}) {
     const [category, setCategory] = useState({});
@@ -23,6 +24,7 @@ function EditCategory({match, history}) {
         e.preventDefault();
         categoryService.edit(category.id, name)
             .then(() => {
+                toast.success('Edited');
                 history.push('/admin/categories');
             });
     };

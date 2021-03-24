@@ -3,6 +3,7 @@ import './CreateCategory.css';
 import categoryService from "../../../services/category";
 import {StoreContext} from "../../../store/store";
 import {showNotification} from "../../../store/actions";
+import {toast} from "react-toastify";
 
 function CreateCategory({history}) {
     const [name, setName] = useState('');
@@ -37,10 +38,10 @@ function CreateCategory({history}) {
                     return Promise.reject(result.error);
                 }
                 history.push('/admin/categories');
-                dispatch(showNotification('success', 'Created.'));
+                toast.success('Create category');
             })
             .catch(error => {
-                dispatch(showNotification('error', error));
+                toast.error(error);
             });
     }
 
