@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import './Questions.css';
 import adminService from "../../services/admin";
+import LoaderHOC from "../../Core/LoaderHOC";
 
-function Questions({history}) {
+function Questions({history, startLoader, stopLoader}) {
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
+        startLoader();
         adminService.getAllQuestions()
             .then(questions => {
                 setQuestions(questions);
+                stopLoader();
             });
     }, []);
 
@@ -50,4 +53,4 @@ function Questions({history}) {
     );
 }
 
-export default Questions;
+export default LoaderHOC(Questions);
