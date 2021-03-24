@@ -15,10 +15,13 @@ function LoaderHOC(Component) {
         }
 
         render() {
+            console.log(this.state);
             return (
                 <>
-                    {this.state.isActive ? <Loader /> : ''}
-                    <Component startLoader={() => this.setIsLoaderActive.call(this, true)} stopLoader={() => this.setIsLoaderActive.call(this, false)} />
+                    {this.state.isActive ? <Loader/> : ''}
+                    <Component {...this.props} startLoader={() => this.setIsLoaderActive.call(this, true)}
+                               stopLoader={() => this.setIsLoaderActive.call(this, false)}
+                               isLoading={this.state.isActive}/>
                 </>
             )
         }
