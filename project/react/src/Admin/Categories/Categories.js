@@ -64,7 +64,7 @@ function Categories({history, startLoader, stopLoader}) {
                             <td>{cat.id}</td>
                             <td>{cat.name}</td>
                             <td><Link to={'category/' + cat.id + '/edit'}><img src="/images/edit.png" alt=""/></Link></td>
-                            <td onClick={deleteHandler(cat.id)}><img src="/images/delete.png" alt=""/></td>
+                            <td onClick={deleteHandler(cat.id)} className="cursor-pointer"><img src="/images/delete.png" alt=""/></td>
                         </tr>
                     );
                 })}

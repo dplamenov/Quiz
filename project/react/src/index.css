@@ -68,3 +68,12 @@ code {
 .custom-table td {
   padding: 8px 0;
 }
+
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
