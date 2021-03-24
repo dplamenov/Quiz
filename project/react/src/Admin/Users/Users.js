@@ -1,13 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import './Users.css';
 import adminService from "../../services/admin";
+import LoaderHOC from "../../Core/LoaderHOC";
 
-function Users() {
+function Users({startLoader, stopLoader}) {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
+        startLoader();
         adminService.getAllUsers()
-            .then(users => setUsers(users.sort((u1, u2) => u1.id - u2.id)));
+            .then(users => {
+                stopLoader();
+                return setUsers(users.sort((u1, u2) => u1.id - u2.id));
+            });
     }, []);
 
 
@@ -43,4 +48,4 @@ function Users() {
     );
 }
 
-export default Users;
+export default LoaderHOC(Users);
