@@ -53,6 +53,7 @@ function ReportedErrors() {
                 })}
                 </tbody>
             </table>
+            {reports.length === 0 ? <p>No reports.</p> : ''}
         </>
     );
 }
