@@ -21,7 +21,7 @@ function Question(props) {
     const [isLoading, setIsLoading] = useState(true);
 
     const catId = props.match.params.category;
-    
+
     const getNextQuestion = () => {
         if (!allQuestions[currentQuestionIndex + 1]) {
             setIsComplete(true);
