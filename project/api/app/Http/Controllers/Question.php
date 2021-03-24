@@ -75,7 +75,20 @@ class Question extends Controller
 
     public function getReports(): \Illuminate\Http\JsonResponse
     {
-        $reports = QuestionError::all();
+        $reports = QuestionError::orderBy('id', 'desc')->get();
         return response()->json($reports);
+    }
+
+    public function getReportById($reportId): \Illuminate\Http\JsonResponse
+    {
+        $report = QuestionError::find($reportId);
+        return response()->json($report);
+    }
+
+    public function deleteReport($reportId): \Illuminate\Http\JsonResponse
+    {
+        $report = QuestionError::find($reportId);
+        $report->delete();
+        return response()->json($report);
     }
 }

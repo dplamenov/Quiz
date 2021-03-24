@@ -35,6 +35,8 @@ Route::post('/question', [Question::class, 'store']);
 Route::get('/question/reports', [Question::class, 'getReports']);
 Route::get('/question/{question}', [Question::class, 'show']);
 Route::post('/question/{question}/report', [Question::class, 'reportForError']);
+Route::get('/question/report/{reportId}', [Question::class, 'getReportById']);
+Route::delete('/question/report/{reportId}', [Question::class, 'deleteReport']);
 
 Route::post('/game', [Game::class, 'storeGame']);
 
