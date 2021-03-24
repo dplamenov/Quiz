@@ -13,8 +13,10 @@ function Categories({history, startLoader, stopLoader}) {
         startLoader();
         adminService.getAllCategories()
             .then(categories => {
-                stopLoader();
-                return setCategories(categories.sort((u1, u2) => u1.id - u2.id));
+                return setCategories(() => {
+                    stopLoader();
+                    return categories.sort((u1, u2) => u1.id - u2.id);
+                });
             });
     }
 
@@ -63,8 +65,10 @@ function Categories({history, startLoader, stopLoader}) {
                         <tr key={cat.id}>
                             <td>{cat.id}</td>
                             <td>{cat.name}</td>
-                            <td><Link to={'category/' + cat.id + '/edit'}><img src="/images/edit.png" alt=""/></Link></td>
-                            <td onClick={deleteHandler(cat.id)} className="cursor-pointer"><img src="/images/delete.png" alt=""/></td>
+                            <td><Link to={'category/' + cat.id + '/edit'}><img src="/images/edit.png" alt=""/></Link>
+                            </td>
+                            <td onClick={deleteHandler(cat.id)} className="cursor-pointer"><img src="/images/delete.png"
+                                                                                                alt=""/></td>
                         </tr>
                     );
                 })}
