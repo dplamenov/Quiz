@@ -3,14 +3,19 @@ import adminService from "../../services/admin";
 import './Categories.css';
 import {Link} from "react-router-dom";
 import DeleteCategory from "./DeleteCategory/DeleteCategory";
+import LoaderHOC from "../../Core/LoaderHOC";
 
-function Categories({history}) {
+function Categories({history, startLoader, stopLoader}) {
     const [categories, setCategories] = useState([]);
     const [deleteCategory, setDeleteCategory] = useState(false);
 
     const getAll = () => {
+        startLoader();
         adminService.getAllCategories()
-            .then(categories => setCategories(categories.sort((u1, u2) => u1.id - u2.id)));
+            .then(categories => {
+                stopLoader();
+                return setCategories(categories.sort((u1, u2) => u1.id - u2.id));
+            });
     }
 
     useEffect(() => {
@@ -70,4 +75,4 @@ function Categories({history}) {
     );
 }
 
-export default Categories;
+export default LoaderHOC(Categories);
