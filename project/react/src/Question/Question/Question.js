@@ -12,7 +12,7 @@ function Question(props) {
     const [allQuestions, setAllQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [question, setQuestion] = useState({});
-    const [leftSeconds, setLeftSeconds] = useState(50);
+    const [leftSeconds, setLeftSeconds] = useState(20);
     const [isMoreTimeAvailable, setIsMoreTimeAvailable] = useState(true);
     const [isAnswerWrong, setIsAnswerWrong] = useState(false);
     const [timerIntervalId, setTimerIntervalId] = useState();
@@ -31,7 +31,7 @@ function Question(props) {
         }
         setQuestion(allQuestions[currentQuestionIndex + 1]);
         setIsAnswerWrong(false);
-        setLeftSeconds(50);
+        setLeftSeconds(20);
     }
 
     const startGame = () => {
@@ -112,7 +112,9 @@ function Question(props) {
     return (
         <>
             {isLoading ? <Loader/> : ''}
-            {!isMoreTimeAvailable ? <TimerEnd startAgainHandler={startAgainHandler}/> : ''}
+            {!isMoreTimeAvailable ?
+                <TimerEnd startAgainHandler={startAgainHandler}
+                          goToHomeHandler={goToHomeHandler}/> : ''}
             {isAnswerWrong ? <WrongAnswer correct={question.answers[question.correct_answer - 1]}
                                           reportForErrorHandler={reportForErrorHandler}
                                           startAgainHandler={startAgainHandler}
