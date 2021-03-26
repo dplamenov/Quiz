@@ -4,6 +4,7 @@ import {StoreContext} from "../../store/store";
 import {addPoints} from "../../store/actions";
 import gameService from "../../services/game";
 import {withRouter} from "react-router";
+import {toast} from "react-toastify";
 
 function Completed({points, category, history}) {
     const {dispatch} = React.useContext(StoreContext);
@@ -12,6 +13,7 @@ function Completed({points, category, history}) {
         dispatch(addPoints(points));
         gameService.storeGame({category})
             .then(() => {
+                toast.success(`You are awesome! You get ${points}points.`);
                 console.log('store game');
             });
         setTimeout(() => {
@@ -23,7 +25,7 @@ function Completed({points, category, history}) {
         <>
             <section className="completed">
                 <h1 className="completed-heading">You are awesome!</h1>
-                <p className="completed-text">You got {points}points.</p>
+                <p className="completed-text">You get {points}points.</p>
                 <article className="completed-image-wrapper">
                     <img src="/images/ok.png" alt=""/>
                 </article>
