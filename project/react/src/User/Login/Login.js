@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import './Login.css';
 import {StoreContext} from "../../store/store";
-import {login, showNotification} from "../../store/actions";
+import {login} from "../../store/actions";
 import {useHistory} from "react-router-dom";
 import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
 import {toast} from "react-toastify";
+import LoaderHOC from "../../Core/LoaderHOC";
 
-function Login() {
+function Login({startLoader, stopLoader}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -28,8 +29,10 @@ function Login() {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        startLoader();
         dispatch(login({email, password}, () => {
             setErrorMessage('');
+            stopLoader();
             history.push('/');
             toast.success('Login successful');
         }, (error) => {
@@ -57,4 +60,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default LoaderHOC(Login);
