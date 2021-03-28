@@ -19,6 +19,7 @@ import {
 import Stats from "./Core/Stats/Stats";
 import Notification from "./Core/Notification/Notification";
 import {ToastContainer} from "react-toastify";
+import Footer from "./Core/Footer/Footer";
 
 
 const Auth = ({children}) => {
@@ -63,7 +64,7 @@ class App extends React.Component {
                                     <Header isLogged={isLogged}/>
                                     {!!notification ? <Notification message={notification.message}
                                                                     type={notification.type}/> : ''}
-                                    <ToastContainer newestOnTop={true} />
+                                    <ToastContainer newestOnTop={true}/>
                                     <Switch>
                                         <Route path="/" exact={true}>
                                             <Home isLogged={isLogged}/>
@@ -78,6 +79,7 @@ class App extends React.Component {
                                         <Route path="/admin" component={(props) => <Admin {...props} user={user}/>}/>
                                         <Route path="/stats" component={Stats}/>
                                     </Switch>
+                                    <Footer />
                                 </Router>
                             );
                         }}
