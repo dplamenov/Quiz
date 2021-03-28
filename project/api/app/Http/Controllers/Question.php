@@ -76,6 +76,9 @@ class Question extends Controller
     public function getReports(): \Illuminate\Http\JsonResponse
     {
         $reports = QuestionError::orderBy('id', 'desc')->get();
+        foreach ($reports as $key => $report) {
+            $reports[$key]->user = \App\Models\User::find($report->user_id)->email;
+        }
         return response()->json($reports);
     }
 

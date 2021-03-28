@@ -49,7 +49,7 @@ function ReportedErrors({startLoader, stopLoader, isLoading}) {
                     return (
                         <tr className="report-error-table-tr" key={report.id}>
                             <td>{report.id}</td>
-                            <td>{report.user_id}</td>
+                            <td>{report.user}</td>
                             <td>{report.question_id}</td>
                             <td><img src="images/delete.png" alt="" onClick={deleteReportHandler(report.id)}/></td>
                         </tr>

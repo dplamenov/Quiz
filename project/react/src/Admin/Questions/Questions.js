@@ -23,7 +23,7 @@ function Questions({history, startLoader, stopLoader}) {
                     Create question
                 </button>
             </section>
-            <table className="custom-table">
+            <table className="custom-table admin-panel-questions">
                 <thead>
                 <tr>
                     <th>ID</th>

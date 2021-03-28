@@ -15,7 +15,6 @@ function LoaderHOC(Component) {
         }
 
         render() {
-            console.log(this.state);
             return (
                 <>
                     {this.state.isActive ? <Loader/> : ''}
