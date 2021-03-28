@@ -20,6 +20,7 @@ import Stats from "./Core/Stats/Stats";
 import Notification from "./Core/Notification/Notification";
 import {ToastContainer} from "react-toastify";
 import Footer from "./Core/Footer/Footer";
+import Contact from "./Core/Contact/Contact";
 
 
 const Auth = ({children}) => {
@@ -78,8 +79,9 @@ class App extends React.Component {
                                         <Route path="/question/:category" component={Question}/>
                                         <Route path="/admin" component={(props) => <Admin {...props} user={user}/>}/>
                                         <Route path="/stats" component={Stats}/>
+                                        <Route path="/contact" component={Contact}/>
                                     </Switch>
-                                    <Footer />
+                                    <Footer/>
                                 </Router>
                             );
                         }}
