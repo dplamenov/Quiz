@@ -6,3 +6,18 @@ footer {
     width: 100%;
     padding: 8px 5px;
 }
+
+footer nav {
+    display: flex;
+    justify-content: center;
+}
+
+footer nav ul {
+    display: flex;
+    list-style: none;
+}
+
+footer nav ul a {
+    color: white;
+    text-decoration: none;
+}
