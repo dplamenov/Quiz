@@ -3,8 +3,9 @@ import './ReportedErrors.css';
 import questionService from "../../services/question";
 import {toast} from 'react-toastify'
 import LoaderHOC from "../../Core/LoaderHOC";
+import {withRouter} from "react-router";
 
-function ReportedErrors({startLoader, stopLoader, isLoading}) {
+function ReportedErrors({startLoader, stopLoader, isLoading, history}) {
     const [reports, setReports] = useState([]);
 
     const getReports = () => {
@@ -19,7 +20,7 @@ function ReportedErrors({startLoader, stopLoader, isLoading}) {
     useEffect(() => {
         getReports();
     }, []);
-
+    
     const deleteReportHandler = (reportId) => {
         return () => {
             questionService.deleteReport(reportId)
@@ -31,6 +32,13 @@ function ReportedErrors({startLoader, stopLoader, isLoading}) {
                 });
         };
     };
+
+    const selectReportHandler = (id) => {
+        return () => {
+            history.push(`/admin/report/${id}`);
+        }
+    };
+
 
     return (
         <>
@@ -47,10 +55,10 @@ function ReportedErrors({startLoader, stopLoader, isLoading}) {
                 <tbody>
                 {reports.map(report => {
                     return (
-                        <tr className="report-error-table-tr" key={report.id}>
+                        <tr className="report-error-table-tr" key={report.id} onClick={selectReportHandler(report.id)}>
                             <td>{report.id}</td>
                             <td>{report.user}</td>
-                            <td>{report.question_id}</td>
+                            <td>{report.question.substring(0, 30) + '...'}</td>
                             <td><img src="images/delete.png" alt="" onClick={deleteReportHandler(report.id)}/></td>
                         </tr>
                     );
@@ -62,4 +70,4 @@ function ReportedErrors({startLoader, stopLoader, isLoading}) {
     );
 }
 
-export default LoaderHOC(ReportedErrors);
+export default withRouter(LoaderHOC(ReportedErrors));

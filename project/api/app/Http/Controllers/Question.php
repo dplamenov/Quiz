@@ -78,6 +78,7 @@ class Question extends Controller
         $reports = QuestionError::orderBy('id', 'desc')->get();
         foreach ($reports as $key => $report) {
             $reports[$key]->user = \App\Models\User::find($report->user_id)->email;
+            $reports[$key]->question = \App\Models\Question::find($report->question_id)->question;
         }
         return response()->json($reports);
     }
