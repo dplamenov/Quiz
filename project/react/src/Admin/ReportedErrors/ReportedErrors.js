@@ -20,7 +20,7 @@ function ReportedErrors({startLoader, stopLoader, isLoading, history}) {
     useEffect(() => {
         getReports();
     }, []);
-    
+
     const deleteReportHandler = (reportId) => {
         return () => {
             questionService.deleteReport(reportId)
@@ -38,7 +38,6 @@ function ReportedErrors({startLoader, stopLoader, isLoading, history}) {
             history.push(`/admin/report/${id}`);
         }
     };
-
 
     return (
         <>

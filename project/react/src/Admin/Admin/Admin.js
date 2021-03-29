@@ -9,6 +9,7 @@ import CreateCategory from "../Categories/CreateCategory/CreateCategory";
 import CreateQuestions from "../Questions/CreateQuestion/CreateQuestion";
 import EditCategory from "../Categories/EditCategory/EditCategory";
 import HomePage from "../HomePage/HomePage";
+import ReportDetails from "../ReportedErrors/ReportDetails/ReportDetails";
 
 function Admin(props) {
     const {path} = useRouteMatch();
@@ -45,6 +46,8 @@ function Admin(props) {
                     <Route path={`${path}/categories`} component={Categories} exact/>
                     <Route path={`${path}/categories/create`} component={CreateCategory} exact/>
                     <Route path={`${path}/category/:id/edit`} component={EditCategory} exact/>
+
+                    <Route path={`${path}/report/:id`} component={ReportDetails}/>
                 </Switch>
             </section>
 

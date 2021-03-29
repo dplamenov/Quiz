@@ -1,0 +1,7 @@
+.report-details p {
+    text-align: left;
+}
+
+.report-details .delete-btn {
+    margin-left: 50px;
+}

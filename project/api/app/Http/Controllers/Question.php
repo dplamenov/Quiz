@@ -86,6 +86,9 @@ class Question extends Controller
     public function getReportById($reportId): \Illuminate\Http\JsonResponse
     {
         $report = QuestionError::find($reportId);
+        $report->question = \App\Models\Question::find($report->question_id);
+        $report->user = \App\Models\User::find($report->user_id);
+
         return response()->json($report);
     }
 
