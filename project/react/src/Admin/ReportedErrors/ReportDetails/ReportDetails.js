@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import './ReportDetails.css';
 import questionService from "../../../services/question";
+import {toast} from "react-toastify";
 
-function ReportDetails({match}) {
+function ReportDetails({match, history}) {
     const [report, setReport] = useState({});
 
     useEffect(() => {
@@ -13,6 +14,14 @@ function ReportDetails({match}) {
                 setReport(report);
             });
     }, []);
+
+    const deleteHandler = () => {
+        questionService.deleteReport(report.id)
+            .then(() => {
+                toast.success('Deleted.');
+                history.push('/admin');
+            });
+    };
 
     return (
         <div className="report-details">
@@ -32,7 +41,7 @@ function ReportDetails({match}) {
                 <span>{report?.answer_by_user}</span>
             </p>
             <button className="btn">Accept</button>
-            <button className="btn delete-btn">Delete</button>
+            <button className="btn delete-btn" onClick={deleteHandler}>Delete</button>
         </div>
     );
 }
