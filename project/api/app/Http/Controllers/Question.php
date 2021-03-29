@@ -108,6 +108,8 @@ class Question extends Controller
         $questionAnswers = json_decode($question->answers);
         $questionAnswers[$question->correct_answer - 1] = $userAnswer;
 
+        $question->answers = $questionAnswers;
+
         $question->save();
         $report->delete();
 

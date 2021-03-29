@@ -23,6 +23,10 @@ const questionService = {
 
     deleteReport(id) {
         return request.delete(`question/report/${id}`);
+    },
+
+    acceptReport(id) {
+        return request.post(`question/report/${id}`);
     }
 };
 

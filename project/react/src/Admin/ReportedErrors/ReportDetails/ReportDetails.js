@@ -19,7 +19,12 @@ function ReportDetails({match, history, startLoader, stopLoader}) {
     }, []);
 
     const acceptHandler = () => {
-        
+        questionService.acceptReport(report.id)
+            .then(() => {
+                toast.success('Question edited');
+                toast.success('Report deleted');
+                history.push('/admin');
+            });
     };
 
     const deleteHandler = () => {
