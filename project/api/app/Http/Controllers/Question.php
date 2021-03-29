@@ -98,4 +98,19 @@ class Question extends Controller
         $report->delete();
         return response()->json($report);
     }
+
+    public function acceptReport($reportId): \Illuminate\Http\JsonResponse
+    {
+        $report = QuestionError::find($reportId);
+        $question = \App\Models\Question::find($report->question_id);
+
+        $userAnswer = $report->answer_by_user;
+        $questionAnswers = json_decode($question->answers);
+        $questionAnswers[$question->correct_answer - 1] = $userAnswer;
+
+        $question->save();
+        $report->delete();
+
+        return response()->json($report);
+    }
 }
