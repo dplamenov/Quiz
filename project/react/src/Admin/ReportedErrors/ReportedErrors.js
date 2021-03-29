@@ -22,19 +22,36 @@ function ReportedErrors({startLoader, stopLoader, isLoading, history}) {
     }, []);
 
     const deleteReportHandler = (reportId) => {
-        return () => {
+        return (e) => {
+            e.stopPropagation();
             questionService.deleteReport(reportId)
                 .then(() => {
                     setReports((reports) => {
                         return reports.filter(r => r.id !== reportId);
                     });
-                    toast("Deleted")
+                    toast.success("Deleted");
+                });
+        };
+    };
+
+    const acceptReportHandler = (reportId) => {
+        return (e) => {
+            e.stopPropagation();
+            questionService.acceptReport(reportId)
+                .then(() => {
+                    toast.success('Question edited');
+                    toast.success('Report deleted');
+
+                    setReports((reports) => {
+                        return reports.filter(r => r.id !== reportId);
+                    });
                 });
         };
     };
 
     const selectReportHandler = (id) => {
         return () => {
+            console.log('select');
             history.push(`/admin/report/${id}`);
         }
     };
@@ -48,6 +65,7 @@ function ReportedErrors({startLoader, stopLoader, isLoading, history}) {
                     <th>Report ID</th>
                     <th>User</th>
                     <th>Question</th>
+                    <th>Accept</th>
                     <th>Delete</th>
                 </tr>
                 </thead>
@@ -58,7 +76,10 @@ function ReportedErrors({startLoader, stopLoader, isLoading, history}) {
                             <td>{report.id}</td>
                             <td>{report.user}</td>
                             <td>{report.question.substring(0, 30) + '...'}</td>
-                            <td><img src="images/delete.png" alt="" onClick={deleteReportHandler(report.id)}/></td>
+                            <td><img src="images/ok.png" alt="Accept" onClick={acceptReportHandler(report.id)}
+                                     width="16px"/></td>
+                            <td><img src="images/delete.png" alt="Delete" onClick={deleteReportHandler(report.id)}/>
+                            </td>
                         </tr>
                     );
                 })}
