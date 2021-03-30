@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import './Home.css';
 import CategoryCard from "../../Category/CategoryCard/CategoryCard";
 import categoryService from "../../services/category";
+import LoaderHOC from "../LoaderHOC";
 
 class Home extends React.Component {
     constructor(props) {
@@ -14,11 +15,13 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
+       this.props.startLoader();
         categoryService.getAll()
             .then(categories => {
                 this.setState({
                     categories
-                })
+                });
+                this.props.stopLoader();
             });
     }
 
@@ -53,4 +56,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default LoaderHOC(Home);
