@@ -27,6 +27,10 @@ const questionService = {
 
     acceptReport(id) {
         return request.post(`question/report/${id}`);
+    },
+
+    delete(id) {
+        return request.delete(`question/${id}`);
     }
 };
 

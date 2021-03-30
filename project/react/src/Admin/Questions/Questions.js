@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import './Questions.css';
 import adminService from "../../services/admin";
 import LoaderHOC from "../../Core/LoaderHOC";
+import questionService from "../../services/question";
+import {toast} from "react-toastify";
 
 function Questions({history, startLoader, stopLoader}) {
     const [questions, setQuestions] = useState([]);
@@ -14,6 +16,18 @@ function Questions({history, startLoader, stopLoader}) {
                 stopLoader();
             });
     }, []);
+
+    const deleteHandler = (id) => {
+        return () => {
+            questionService.delete(id)
+                .then(() => {
+                    setQuestions(questions => {
+                        return questions.filter(q => q.id !== id);
+                    });
+                    toast.success('Deleted');
+                });
+        };
+    };
 
     return (
         <>
@@ -31,6 +45,7 @@ function Questions({history, startLoader, stopLoader}) {
                     <th>Answers</th>
                     <th>Correct answer</th>
                     <th>Category</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,6 +58,7 @@ function Questions({history, startLoader, stopLoader}) {
                             <td>{answers.join(', ')}</td>
                             <td>{answers[question.correct_answer - 1]}</td>
                             <td>{question.category}</td>
+                            <td><img src="/images/delete.png" alt="" onClick={deleteHandler(question.id)}/></td>
                         </tr>
                     );
                 })}
