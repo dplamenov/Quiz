@@ -115,4 +115,12 @@ class Question extends Controller
 
         return response()->json($report);
     }
+
+    public function deleteQuestion($questionId): \Illuminate\Http\JsonResponse
+    {
+        $question = \App\Models\Question::find($questionId);
+        $question->delete();
+
+        return response()->json($question);
+    }
 }
