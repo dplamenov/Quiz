@@ -18,9 +18,9 @@ Quiz application with React
 - Report question for error.
 <h3>Admin</h3>
 
-- Create questions.
+- Create and delete questions.
 
-- Create categories.
+- Create and delete categories.
 
 - Review reported question errors.
 
