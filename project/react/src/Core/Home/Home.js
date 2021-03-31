@@ -16,7 +16,11 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-       this.props.startLoader();
+        this.getCategories();
+    }
+
+    getCategories() {
+        this.props.startLoader();
         categoryService.getAll()
             .then(categories => {
                 this.setState({
