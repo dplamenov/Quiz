@@ -7,6 +7,7 @@ import WrongAnswer from "../WrongAnswer/WrongAnswer";
 import Completed from "../Completed/Completed";
 import ReportError from "../ReportError/ReportError";
 import Loader from "../../Core/Loader/Loader";
+import Title from "../../Core/Title";
 
 function Question(props) {
     const [allQuestions, setAllQuestions] = useState([]);
@@ -110,6 +111,7 @@ function Question(props) {
 
     return (
         <>
+            <Title>Quiz | Play</Title>
             {isLoading ? <Loader/> : ''}
             {!isMoreTimeAvailable ?
                 <TimerEnd startAgainHandler={startAgainHandler}

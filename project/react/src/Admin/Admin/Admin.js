@@ -10,12 +10,14 @@ import CreateQuestions from "../Questions/CreateQuestion/CreateQuestion";
 import EditCategory from "../Categories/EditCategory/EditCategory";
 import HomePage from "../HomePage/HomePage";
 import ReportDetails from "../ReportedErrors/ReportDetails/ReportDetails";
+import Title from "../../Core/Title";
 
 function Admin(props) {
     const {path} = useRouteMatch();
 
     return (
         <>
+            <Title>Admin panel</Title>
             {props.user?.access !== 'admin' ? <Redirect to="/"/> : ''}
             <h1>
                 <Link to='/admin' className="admin-panel-heading-a">Admin panel</Link>

@@ -4,6 +4,7 @@ import './Home.css';
 import CategoryCard from "../../Category/CategoryCard/CategoryCard";
 import categoryService from "../../services/category";
 import LoaderHOC from "../LoaderHOC";
+import Title from "../Title";
 
 class Home extends React.Component {
     constructor(props) {
@@ -50,6 +51,7 @@ class Home extends React.Component {
     render() {
         return (
             <main>
+                <Title>Quiz game</Title>
                 {this.props.isLogged ? this.renderUser() : this.renderGuest()}
             </main>
         );

@@ -3,6 +3,7 @@ import './Stats.css';
 import userService from "../../services/user";
 import {StoreContext} from "../../store/store";
 import queryString from '../../helper/queryString';
+import Title from "../Title";
 
 function Stats({location, history}) {
     const [data, setData] = useState({});
@@ -32,6 +33,7 @@ function Stats({location, history}) {
 
     return (
         <div className="wrapper">
+            <Title>Statistics</Title>
             <h2 className="stats-heading">Statistics</h2>
             <table className="custom-table">
                 <thead>

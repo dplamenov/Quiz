@@ -1,6 +1,7 @@
 import React from 'react';
 import './Contact.css';
 import {toast} from "react-toastify";
+import Title from "../Title";
 
 function Contact({history}) {
 
@@ -12,6 +13,7 @@ function Contact({history}) {
 
     return (
         <>
+            <Title>Contact</Title>
             <h1>Contact</h1>
             <div className="wrapper">
                 <form onClick={submitHandler}>
