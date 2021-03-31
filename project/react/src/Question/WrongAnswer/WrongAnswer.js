@@ -1,9 +1,11 @@
 import React from 'react';
 import './WrongAnswer.css';
+import Title from "../../Core/Title";
 
 function WrongAnswer({correct, reportForErrorHandler, startAgainHandler, goToHomeHandler}) {
     return (
         <section className="wrong-answer">
+            <Title>Quiz | Wrong Answer</Title>
             <h1 className="wrong-answer-heading">Wrong</h1>
             <p className="wrong-answer-text">Correct answer is {correct}</p>
             <p className="wrong-answer-text">

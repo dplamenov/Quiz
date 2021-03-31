@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './ReportError.css';
 import questionService from "../../services/question";
 import {toast} from "react-toastify";
+import Title from "../../Core/Title";
 
 function ReportError({id, question, answers, afterReportHandler}) {
     const [answerValue, setAnswerValue] = useState('');
@@ -20,6 +21,7 @@ function ReportError({id, question, answers, afterReportHandler}) {
 
     return (
         <section className="report-error">
+            <Title>Quiz | Report Error</Title>
             <h1 className="report-error-heading">Report error</h1>
             <p className="report-error-text">Choose correct answer for you.</p>
             <p>{question}</p>

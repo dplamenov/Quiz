@@ -1,9 +1,11 @@
 import React from 'react';
 import './TimerEnd.css';
+import Title from "../../Core/Title";
 
 function TimerEnd({startAgainHandler, goToHomeHandler}) {
     return (
         <section className="timer-end">
+            <Title>Quiz | Timer End</Title>
             <h1 className="timer-end-heading">Timer End</h1>
             <p className="timer-end-text">Start again</p>
             <article className="timer-end-refresh-wrapper">
