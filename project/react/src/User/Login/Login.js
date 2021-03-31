@@ -6,6 +6,7 @@ import {useHistory} from "react-router-dom";
 import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
 import {toast} from "react-toastify";
 import LoaderHOC from "../../Core/LoaderHOC";
+import Title from "../../Core/Title";
 
 function Login({startLoader, stopLoader}) {
     const [email, setEmail] = useState('');
@@ -42,6 +43,7 @@ function Login({startLoader, stopLoader}) {
 
     return (
         <div className="wrapper login-page">
+            <Title>Login</Title>
             <h1>Login</h1>
             <form className="login-form" onSubmit={submitHandler}>
                 {!!errorMessage ? <p>{errorMessage}</p> : ''}

@@ -51,7 +51,7 @@ class Home extends React.Component {
     render() {
         return (
             <main>
-                <Title>Quiz game</Title>
+                <Title>Quiz</Title>
                 {this.props.isLogged ? this.renderUser() : this.renderGuest()}
             </main>
         );

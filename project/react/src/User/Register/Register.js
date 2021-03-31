@@ -5,6 +5,7 @@ import {register} from "../../store/actions";
 import {useHistory} from "react-router-dom";
 import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
 import {toast} from "react-toastify";
+import Title from "../../Core/Title";
 
 function Register() {
     const [email, setEmail] = useState('');
@@ -43,6 +44,7 @@ function Register() {
 
     return (
         <div className="wrapper register-page">
+            <Title>Register</Title>
             <h1>Register</h1>
             <form className="register-form" onSubmit={submitHandler}>
                 {!!errorMessage ? <p>{errorMessage}</p> : ''}
