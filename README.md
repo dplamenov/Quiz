@@ -1,7 +1,7 @@
 # Quiz
 Quiz application with React
 
-[DEMO](http://quiz.sharkdev.eu)
+[DEMO](https://quiz.sharkdev.eu)
 
 <h2>Functionality</h2>
 <h3>Visitors</h3>
