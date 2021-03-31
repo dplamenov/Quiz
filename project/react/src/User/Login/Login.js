@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './Login.css';
 import {StoreContext} from "../../store/store";
 import {login} from "../../store/actions";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
 import {toast} from "react-toastify";
 import LoaderHOC from "../../Core/LoaderHOC";
@@ -58,6 +58,7 @@ function Login({startLoader, stopLoader}) {
                         onClick={submitButtonHandler(errors)}>Login
                 </button>
             </form>
+            <Link to="register">Register</Link>
         </div>
     );
 }

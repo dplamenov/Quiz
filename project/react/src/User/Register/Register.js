@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './Register.css';
 import {StoreContext} from "../../store/store";
 import {register} from "../../store/actions";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/validation";
 import {toast} from "react-toastify";
 import Title from "../../Core/Title";
@@ -68,6 +68,7 @@ function Register() {
                         onClick={submitButtonHandler(errors)}>Register
                 </button>
             </form>
+            <Link to="login">Login</Link>
         </div>
     );
 }
