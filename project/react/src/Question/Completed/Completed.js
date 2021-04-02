@@ -15,7 +15,6 @@ function Completed({points, category, history}) {
         gameService.storeGame({category})
             .then(() => {
                 toast.success(`You are awesome! You get ${points}points.`);
-                console.log('store game');
             });
         setTimeout(() => {
             history.push('/');

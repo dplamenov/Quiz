@@ -78,8 +78,6 @@ function CreateQuestions({history}) {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        console.log(category);
-
         const questionObject = {
             question,
             category,

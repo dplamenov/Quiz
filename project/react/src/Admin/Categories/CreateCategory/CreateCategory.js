@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import './CreateCategory.css';
 import categoryService from "../../../services/category";
 import {StoreContext} from "../../../store/store";
-import {showNotification} from "../../../store/actions";
 import {toast} from "react-toastify";
 
 function CreateCategory({history}) {

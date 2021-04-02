@@ -7,7 +7,6 @@ function Profile() {
     const {state: {user}} = React.useContext(StoreContext);
 
     const dateRegistered = new Date(user.created_at);
-    console.log(dateRegistered.get);
 
     return (
         <div className="user-profile wrapper">

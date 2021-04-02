@@ -51,7 +51,6 @@ function ReportedErrors({startLoader, stopLoader, isLoading, history}) {
 
     const selectReportHandler = (id) => {
         return () => {
-            console.log('select');
             history.push(`/admin/report/${id}`);
         }
     };
