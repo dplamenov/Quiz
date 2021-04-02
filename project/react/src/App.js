@@ -17,7 +17,6 @@ import {
     Route, Redirect
 } from "react-router-dom";
 import Stats from "./Core/Stats/Stats";
-import Notification from "./Core/Notification/Notification";
 import {ToastContainer} from "react-toastify";
 import Footer from "./Core/Footer/Footer";
 import Contact from "./Core/Contact/Contact";
@@ -57,14 +56,11 @@ class App extends React.Component {
                             const {user} = state;
                             const isLogged = !!state.user;
 
-                            const notification = state.notification;
                             return user === undefined ? (
                                 <Loader/>
                             ) : (
                                 <Router>
                                     <Header isLogged={isLogged}/>
-                                    {!!notification ? <Notification message={notification.message}
-                                                                    type={notification.type}/> : ''}
                                     <ToastContainer newestOnTop={true}/>
                                     <Switch>
                                         <Route path="/" exact={true}>
