@@ -29,8 +29,8 @@ function Header(props) {
             <li><Link to="#" onClick={logoutHandler}>Logout</Link></li>
             <li>
                 Welcome, <Link to="/profile">{state.user?.email}</Link>
-               {/* {state.user?.access === 'admin' ? <Link to="/admin">(admin)</Link> : ''}*/}
             </li>
+            {state.user?.access === 'admin' ? <li><Link to="/admin">(admin)</Link></li> : ''}
         </>
     );
 
