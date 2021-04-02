@@ -9,6 +9,8 @@ Quiz application with React
 - Can Login or Register. 
 
 - See stats.
+
+- Can submit contact form.
 <h3>Logged-in users</h3>
 
 - Play quiz(answer at questions).
