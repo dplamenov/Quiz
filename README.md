@@ -50,6 +50,14 @@ Quiz application with React
  
 - User
 
+<h3>Helpers</h3>
+
+- Request helper
+
+- Validation
+
+<h2>Features</h2>
+
 <h2>Technologies</h2>
 
 - React
