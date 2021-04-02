@@ -6,7 +6,8 @@ import {StoreContext} from "../../store/store";
 function Profile() {
     const {state: {user}} = React.useContext(StoreContext);
 
-    console.log(user);
+    const dateRegistered = new Date(user.created_at);
+    console.log(dateRegistered.get);
 
     return (
         <div className="user-profile wrapper">
@@ -21,8 +22,8 @@ function Profile() {
                 <span>{user.access}</span>
             </p>
             <p>
-                <span className="bold">Date register: </span>
-                <span>{user.created_at}</span>
+                <span className="bold">Date registered: </span>
+                <span>{dateRegistered.toLocaleDateString()}</span>
             </p>
         </div>
     );
