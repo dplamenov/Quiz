@@ -21,6 +21,7 @@ import Notification from "./Core/Notification/Notification";
 import {ToastContainer} from "react-toastify";
 import Footer from "./Core/Footer/Footer";
 import Contact from "./Core/Contact/Contact";
+import Profile from "./User/Profile/Profile";
 
 
 const Auth = ({children}) => {
@@ -57,7 +58,6 @@ class App extends React.Component {
                             const isLogged = !!state.user;
 
                             const notification = state.notification;
-                            console.log(state);
                             return user === undefined ? (
                                 <Loader/>
                             ) : (
@@ -80,6 +80,7 @@ class App extends React.Component {
                                         <Route path="/admin" component={(props) => <Admin {...props} user={user}/>}/>
                                         <Route path="/stats" component={Stats}/>
                                         <Route path="/contact" component={Contact}/>
+                                        <Route path="/profile" component={Profile}/>
                                     </Switch>
                                     <Footer/>
                                 </Router>

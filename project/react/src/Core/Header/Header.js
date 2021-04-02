@@ -27,8 +27,10 @@ function Header(props) {
     const userNavigation = (
         <>
             <li><Link to="#" onClick={logoutHandler}>Logout</Link></li>
-            <li>Welcome, {state.user?.email}
-                {state.user?.access === 'admin' ? <Link to="/admin">(admin)</Link> : ''}</li>
+            <li>
+                Welcome, <Link to="/profile">{state.user?.email}</Link>
+               {/* {state.user?.access === 'admin' ? <Link to="/admin">(admin)</Link> : ''}*/}
+            </li>
         </>
     );
 
