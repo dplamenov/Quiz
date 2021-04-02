@@ -4,8 +4,9 @@ import userService from "../../services/user";
 import {StoreContext} from "../../store/store";
 import queryString from '../../helper/queryString';
 import Title from "../Title";
+import LoaderHOC from "../LoaderHOC";
 
-function Stats({location, history}) {
+function Stats({location, history, startLoader, stopLoader}) {
     const [data, setData] = useState({});
     const [pageIndex, setPageIndex] = useState(1);
 
@@ -15,9 +16,13 @@ function Stats({location, history}) {
         const qs = queryString(location.search);
         const currentPageIndex = qs.page ? +qs.page : 1;
         setPageIndex(currentPageIndex);
+
+        startLoader();
+
         userService.stats(currentPageIndex)
             .then(stats => {
                 setData(stats);
+                stopLoader();
             });
     }, [pageIndex, location.search]);
 
@@ -67,4 +72,4 @@ function Stats({location, history}) {
     );
 }
 
-export default Stats;
+export default LoaderHOC(Stats);
