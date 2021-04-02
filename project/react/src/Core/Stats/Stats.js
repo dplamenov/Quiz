@@ -18,7 +18,6 @@ function Stats({location, history, startLoader, stopLoader}) {
         setPageIndex(currentPageIndex);
 
         startLoader();
-
         userService.stats(currentPageIndex)
             .then(stats => {
                 setData(stats);
