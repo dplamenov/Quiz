@@ -1,5 +1,5 @@
 # Quiz
-Quiz application with React
+Quiz application with React. Logged-in users choose category (History, Geography and etc.), then user will see random questions in that category.
 
 [DEMO](https://quiz.sharkdev.eu)
 
@@ -9,6 +9,8 @@ Quiz application with React
 - Can Login or Register. 
 
 - See stats.
+
+- Can submit contact form.
 <h3>Logged-in users</h3>
 
 - Play quiz(answer at questions).
@@ -31,7 +33,8 @@ Quiz application with React
   <p>Contains main components like: Header and Navigation</p>
 
 - Category
-
+  <p>Category card component</p>
+  
 - Question
 
 - Admin
@@ -46,6 +49,14 @@ Quiz application with React
 - Question
  
 - User
+
+<h3>Helpers</h3>
+
+- Request helper
+
+- Validation
+
+<h2>Features</h2>
 
 <h2>Technologies</h2>
 
