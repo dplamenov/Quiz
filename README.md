@@ -33,7 +33,8 @@ Quiz application with React
   <p>Contains main components like: Header and Navigation</p>
 
 - Category
-
+  <p>Category card component</p>
+  
 - Question
 
 - Admin
