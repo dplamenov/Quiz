@@ -80,7 +80,9 @@ class App extends React.Component {
                                         <Route path="/admin" component={(props) => <Admin {...props} user={user}/>}/>
                                         <Route path="/stats" component={Stats}/>
                                         <Route path="/contact" component={Contact}/>
-                                        <Route path="/profile" component={Profile}/>
+                                        <Route path="/profile">
+                                            {!isLogged ? <Redirect to="/"/> : <Profile/>}
+                                        </Route>
                                     </Switch>
                                     <Footer/>
                                 </Router>
