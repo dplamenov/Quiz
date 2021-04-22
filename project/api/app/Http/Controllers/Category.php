@@ -64,6 +64,12 @@ class Category extends Controller
         $category = \App\Models\Category::find($catId);
         $category->delete();
 
+        $questions = \App\Models\Question::where('category', $catId)->get();
+
+        foreach ($questions as $question) {
+            $question->delete();
+        }
+
         return response()->json($category);
     }
 }
