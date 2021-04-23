@@ -8,11 +8,14 @@
     padding: 30px 0;
     background-color: rgba(255, 255, 0, 0.297);
     cursor: pointer;
+    position: relative;
 }
 
-.quiz-theme img {
+.quiz-theme > img {
     margin-bottom: 20px;
     width: 128px;
+    position: relative;
+    z-index: 2;
 }
 
 .quiz-theme p {
@@ -23,4 +26,14 @@
     background-color: #6b400c;
     color: white;
     width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+img.lock-image{
+    width: 210px;
+    height: 210px;
+    opacity: 1;
+    position: absolute;
+    z-index: 1;
 }
