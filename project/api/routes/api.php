@@ -60,3 +60,13 @@ Route::get('/admin', [Admin::class, 'getData']);
 Route::get('/admin/users', [Admin::class, 'getAllUsers']);
 Route::get('/admin/categories', [Admin::class, 'getAllCategories']);
 Route::get('/admin/questions', [Admin::class, 'getAllQuestions']);
+
+
+Route::post('/contact', function (\Illuminate\Http\Request $request) {
+    $name = $request->get('name');
+    $from = $request->get('from');
+    $message = $request->get('message');
+
+    \Illuminate\Support\Facades\Mail::to('quiz@quiz.sharkdev.eu')
+        ->send(new \App\Mail\Contact($name, $from, $message));
+});
