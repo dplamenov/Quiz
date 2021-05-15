@@ -53,10 +53,12 @@ function Header(props) {
                         <li><Link to="/stats">Stats</Link></li>
                         {props.isLogged ? userNavigation : guestNavigation}
                     </ul>
+                    <img src="images/lang/bg.png" alt=""/>
+                    <img src="images/lang/en.png" alt=""/>
+                    <img src="images/lang/ge.png" alt=""/>
                 </nav>
                 {props.isLogged ? stats : ''}
             </header>
-
         </>
     );
 }
