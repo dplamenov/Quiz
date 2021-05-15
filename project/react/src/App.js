@@ -21,6 +21,7 @@ import {ToastContainer} from "react-toastify";
 import Footer from "./Core/Footer/Footer";
 import Contact from "./Core/Contact/Contact";
 import Profile from "./User/Profile/Profile";
+import NotFound from "./Core/NotFound/NotFound";
 
 
 const Auth = ({children}) => {
@@ -79,6 +80,7 @@ class App extends React.Component {
                                         <Route path="/profile">
                                             {!isLogged ? <Redirect to="/"/> : <Profile/>}
                                         </Route>
+                                        <Route component={NotFound}/>
                                     </Switch>
                                     <Footer/>
                                 </Router>
