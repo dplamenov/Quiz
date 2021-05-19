@@ -47,10 +47,9 @@ function Header(props) {
 
     return (
         <>
-            {t('body')}
             <header>
                 <article className="logo-wrapper">
-                    <h1><Link to="/">QUIZ GAME</Link></h1>
+                    <h1><Link to="/">{t('logo-text')}</Link></h1>
                 </article>
                 <nav>
                     <ul>

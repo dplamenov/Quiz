@@ -1,26 +1,20 @@
 import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import {initReactI18next} from "react-i18next";
 
 const resources = {
     en: {
         translation: {
-            "Welcome to React": "Welcome to React and react-i18next",
-            "Learn React": "Learn React",
-            "body": "body"
+            "logo-text": "Quiz Game",
         }
     },
-    fr: {
+    ge: {
         translation: {
-            "Welcome to React": "Bienvenue à React et react-i18next",
-            "Learn React": "Apprenez à réagir",
-            "body": "corps"
+            "logo-text": "Quizspiel",
         }
     },
     bg: {
         translation: {
-            "Welcome to React": "Добре дошли в React и response-i18next",
-            "Learn React": "Научи реакт",
-            "body": "тяло"
+            "logo-text": "Игра",
         }
     }
 };
