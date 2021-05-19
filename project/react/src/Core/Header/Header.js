@@ -4,10 +4,14 @@ import {Link} from "react-router-dom";
 import {useHistory} from "react-router-dom";
 import {logout} from "../../store/actions";
 import {StoreContext} from "../../store/store";
-import {toast} from 'react-toastify'
+import {toast} from 'react-toastify';
+import { useTranslation } from 'react-i18next';
+import SelectLanguage from "../SelectLanguage";
 
 function Header(props) {
     const history = useHistory();
+    const { t } = useTranslation();
+
     const {dispatch, state} = React.useContext(StoreContext);
 
     const logoutHandler = () => {
@@ -43,6 +47,7 @@ function Header(props) {
 
     return (
         <>
+            {t('body')}
             <header>
                 <article className="logo-wrapper">
                     <h1><Link to="/">QUIZ GAME</Link></h1>
@@ -53,9 +58,7 @@ function Header(props) {
                         <li><Link to="/stats">Stats</Link></li>
                         {props.isLogged ? userNavigation : guestNavigation}
                     </ul>
-                    <img src="images/lang/bg.png" alt=""/>
-                    <img src="images/lang/en.png" alt=""/>
-                    <img src="images/lang/ge.png" alt=""/>
+                    <SelectLanguage />
                 </nav>
                 {props.isLogged ? stats : ''}
             </header>
