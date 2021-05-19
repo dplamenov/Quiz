@@ -13,8 +13,9 @@ function SelectLanguage() {
 
     return (
         <>
-            {languages.map(lang => {
-                return <img src={`images/lang/${lang}.png`} alt={lang} key={lang} onClick={changeLanguageHandler(lang)}/>
+            {languages.filter(lang => lang !== localStorage.getItem('lang')).map(lang => {
+                return <img src={`images/lang/${lang}.png`} alt={lang} key={lang}
+                            onClick={changeLanguageHandler(lang)}/>
             })}
         </>
     );
