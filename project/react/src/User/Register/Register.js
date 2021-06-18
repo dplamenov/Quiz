@@ -55,6 +55,7 @@ function Register() {
 
                 <input type="text" name="email" id="email" placeholder="EMAIL" onChange={changeHandler(setEmail)}
                        value={email} onBlur={validationHandler(setErrors, {email: 'invalidMail'})}/>
+
                 <input type="text" name="realName" id="realName" placeholder="REAL NAME"
                        onChange={changeHandler(setRealName)} value={realName}
                        onBlur={validationHandler(setErrors, {min: [3, 'minRealName']})}/>
