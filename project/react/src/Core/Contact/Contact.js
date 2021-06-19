@@ -13,7 +13,9 @@ function Contact({history}) {
     const [message, setMessage] = useState('');
 
     const [errors, setErrors] = useState({
+        invalidName: false,
         invalidMail: false,
+        invalidMessage: false
     });
 
     const inputStateMap = {'name': setName, 'email': setEmail, 'message': setMessage};
@@ -34,14 +36,18 @@ function Contact({history}) {
             <Title>Contact</Title>
             <h1>Contact</h1>
             <div className="wrapper">
+                {!!errors.invalidName ? <p>name must be at least 3 chars</p> : ''}
                 {!!errors.invalidMail ? <p>email is not valid</p> : ''}
+                {!!errors.invalidMessage ? <p>message must be at least 30 chars</p> : ''}
+
                 <form onSubmit={submitHandler}>
                     <input type="text" className="input" placeholder="Your name" value={name}
-                           onChange={onChangeHandler} id="name"/>
+                           onChange={onChangeHandler} id="name"
+                           onBlur={validationHandler(setErrors, {min: [3, 'invalidName']})}/>
                     <input type="text" className="input" placeholder="Email" onChange={onChangeHandler}
                            id="email" value={email} onBlur={validationHandler(setErrors, {email: 'invalidMail'})}/>
                     <textarea cols="30" rows="10" className="input no-resize" placeholder="Message" value={message}
-                              onChange={onChangeHandler} id="message"/>
+                              onChange={onChangeHandler} id="message" onBlur={validationHandler(setErrors, {min: [30, 'invalidMessage']})}/>
                     <button className="btn">Contact</button>
                 </form>
             </div>
