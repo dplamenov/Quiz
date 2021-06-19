@@ -78,3 +78,7 @@ code {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.error {
+  border: 1px solid red;
+}
