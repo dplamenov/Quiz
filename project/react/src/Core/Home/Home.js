@@ -34,7 +34,7 @@ class Home extends React.Component {
     renderGuest() {
         return (
             <>
-                <h1>Welcome to best quiz game</h1>
+                <h1 style={{fontFamily: "Caveat", fontSize: "42pt", textTransform: "uppercase"}}>Welcome to best quiz game</h1>
                 <div className="flex-btn">
                     <button className="btn pointer" onClick={() => this.props.history.push('user/login')}>Login</button>
                     <button className="btn pointer" onClick={() => this.props.history.push('user/register')}> Register
