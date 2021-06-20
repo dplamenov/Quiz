@@ -5,6 +5,7 @@ import CategoryCard from "../../Category/CategoryCard/CategoryCard";
 import categoryService from "../../services/category";
 import LoaderHOC from "../LoaderHOC";
 import Title from "../Title";
+import {BrowserView, MobileView} from 'react-device-detect';
 
 class Home extends React.Component {
     constructor(props) {
@@ -35,7 +36,12 @@ class Home extends React.Component {
             <>
                 <h1>Welcome to best quiz game</h1>
                 <p><Link to="user/login">Login</Link> | <Link to="user/register">Register</Link></p>
-                <img src="images/home-page-orange.png" style={{width: "70%"}} className="home-image"/>
+                <BrowserView>
+                    <img src="images/home-page-orange.png" style={{width: "70%"}} className="home-image"/>
+                </BrowserView>
+                <MobileView>
+                    <img src="images/home-page-mobile.png" style={{width: "70%"}} className="home-image"/>
+                </MobileView>
             </>
         );
     }
