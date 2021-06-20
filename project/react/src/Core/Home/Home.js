@@ -35,8 +35,7 @@ class Home extends React.Component {
             <>
                 <h1>Welcome to best quiz game</h1>
                 <p><Link to="user/login">Login</Link> | <Link to="user/register">Register</Link></p>
-                <h1>soon</h1>
-                <img src="images/home-page.png" style={{width: "70%"}} className="home-image"/>
+                <img src="images/home-page-orange.png" style={{width: "70%"}} className="home-image"/>
             </>
         );
     }
