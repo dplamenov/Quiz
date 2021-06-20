@@ -1,11 +1,11 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import './Home.css';
 import CategoryCard from "../../Category/CategoryCard/CategoryCard";
 import categoryService from "../../services/category";
 import LoaderHOC from "../LoaderHOC";
 import Title from "../Title";
 import {BrowserView, MobileView} from 'react-device-detect';
+import {withRouter} from "react-router";
 
 class Home extends React.Component {
     constructor(props) {
@@ -36,8 +36,9 @@ class Home extends React.Component {
             <>
                 <h1>Welcome to best quiz game</h1>
                 <div className="flex-btn">
-                    <button className="btn">Login</button>
-                    <button className="btn">Register</button>
+                    <button className="btn pointer" onClick={() => this.props.history.push('user/login')}>Login</button>
+                    <button className="btn pointer" onClick={() => this.props.history.push('user/register')}> Register
+                    </button>
                 </div>
                 <BrowserView>
                     <img src="images/home-page-orange.png" style={{width: "70%"}} className="home-image"/>
@@ -72,4 +73,4 @@ class Home extends React.Component {
     }
 }
 
-export default LoaderHOC(Home);
+export default LoaderHOC(withRouter(Home));

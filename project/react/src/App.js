@@ -65,7 +65,7 @@ class App extends React.Component {
                                     <ToastContainer newestOnTop={true}/>
                                     <Switch>
                                         <Route path="/" exact={true}>
-                                            <Home isLogged={isLogged}/>
+                                            <Home isLogged={isLogged} />
                                         </Route>
                                         <Route path="/user/login">
                                             {isLogged ? <Redirect to="/"/> : <Login/>}
