@@ -35,7 +35,10 @@ class Home extends React.Component {
         return (
             <>
                 <h1>Welcome to best quiz game</h1>
-                <p><Link to="user/login">Login</Link> | <Link to="user/register">Register</Link></p>
+                <div className="flex-btn">
+                    <button className="btn">Login</button>
+                    <button className="btn">Register</button>
+                </div>
                 <BrowserView>
                     <img src="images/home-page-orange.png" style={{width: "70%"}} className="home-image"/>
                 </BrowserView>
