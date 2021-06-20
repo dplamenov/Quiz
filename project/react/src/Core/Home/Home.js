@@ -6,11 +6,11 @@ import LoaderHOC from "../LoaderHOC";
 import Title from "../Title";
 import {BrowserView, MobileView} from 'react-device-detect';
 import {withRouter} from "react-router";
+import {withTranslation} from "react-i18next";
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             categories: []
         };
@@ -34,8 +34,9 @@ class Home extends React.Component {
     renderGuest() {
         return (
             <>
-                <h1 style={{fontFamily: "Caveat", fontSize: "42pt", textTransform: "uppercase"}}>Welcome to best quiz
-                    game</h1>
+                <h1 style={{fontFamily: "Caveat", fontSize: "42pt", textTransform: "uppercase"}}>
+                    {this.props.t('welcome-to-game')}
+                </h1>
                 <div className="flex-btn">
                     <button className="btn pointer" onClick={() => this.props.history.push('user/login')}>Login
                     </button>
@@ -75,4 +76,4 @@ class Home extends React.Component {
     }
 }
 
-export default LoaderHOC(withRouter(Home));
+export default withTranslation()(LoaderHOC(withRouter(Home)));
