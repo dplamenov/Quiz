@@ -49,7 +49,7 @@ function Header(props) {
         <>
             <header>
                 <article className="logo-wrapper">
-                    <h1><Link to="/">{t('logo-text')}</Link></h1>
+                    <h1 style={{fontFamily: "Caveat"}}><Link to="/">{t('logo-text')}</Link></h1>
                 </article>
                 <nav>
                     <ul>
