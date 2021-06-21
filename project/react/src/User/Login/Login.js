@@ -7,6 +7,7 @@ import validationHandler, {canSubmit, submitButtonHandler} from "../../helper/va
 import {toast} from "react-toastify";
 import LoaderHOC from "../../Core/LoaderHOC";
 import Title from "../../Core/Title";
+import {useTranslation} from "react-i18next";
 
 function Login({startLoader, stopLoader}) {
     const [email, setEmail] = useState('');
@@ -19,6 +20,7 @@ function Login({startLoader, stopLoader}) {
 
     const {dispatch} = React.useContext(StoreContext);
     const history = useHistory();
+    const { t } = useTranslation();
 
     const emailChangeHandler = ({target}) => {
         setEmail(target.value);
@@ -43,7 +45,7 @@ function Login({startLoader, stopLoader}) {
 
     return (
         <div className="wrapper login-page">
-            <Title>Login</Title>
+            <Title>{t('login-noun')}</Title>
             <h1>Login</h1>
             <form className="login-form" onSubmit={submitHandler}>
                 {!!errorMessage ? <p>{errorMessage}</p> : ''}
