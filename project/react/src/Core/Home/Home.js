@@ -39,10 +39,10 @@ class Home extends React.Component {
                 </h1>
                 <div className="flex-btn">
                     <button className="btn pointer" onClick={() => this.props.history.push('user/login')}>
-                        Login
+                        {this.props.t('login-verb')}
                     </button>
                     <button className="btn pointer" onClick={() => this.props.history.push('user/register')}>
-                        Register
+                        {this.props.t('register-verb')}
                     </button>
                 </div>
                 <BrowserView>

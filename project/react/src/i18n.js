@@ -5,19 +5,31 @@ const resources = {
     en: {
         translation: {
             "logo-text": "Quiz Game",
-            "welcome-to-game": "WELCOME TO BEST QUIZ GAME"
+            "welcome-to-game": "WELCOME TO BEST QUIZ GAME",
+            "login-noun": "login",
+            "login-verb": "login",
+            "register-noun": "register",
+            "register-verb": "register"
         }
     },
     ge: {
         translation: {
             "logo-text": "Quizspiel",
-            "welcome-to-game": "WILLKOMMEN ZUM BESTEN QUIZ-SPIEL"
+            "welcome-to-game": "WILLKOMMEN ZUM BESTEN QUIZ-SPIEL",
+            "login-noun": "login",
+            "login-verb": "login",
+            "register-noun": "anmeldung",
+            "register-verb": "registrieren"
         }
     },
     bg: {
         translation: {
             "logo-text": "Игра",
-            "welcome-to-game": "ДОБРЕ ДОШЛИ В НАЙ-ДОБРАТА ИГРА"
+            "welcome-to-game": "ДОБРЕ ДОШЛИ В НАЙ-ДОБРАТА ИГРА",
+            "login-noun": "вход",
+            "login-verb": "влез",
+            "register-noun": "регистрация",
+            "register-verb": "регистрирай се"
         }
     }
 };
