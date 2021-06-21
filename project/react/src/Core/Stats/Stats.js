@@ -54,7 +54,8 @@ function Stats({location, history, startLoader, stopLoader}) {
                     return (
                         <tr key={user.id} className={isCurrentUser ? 'stats-user' : ''}>
                             <td>{data.from + i}</td>
-                            <td>{user.email}{isCurrentUser ? '(YOU)' : ''}</td>
+                            {/*<td>{user.email}{isCurrentUser ? '(YOU)' : ''}</td>*/}
+                            <td>privacy data(soon){isCurrentUser ? '(YOU)' : ''}</td>
                             <td>{user.level}</td>
                             <td>{user.xp}</td>
                         </tr>
