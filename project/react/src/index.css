@@ -84,3 +84,7 @@ code {
 .error {
   border: 1px solid red;
 }
+
+.bold {
+  font-weight: bold;
+}

@@ -38,17 +38,42 @@ class Home extends React.Component {
                     {this.props.t('welcome-to-game')}
                 </h1>
                 <div className="flex-btn">
-                    <button className="btn pointer" onClick={() => this.props.history.push('user/login')}>Login
+                    <button className="btn pointer" onClick={() => this.props.history.push('user/login')}>
+                        Login
                     </button>
-                    <button className="btn pointer" onClick={() => this.props.history.push('user/register')}> Register
+                    <button className="btn pointer" onClick={() => this.props.history.push('user/register')}>
+                        Register
                     </button>
                 </div>
                 <BrowserView>
-                    <img src="images/home-page-orange.png" style={{width: "70%"}} className="home-image"/>
+                    <img src="images/home-page-orange.png" style={{width: "60%"}} className="home-image"/>
                 </BrowserView>
                 <MobileView>
-                    <img src="images/home-page-mobile.png" style={{width: "70%"}} className="home-image"/>
+                    <img src="images/home-page-mobile.png" style={{width: "60%"}} className="home-image"/>
                 </MobileView>
+                <div className="wrapper">
+                    <hr/>
+                </div>
+                <section className="game-details wrapper">
+                    <div>
+                        <h3>Quiz</h3>
+                        <ul>
+                            <li><span className="bold">Easy</span> to play</li>
+                            <li><span className="bold">Different</span> questions in <span
+                                className="bold">different</span> categories
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Quiz</h3>
+                        <ul>
+                            <li>a</li>
+                        </ul>
+                    </div>
+                </section>
+                <div className="wrapper">
+                    <hr/>
+                </div>
             </>
         );
     }
