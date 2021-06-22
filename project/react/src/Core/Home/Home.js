@@ -7,6 +7,7 @@ import Title from "../Title";
 import {BrowserView, MobileView} from 'react-device-detect';
 import {withRouter} from "react-router";
 import {withTranslation} from "react-i18next";
+import i18n from "../../i18n";
 
 class Home extends React.Component {
     constructor(props) {
@@ -32,6 +33,7 @@ class Home extends React.Component {
     }
 
     renderGuest() {
+        console.log(i18n.language);
         return (
             <>
                 <h1 style={{fontFamily: "Caveat", fontSize: "42pt", textTransform: "uppercase"}}>
@@ -46,7 +48,10 @@ class Home extends React.Component {
                     </button>
                 </div>
                 <BrowserView>
-                    <img src="images/home-page-orange.png" style={{width: "60%"}} className="home-image"/>
+                    {i18n.language === 'en' ?
+                        <img src="images/home-page-orange.png" style={{width: "60%"}} className="home-image"/> : ""}
+                    {i18n.language === 'ge' ?
+                        <img src="images/home-page-ge.png" style={{width: "60%"}} className="home-image"/> : ""}
                 </BrowserView>
                 <MobileView>
                     <img src="images/home-page-mobile.png" style={{width: "60%"}} className="home-image"/>

@@ -5,13 +5,13 @@ import {useHistory} from "react-router-dom";
 import {logout} from "../../store/actions";
 import {StoreContext} from "../../store/store";
 import {toast} from 'react-toastify';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import SelectLanguage from "../SelectLanguage";
+
 
 function Header(props) {
     const history = useHistory();
-    const { t } = useTranslation();
-
+    const {t} = useTranslation();
     const {dispatch, state} = React.useContext(StoreContext);
 
     const logoutHandler = () => {
@@ -57,7 +57,7 @@ function Header(props) {
                         <li><Link to="/stats">Stats</Link></li>
                         {props.isLogged ? userNavigation : guestNavigation}
                     </ul>
-                    <SelectLanguage />
+                    <SelectLanguage/>
                 </nav>
                 {props.isLogged ? stats : ''}
             </header>
