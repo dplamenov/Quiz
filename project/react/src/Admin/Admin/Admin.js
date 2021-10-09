@@ -34,6 +34,9 @@ function Admin(props) {
                     <li>
                         <NavLink to="/admin/categories" exact>Categories</NavLink>
                     </li>
+                    <li>
+                        <NavLink to="/admin/crm" exact>Customer relationship management</NavLink>
+                    </li>
                 </ul>
             </nav>
 
