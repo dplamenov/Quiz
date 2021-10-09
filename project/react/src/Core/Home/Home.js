@@ -67,14 +67,12 @@ class Home extends React.Component {
                             <li><span className="bold">Different</span> questions in <span
                                 className="bold">different</span> categories
                             </li>
+                            <li>
+                                Translated
+                            </li>
                         </ul>
                     </div>
-                    <div>
-                        <h3>Quiz</h3>
-                        <ul>
-                            <li>a</li>
-                        </ul>
-                    </div>
+
                 </section>
                 <div className="wrapper">
                     <hr/>
