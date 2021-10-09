@@ -11,6 +11,7 @@ import EditCategory from "../Categories/EditCategory/EditCategory";
 import HomePage from "../HomePage/HomePage";
 import ReportDetails from "../ReportedErrors/ReportDetails/ReportDetails";
 import Title from "../../Core/Title";
+import CRM from "../CRM/CRM";
 
 function Admin(props) {
     const {path} = useRouteMatch();
@@ -51,6 +52,8 @@ function Admin(props) {
                     <Route path={`${path}/categories`} component={Categories} exact/>
                     <Route path={`${path}/categories/create`} component={CreateCategory} exact/>
                     <Route path={`${path}/category/:id/edit`} component={EditCategory} exact/>
+
+                    <Route path={`${path}/crm`} component={CRM} exact />
 
                     <Route path={`${path}/report/:id`} component={ReportDetails}/>
                 </Switch>
