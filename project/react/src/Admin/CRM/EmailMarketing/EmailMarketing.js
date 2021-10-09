@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {CKEditor} from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 function EmailMarketing() {
-    const onMailTemplateSave = () => {
-        console.log('onMailTemplateSave');
-    }
+    const [editor, setEditor] = useState();
 
+    const onMailTemplateSave = () => {
+        console.log(editor.getData());
+    }
 
     return (
         <>
@@ -15,16 +16,6 @@ function EmailMarketing() {
             <CKEditor
                 editor={ClassicEditor}
                 data="<p>Welcome users!</p>"
-                onChange={(event, editor) => {
-                    const data = editor.getData();
-                    console.log({event, editor, data});
-                }}
-                onBlur={(event, editor) => {
-                    console.log('Blur.', editor);
-                }}
-                onFocus={(event, editor) => {
-                    console.log('Focus.', editor);
-                }}
                 onReady={(editor) => {
                     editor.editing.view.change((writer) => {
                         writer.setStyle(
@@ -33,6 +24,8 @@ function EmailMarketing() {
                             editor.editing.view.document.getRoot()
                         );
                     });
+
+                    setEditor(editor);
                 }}
             />
             <button className="btn btn-primary" style={{marginTop: 10}} onClick={onMailTemplateSave}>Save</button>
