@@ -34,12 +34,13 @@ function Login({startLoader, stopLoader}) {
         e.preventDefault();
         startLoader();
         dispatch(login({email, password}, () => {
-            setErrorMessage('');
             stopLoader();
+            setErrorMessage('');
             history.push('/');
             toast.success('Login successful');
         }, (error) => {
             setErrorMessage(error);
+            stopLoader();
         }));
     }
 
