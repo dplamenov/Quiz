@@ -1,8 +1,6 @@
 # Quiz
 Quiz application with React. Logged-in users choose category (History, Geography and etc.), then user will see random questions in that category.
 
-[DEMO](https://quiz.sharkdev.eu)
-
 <h2>Functionality</h2>
 <h3>Visitors</h3>
 
